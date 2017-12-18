@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using EmployeeEvaluation.Models;
+using System.Configuration;
+using System.Net;
 
 namespace EmployeeEvaluation
 {
@@ -19,8 +21,40 @@ namespace EmployeeEvaluation
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            return configSendGridasync(message);
         }
+
+        private Task configSendGridasync(IdentityMessage message)
+        {
+            using (System.Net.Mail.MailMessage mm = new System.Net.Mail.MailMessage(ConfigurationManager.AppSettings["postmasterEmail"], message.Destination))
+            {
+                mm.Subject = message.Subject;
+                mm.Body = message.Body;
+                mm.IsBodyHtml = true;
+
+                try
+                {
+                    using (System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient())
+                    {
+                        smtp.Host = ConfigurationManager.AppSettings["postmasterHost"];
+                        NetworkCredential NetworkCred = new NetworkCredential(ConfigurationManager.AppSettings["postmasterEmail"], ConfigurationManager.AppSettings["postmasterPassword"]);
+                        smtp.UseDefaultCredentials = true;
+                        smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                        smtp.Credentials = NetworkCred;
+                        smtp.Port = 587;
+                        smtp.EnableSsl = false;
+                        smtp.Send(mm);
+                    }
+                }
+                catch (Exception e)
+                {
+                    return Task.FromResult(0);
+                }
+            }
+
+            return Task.CompletedTask;
+        }
+
     }
 
     public class SmsService : IIdentityMessageService

@@ -48,7 +48,13 @@
                     <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
                     @if (Request.IsAuthenticated && User.IsInRole("Employee"))
                     {
-                        <li>@Html.ActionLink("Moje oceny", "AdminUserList", "Admin")</li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Moja oocena<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Moje ankiety", "AdminUserList", "Admin")</li>
+                                <li>@Html.ActionLink("Mój profil", "AdminUserList", "Admin")</li>
+                            </ul>
+                        </li>
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("Manager"))
                     {
