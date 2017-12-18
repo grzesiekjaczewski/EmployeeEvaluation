@@ -1,0 +1,77 @@
+﻿@model IEnumerable<EmployeeEvaluation.Models.Role>
+@{
+    ViewBag.Title = "Role użytkownika";
+}
+<p class="under-menu"><br /></p>
+@*@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}*@
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    Użytkownik
+                </th>
+                <th>
+                    @ViewBag.User.UserName
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    E-mail
+                </th>
+                <th>
+                    @ViewBag.User.Email
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div>
+    </div>
+    <div>
+        Role użytkownika
+        <input id="UserId"
+               name="UserId"
+               type="hidden"
+               value=@ViewBag.User.Id />
+        <table class="table">
+
+            @foreach (var item in @Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                       @if (item.ActiveForUser)
+                        {
+                            <input type="checkbox" name="@item.Name" value="1" checked>
+                        }
+                        else
+                        {
+                            <input type="checkbox" name="@item.Name" value="1">
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <input type="submit" value="Zapisz" class="btn btn-default" />
+        </div>
+        <div class="col-md-offset-2 col-md-2">
+            &nbsp
+        </div>
+        <div class="col-md-offset-2 col-md-2">
+            @Html.ActionLink("Powrót do listy", "AdminUserList")
+        </div>
+    </div>
+}
+

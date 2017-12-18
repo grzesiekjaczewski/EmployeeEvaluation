@@ -65,8 +65,12 @@ namespace EmployeeEvaluation.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Imię i Nazwisko")]
+        public string UserName { get; set; }
+
+        [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
 
         [Required]

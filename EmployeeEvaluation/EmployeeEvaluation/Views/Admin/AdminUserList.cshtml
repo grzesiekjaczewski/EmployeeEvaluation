@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EmployeeEvaluation.Models.ApplicationUser>
+@Scripts.Render("~/Scripts/myUserDeleteDialog.js")
+@{
+    ViewBag.Title = "Administracja rolami użytkowników";
+}
+<p class="under-menu"><br /></p>
+@*@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}*@
+<h2>Lista użytkowników</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search Name: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+        <input type="submit" value="Find" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>Użytkownik</th>
+        <th>Adres e-mail</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Role", "AdminUserRolesList", new { id = item.Id }) |
+                <a href="#" onclick="actionDelete('@item.Id','@item.UserName')">Usuń</a>
+
+            </td>
+        </tr>
+    }
+</table>
+
+<div id="dialog-confirm" title="Usuwanie użytkownika?">
+    <p id="confirmchapter"><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy na pewno usunąć użytkownika?</p>
+</div>
+
