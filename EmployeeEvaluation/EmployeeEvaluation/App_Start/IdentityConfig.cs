@@ -84,6 +84,7 @@ namespace EmployeeEvaluation
             };
 
             // Configure validation logic for passwords
+            
             manager.PasswordValidator = new IdentityExtensions.CustomPasswordValidator
             {
                 RequiredLength = 6,
