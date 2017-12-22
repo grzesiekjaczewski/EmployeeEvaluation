@@ -83,7 +83,7 @@ namespace EmployeeEvaluation
                 RequireUniqueEmail = true
             };
 
-            // Configure validation logic for passwords
+            // Configure validation logic for passwords chk
             
             manager.PasswordValidator = new IdentityExtensions.CustomPasswordValidator
             {
