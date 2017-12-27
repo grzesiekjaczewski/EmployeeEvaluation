@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Ocena okresowa pracownika</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/jquery-ui/css")
@@ -22,7 +22,7 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
-                    @if (Request.IsAuthenticated && User.IsInRole("Employee"))
+                    @if (Request.IsAuthenticated && User.IsInRole("Pracownik"))
                     {
                         <span class="icon-bar"></span>
                     }
@@ -46,10 +46,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
-                    @if (Request.IsAuthenticated && User.IsInRole("Employee"))
+                    @if (Request.IsAuthenticated && User.IsInRole("Pracownik"))
                     {
                         <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Moja oocena<b class="caret"></b></a>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Moja ocena<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Moje ankiety", "AdminUserList", "Admin")</li>
                                 <li>@Html.ActionLink("Mój profil", "AdminUserList", "Admin")</li>
@@ -83,7 +83,7 @@
                     {
                        <li>@Html.ActionLink("Użytkownicy", "AdminUserList", "Admin")</li>
                     }
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("O pracy", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -93,7 +93,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; 2017 - @DateTime.Now.Year - Katarzyna Jaczewska</p>
         </footer>
     </div>
 </body>

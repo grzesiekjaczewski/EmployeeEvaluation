@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<EmployeeEvaluation.Models.Role>
 @{
-    ViewBag.Title = "Role użytkownika";
+    ViewBag.Title = "Uprawnienia użytkownika";
 }
 <p class="under-menu"><br /></p>
 @*@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
@@ -34,7 +34,7 @@
     <div>
     </div>
     <div>
-        Role użytkownika
+        Uprawnienia użytkownika
         <input id="UserId"
                name="UserId"
                type="hidden"

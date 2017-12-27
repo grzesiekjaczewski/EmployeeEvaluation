@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EmployeeEvaluation.Models.ApplicationUser>
+﻿@model IEnumerable<EmployeeEvaluation.Models.UsersAndRights>
 @Scripts.Render("~/Scripts/myUserDeleteDialog.js")
 @{
     ViewBag.Title = "Administracja rolami użytkowników";
@@ -20,8 +20,11 @@
 
 <table class="table">
     <tr>
-        <th>Użytkownik</th>
-        <th>Adres e-mail</th>
+        <th>@Html.DisplayNameFor(model => model.UserName)</th>
+        <th>@Html.DisplayNameFor(model => model.IsAdmin)</th>
+        <th>@Html.DisplayNameFor(model => model.IsHRManager)</th>
+        <th>@Html.DisplayNameFor(model => model.IsManager)</th>
+        <th>@Html.DisplayNameFor(model => model.IsEmployee)</th>
     </tr>
 
     @foreach (var item in Model)
@@ -31,10 +34,19 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.CheckBoxFor(modelItem => item.IsAdmin, new {@disabled = "disabled" })
             </td>
             <td>
-                @Html.ActionLink("Role", "AdminUserRolesList", new { id = item.Id }) |
+                @Html.CheckBoxFor(modelItem => item.IsHRManager, new { @disabled = "disabled" })
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.IsManager, new { @disabled = "disabled" })
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.IsEmployee, new { @disabled = "disabled" })
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "AdminUserRolesList", new { id = item.Id }) |
                 <a href="#" onclick="actionDelete('@item.Id','@item.UserName')">Usuń</a>
 
             </td>
