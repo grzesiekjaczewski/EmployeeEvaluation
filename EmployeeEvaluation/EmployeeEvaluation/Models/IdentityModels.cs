@@ -29,5 +29,9 @@ namespace EmployeeEvaluation.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Employee> T_Employees { get; set; }
+        public DbSet<Team> T_Teams { get; set; }
+        public DbSet<Position> T_Positions { get; set; }
     }
 }

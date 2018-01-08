@@ -196,6 +196,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712132139231_InitialCreate.cs" />
+    <Compile Include="Migrations\201712132139231_InitialCreate.Designer.cs">
+      <DependentUpon>201712132139231_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801082054527_Employee hierarchy.cs" />
+    <Compile Include="Migrations\201801082054527_Employee hierarchy.Designer.cs">
+      <DependentUpon>201801082054527_Employee hierarchy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801082100093_Imployee hierarchy 2.cs" />
+    <Compile Include="Migrations\201801082100093_Imployee hierarchy 2.Designer.cs">
+      <DependentUpon>201801082100093_Imployee hierarchy 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
     <Compile Include="MyIdentityExtensions\CustomPasswordValidator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -297,6 +310,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712132139231_InitialCreate.resx">
+      <DependentUpon>201712132139231_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801082054527_Employee hierarchy.resx">
+      <DependentUpon>201801082054527_Employee hierarchy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801082100093_Imployee hierarchy 2.resx">
+      <DependentUpon>201801082100093_Imployee hierarchy 2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
