@@ -51,31 +51,32 @@
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Moja ocena<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Moje ankiety", "AdminUserList", "Admin")</li>
-                                <li>@Html.ActionLink("Mój profil", "AdminUserList", "Admin")</li>
+                                <li>@Html.ActionLink("Moje ankiety", "Evaluations", "EmpEvaluations")</li>
+                                <li>@Html.ActionLink("Mój profil", "Profile", "EmpProfile")</li>
                             </ul>
                         </li>
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("Manager"))
                     {
-                        <li>@Html.ActionLink("Pracownicy", "Employees", "HRManager")</li>
+                        <li>@Html.ActionLink("Pracownicy", "Employees", "ManEmployees")</li>
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("HR Manager"))
                     { 
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Organizacja<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Pracownicy", "Employees", "HRManager")</li>
-                                <li>@Html.ActionLink("Zespoły", "Teams", "HRManager")</li>
-                                <li>@Html.ActionLink("Menadżerowie", "Managers", "HRManager")</li>
+                                <li>@Html.ActionLink("Pracownicy", "Index", "HREmployees")</li>
+                                <li>@Html.ActionLink("Zespoły", "Index", "HRTeams")</li>
+                                <li>@Html.ActionLink("Menadżerowie", "Index", "HRManagers")</li>
+                                <li>@Html.ActionLink("Struktura", "Structure", "HRStructure")</li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Definicje<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Definicje ankiet", "SurveyDefinitions", "HRManager")</li>
-                                <li>@Html.ActionLink("Stanowiska", "Positions", "HRManager")</li>
-                                <li>@Html.ActionLink("Oceny", "Ratings", "HRManager")</li>
+                                <li>@Html.ActionLink("Definicje ankiet", "SurveyDefinitions", "HRSurveyDefinitions")</li>
+                                <li>@Html.ActionLink("Stanowiska", "Positions", "HRPositions")</li>
+                                <li>@Html.ActionLink("Oceny", "Ratings", "HRRatings")</li>
                             </ul>
                         </li>
                     }

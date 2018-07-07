@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<EmployeeEvaluation.Models.UsersAndRights>
-@Scripts.Render("~/Scripts/myUserDeleteDialog.js")
 @{
     ViewBag.Title = "Administracja rolami użytkowników";
 }
@@ -48,7 +47,6 @@
             <td>
                 @Html.ActionLink("Edytuj", "AdminUserRolesList", new { id = item.Id }) |
                 <a href="#" onclick="actionDelete('@item.Id','@item.UserName')">Usuń</a>
-
             </td>
         </tr>
     }
@@ -58,3 +56,6 @@
     <p id="confirmchapter"><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy na pewno usunąć użytkownika?</p>
 </div>
 
+@section Scripts {
+    @Scripts.Render("~/Scripts/myUserDeleteDialog.js")
+}
