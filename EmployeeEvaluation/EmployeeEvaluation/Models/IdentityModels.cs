@@ -33,5 +33,6 @@ namespace EmployeeEvaluation.Models
         public DbSet<Employee> T_Employees { get; set; }
         public DbSet<Team> T_Teams { get; set; }
         public DbSet<Position> T_Positions { get; set; }
+        public DbSet<Rating> T_Ratings { get; set; }
     }
 }

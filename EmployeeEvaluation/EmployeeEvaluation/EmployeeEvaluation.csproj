@@ -194,11 +194,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HREmployeesController.cs" />
     <Compile Include="Controllers\HRManagersController.cs" />
+    <Compile Include="Controllers\HRPositionsController.cs" />
     <Compile Include="Controllers\HRTeamsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\IPrepareView.cs" />
+    <Compile Include="Logic\PrepareEmployeeView.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.Designer.cs">
       <DependentUpon>201712132139231_InitialCreate.cs</DependentUpon>
@@ -210,6 +213,18 @@
     <Compile Include="Migrations\201801082100093_Imployee hierarchy 2.cs" />
     <Compile Include="Migrations\201801082100093_Imployee hierarchy 2.Designer.cs">
       <DependentUpon>201801082100093_Imployee hierarchy 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807071137353_Ratings.cs" />
+    <Compile Include="Migrations\201807071137353_Ratings.Designer.cs">
+      <DependentUpon>201807071137353_Ratings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807071211584_Ratings2.cs" />
+    <Compile Include="Migrations\201807071211584_Ratings2.Designer.cs">
+      <DependentUpon>201807071211584_Ratings2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807071911474_Ratings3.cs" />
+    <Compile Include="Migrations\201807071911474_Ratings3.Designer.cs">
+      <DependentUpon>201807071911474_Ratings3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
@@ -313,9 +328,15 @@
     <Content Include="Views\HRManagers\Details.cshtml" />
     <Content Include="Views\HRManagers\Edit.cshtml" />
     <Content Include="Views\HRManagers\Index.cshtml" />
+    <Content Include="Views\HRPositions\Create.cshtml" />
+    <Content Include="Views\HRPositions\Delete.cshtml" />
+    <Content Include="Views\HRPositions\Details.cshtml" />
+    <Content Include="Views\HRPositions\Edit.cshtml" />
+    <Content Include="Views\HRPositions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Containers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -338,6 +359,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801082100093_Imployee hierarchy 2.resx">
       <DependentUpon>201801082100093_Imployee hierarchy 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807071137353_Ratings.resx">
+      <DependentUpon>201807071137353_Ratings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807071211584_Ratings2.resx">
+      <DependentUpon>201807071211584_Ratings2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807071911474_Ratings3.resx">
+      <DependentUpon>201807071911474_Ratings3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
