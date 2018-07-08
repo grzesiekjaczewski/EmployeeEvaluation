@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EmployeeEvaluation.Models;
+using EmployeeEvaluation.Logic;
 
 namespace EmployeeEvaluation.Controllers
 {
@@ -162,6 +163,9 @@ namespace EmployeeEvaluation.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    CreateUserEmployee createUserEmployee = new CreateUserEmployee();
+                    createUserEmployee.Create(user.UserName, user.Id);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

@@ -10,6 +10,8 @@ using EmployeeEvaluation.Models;
 
 namespace EmployeeEvaluation.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = "HR Manager")]
     public class HRTeamsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -12,15 +12,17 @@ namespace EmployeeEvaluation.Logic
         {
             List<EmployeeExtended> employeeList = 
                (from e in db.T_Employees
-                from p in e.Positions.DefaultIfEmpty()
-                from t in e.Teams.DefaultIfEmpty()
+                join p in db.T_Positions on e.PositionId equals p.Id 
+                into Joinp from jp in Joinp.DefaultIfEmpty()
+                join t in db.T_Teams.DefaultIfEmpty() on e.TeamId equals t.Id
+                into Joint from jt in Joint.DefaultIfEmpty()
                 select new EmployeeExtended
                 {
                     Id = e.Id,
                     IsManager = e.IsManager,
-                    TeamName = t.Name,
+                    TeamName = jt.Name,
                     TeamId = e.TeamId,
-                    PositionName = p.Name,
+                    PositionName = jp.Name,
                     PositionId = e.PositionId,
                     FirstName = e.FirstName,
                     LastName = e.LastName

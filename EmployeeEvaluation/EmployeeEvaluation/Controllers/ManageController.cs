@@ -11,6 +11,7 @@ using EmployeeEvaluation.Models;
 namespace EmployeeEvaluation.Controllers
 {
     [Authorize]
+    [Authorize(Roles = "Manager")]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;

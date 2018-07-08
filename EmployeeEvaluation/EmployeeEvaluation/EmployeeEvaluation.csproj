@@ -197,10 +197,14 @@
     <Compile Include="Controllers\HRPositionsController.cs" />
     <Compile Include="Controllers\HRTeamsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MyProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\CreateUserEmployee.cs" />
+    <Compile Include="Logic\EmployeeEditViewBagLoader.cs" />
     <Compile Include="Logic\IPrepareView.cs" />
+    <Compile Include="Logic\IViewBagLoader.cs" />
     <Compile Include="Logic\PrepareEmployeeView.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.Designer.cs">
@@ -313,7 +317,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\AdminUserList.cshtml" />
     <Content Include="Views\Admin\AdminUserRolesList.cshtml" />
-    <Content Include="Views\HREmployees\Create.cshtml" />
     <Content Include="Views\HREmployees\Delete.cshtml" />
     <Content Include="Views\HREmployees\Details.cshtml" />
     <Content Include="Views\HREmployees\Edit.cshtml" />
@@ -333,6 +336,7 @@
     <Content Include="Views\HRPositions\Details.cshtml" />
     <Content Include="Views\HRPositions\Edit.cshtml" />
     <Content Include="Views\HRPositions\Index.cshtml" />
+    <Content Include="Views\MyProfile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,6 +11,8 @@ using EmployeeEvaluation.Logic;
 
 namespace EmployeeEvaluation.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = "Pracownik")]
     public class HREmployeesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -19,6 +21,7 @@ namespace EmployeeEvaluation.Controllers
         public ActionResult Index()
         {
             IPrepareView <List<EmployeeExtended>> prepareView = new PrepareEmployeeView<List<EmployeeExtended>>();
+            List<EmployeeExtended> l = prepareView.GetView(db);
             return View(prepareView.GetView(db));
         }
 
@@ -37,28 +40,28 @@ namespace EmployeeEvaluation.Controllers
             return View(employee);
         }
 
-        // GET: HREmployees/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //// GET: HREmployees/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        // POST: HREmployees/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserId,IsManager,TeamId,PositionId,FirstName,LastName")] Employee employee)
-        {
-            if (ModelState.IsValid)
-            {
-                db.T_Employees.Add(employee);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //// POST: HREmployees/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "Id,UserId,IsManager,TeamId,PositionId,FirstName,LastName")] Employee employee)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.T_Employees.Add(employee);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(employee);
-        }
+        //    return View(employee);
+        //}
 
         // GET: HREmployees/Edit/5
         public ActionResult Edit(int? id)
@@ -72,6 +75,10 @@ namespace EmployeeEvaluation.Controllers
             {
                 return HttpNotFound();
             }
+
+            IViewBagLoader viewBagLoader = new EmployeeEditViewBagLoader();
+            viewBagLoader.Load(this, db);
+
             return View(employee);
         }
 
@@ -82,6 +89,9 @@ namespace EmployeeEvaluation.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,UserId,IsManager,TeamId,PositionId,FirstName,LastName")] Employee employee)
         {
+            IViewBagLoader viewBagLoader = new EmployeeEditViewBagLoader();
+            viewBagLoader.Load(this, db);
+
             if (ModelState.IsValid)
             {
                 db.Entry(employee).State = EntityState.Modified;
