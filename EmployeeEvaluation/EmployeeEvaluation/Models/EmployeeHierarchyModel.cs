@@ -76,6 +76,15 @@ namespace EmployeeEvaluation.Models
         public List<Employee> Employees { get; set; }
     }
 
+    public class PositionExtended
+    {
+        public int Id { get; set; }
+        [Required]
+        [Display(Name = "Stanowisko")]
+        public string Name { get; set; }
+        public int Members { get; set; }
+    }
+
     public class Rating
     {
         public int Id { get; set; }

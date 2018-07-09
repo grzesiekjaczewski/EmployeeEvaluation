@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EmployeeEvaluation.Models.Position>
+﻿@model IEnumerable<EmployeeEvaluation.Models.PositionExtended>
 
 @{
     ViewBag.Title = "Index";
@@ -25,10 +25,25 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @if (@item.Members == 0)
+            {
+                <a href="#" onclick="actionDelete('@item.Id','@item.Name','stanowisko','/HRPositions/Delete/')">Usuń</a>
+            }
+            else
+            {
+                <a href="#" class="isDisabled">Usuń</a>
+            }
         </td>
     </tr>
 }
 
 </table>
+
+<div id="dialog-confirm" title="Usuwanie użytkownika?">
+    <p id="confirmchapter"><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy na pewno usunąć stanowisko?</p>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/myDeleteDialog.js")
+}

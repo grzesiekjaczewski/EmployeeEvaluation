@@ -209,6 +209,7 @@
     <Compile Include="Logic\IViewBagLoader.cs" />
     <Compile Include="Logic\IParameterLoader.cs" />
     <Compile Include="Logic\PrepareEmployeeView.cs" />
+    <Compile Include="Logic\PreparePositionView.cs" />
     <Compile Include="Logic\PrepareTeamDeatilsView.cs" />
     <Compile Include="Logic\PrepareTeamView.cs" />
     <Compile Include="Logic\TeamEditViewBagLoader.cs" />
@@ -342,8 +343,6 @@
     <Content Include="Views\HRManagers\Edit.cshtml" />
     <Content Include="Views\HRManagers\Index.cshtml" />
     <Content Include="Views\HRPositions\Create.cshtml" />
-    <Content Include="Views\HRPositions\Delete.cshtml" />
-    <Content Include="Views\HRPositions\Details.cshtml" />
     <Content Include="Views\HRPositions\Edit.cshtml" />
     <Content Include="Views\HRPositions\Index.cshtml" />
     <Content Include="Views\MyProfile\Index.cshtml" />
