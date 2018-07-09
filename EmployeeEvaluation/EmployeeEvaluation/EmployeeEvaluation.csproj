@@ -204,8 +204,12 @@
     <Compile Include="Logic\CreateUserEmployee.cs" />
     <Compile Include="Logic\EmployeeEditViewBagLoader.cs" />
     <Compile Include="Logic\IPrepareView.cs" />
+    <Compile Include="Logic\IViewBagExtendedLoader.cs" />
     <Compile Include="Logic\IViewBagLoader.cs" />
+    <Compile Include="Logic\IViewBagParameterLoader.cs" />
     <Compile Include="Logic\PrepareEmployeeView.cs" />
+    <Compile Include="Logic\PrepareTeamView.cs" />
+    <Compile Include="Logic\TeamEditViewBagLoader.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.Designer.cs">
       <DependentUpon>201712132139231_InitialCreate.cs</DependentUpon>
@@ -278,6 +282,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\myDeleteDialog.js" />
     <Content Include="Scripts\myUserDeleteDialog.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -322,7 +327,6 @@
     <Content Include="Views\HREmployees\Edit.cshtml" />
     <Content Include="Views\HREmployees\Index.cshtml" />
     <Content Include="Views\HRTeams\Create.cshtml" />
-    <Content Include="Views\HRTeams\Delete.cshtml" />
     <Content Include="Views\HRTeams\Details.cshtml" />
     <Content Include="Views\HRTeams\Edit.cshtml" />
     <Content Include="Views\HRTeams\Index.cshtml" />

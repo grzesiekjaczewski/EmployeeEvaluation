@@ -51,6 +51,25 @@ namespace EmployeeEvaluation.Models
         public List<Employee> Employees { get; set; }
     }
 
+    public class TeamExtended
+    {
+        public int Id { get; set; }
+        [Required]
+        [Display(Name = "Zespół")]
+        public string Name { get; set; }
+        public int ManagerId { get; set; }
+        [Display(Name = "Menadżer")]
+        public string ManagerName { get; set; }
+        public int Members { get; set; }
+    }
+
+    public class TeamStructure
+    {
+        TeamExtended TeamExtended { get; set; }
+        List<EmployeeExtended> TeamMembers { get; set; }
+    }
+
+
     public class Position
     {
         public int Id { get; set; }
@@ -69,4 +88,5 @@ namespace EmployeeEvaluation.Models
         [Display(Description = "Opis")]
         public string Description { get; set; }
     }
+
 }

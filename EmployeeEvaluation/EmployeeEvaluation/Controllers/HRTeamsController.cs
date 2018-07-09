@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EmployeeEvaluation.Models;
+using EmployeeEvaluation.Logic;
 
 namespace EmployeeEvaluation.Controllers
 {
@@ -19,7 +20,8 @@ namespace EmployeeEvaluation.Controllers
         // GET: HRTeams
         public ActionResult Index()
         {
-            return View(db.T_Teams.ToList());
+            IPrepareView<List<TeamExtended>> prepareView = new PrepareTeamView<List<TeamExtended>>();
+            return View(prepareView.GetView(db));
         }
 
         // GET: HRTeams/Details/5
@@ -72,6 +74,12 @@ namespace EmployeeEvaluation.Controllers
             {
                 return HttpNotFound();
             }
+
+            //IViewBagExtendedLoader<int?> viewBagLoader = new TeamEditViewBagLoader<int?>();
+            //viewBagLoader.Parameters = id;
+            IViewBagLoader viewBagLoader = new TeamEditViewBagLoader();
+            viewBagLoader.Load(this, db);
+
             return View(team);
         }
 
@@ -94,28 +102,15 @@ namespace EmployeeEvaluation.Controllers
         // GET: HRTeams/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Team team = db.T_Teams.Find(id);
-            if (team == null)
+            if (db.T_Employees.Where(e => e.TeamId == id).ToList().Count() == 0)
             {
-                return HttpNotFound();
+                db.T_Teams.Remove(team);
+                db.SaveChanges();
             }
-            return View(team);
-        }
-
-        // POST: HRTeams/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Team team = db.T_Teams.Find(id);
-            db.T_Teams.Remove(team);
-            db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {

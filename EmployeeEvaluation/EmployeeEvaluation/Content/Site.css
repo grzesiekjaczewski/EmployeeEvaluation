@@ -3,6 +3,7 @@
     padding-bottom: 20px;
 }
 
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -37,4 +38,9 @@ p.under-menu {
     p.under-menu {
         height: 0px;
     }
+}
+
+a.isDisabled {
+    cursor: not-allowed;
+    opacity: 0.5;
 }

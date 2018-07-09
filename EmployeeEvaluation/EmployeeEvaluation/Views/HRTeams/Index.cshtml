@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EmployeeEvaluation.Models.Team>
+﻿@model IEnumerable<EmployeeEvaluation.Models.TeamExtended>
 
 @{
     ViewBag.Title = "Index";
@@ -16,7 +16,7 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ManagerId)
+            @Html.DisplayNameFor(model => model.ManagerName)
         </th>
         <th></th>
     </tr>
@@ -27,14 +27,32 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ManagerId)
+            @Html.DisplayFor(modelItem => item.ManagerName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @if (@item.Members == 0)
+            {
+                <a href="#" onclick="actionDelete('@item.Id','@item.Name','zespół','/HRTeams/Delete/')">Usuń</a>
+            }
+            else
+            {
+                @*<a href="#" style="cursor: not-allowed; opacity: 0.5;">Usuń</a>*@
+                <a href="#" class="isDisabled">Usuń</a>
+
+            }
+
         </td>
     </tr>
 }
-
 </table>
+
+<div id="dialog-confirm" title="Usuwanie użytkownika?">
+    <p id="confirmchapter"><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy na pewno usunąć zespół?</p>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/myDeleteDialog.js")
+}
