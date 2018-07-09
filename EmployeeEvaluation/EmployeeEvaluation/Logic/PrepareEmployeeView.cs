@@ -19,7 +19,6 @@ namespace EmployeeEvaluation.Logic
                 select new EmployeeExtended
                 {
                     Id = e.Id,
-                    IsManager = e.IsManager,
                     TeamName = jt.Name,
                     TeamId = e.TeamId,
                     PositionName = jp.Name,

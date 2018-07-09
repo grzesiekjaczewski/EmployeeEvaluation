@@ -27,16 +27,9 @@ namespace EmployeeEvaluation.Controllers
         // GET: HRTeams/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Team team = db.T_Teams.Find(id);
-            if (team == null)
-            {
-                return HttpNotFound();
-            }
-            return View(team);
+            IPrepareExtendedView<TeamStructure, int?> modelExtendedLoader = new PrepareTeamDeatilsView<TeamStructure, int?>();
+            modelExtendedLoader.Parameters = id;
+            return View(modelExtendedLoader.GetView(db));
         }
 
         // GET: HRTeams/Create
@@ -75,8 +68,6 @@ namespace EmployeeEvaluation.Controllers
                 return HttpNotFound();
             }
 
-            //IViewBagExtendedLoader<int?> viewBagLoader = new TeamEditViewBagLoader<int?>();
-            //viewBagLoader.Parameters = id;
             IViewBagLoader viewBagLoader = new TeamEditViewBagLoader();
             viewBagLoader.Load(this, db);
 

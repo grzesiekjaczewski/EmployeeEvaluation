@@ -203,11 +203,13 @@
     </Compile>
     <Compile Include="Logic\CreateUserEmployee.cs" />
     <Compile Include="Logic\EmployeeEditViewBagLoader.cs" />
+    <Compile Include="Logic\IPrepareExtendedView.cs" />
     <Compile Include="Logic\IPrepareView.cs" />
     <Compile Include="Logic\IViewBagExtendedLoader.cs" />
     <Compile Include="Logic\IViewBagLoader.cs" />
-    <Compile Include="Logic\IViewBagParameterLoader.cs" />
+    <Compile Include="Logic\IParameterLoader.cs" />
     <Compile Include="Logic\PrepareEmployeeView.cs" />
+    <Compile Include="Logic\PrepareTeamDeatilsView.cs" />
     <Compile Include="Logic\PrepareTeamView.cs" />
     <Compile Include="Logic\TeamEditViewBagLoader.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.cs" />
@@ -233,6 +235,10 @@
     <Compile Include="Migrations\201807071911474_Ratings3.cs" />
     <Compile Include="Migrations\201807071911474_Ratings3.Designer.cs">
       <DependentUpon>201807071911474_Ratings3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807091728029_Ratings31.cs" />
+    <Compile Include="Migrations\201807091728029_Ratings31.Designer.cs">
+      <DependentUpon>201807091728029_Ratings31.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
@@ -376,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807071911474_Ratings3.resx">
       <DependentUpon>201807071911474_Ratings3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807091728029_Ratings31.resx">
+      <DependentUpon>201807091728029_Ratings31.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

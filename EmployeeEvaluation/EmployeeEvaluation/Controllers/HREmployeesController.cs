@@ -63,7 +63,7 @@ namespace EmployeeEvaluation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,UserId,IsManager,TeamId,PositionId,FirstName,LastName")] Employee employee)
+        public ActionResult Edit([Bind(Include = "Id,UserId,TeamId,PositionId,FirstName,LastName")] Employee employee)
         {
             IViewBagLoader viewBagLoader = new EmployeeEditViewBagLoader();
             viewBagLoader.Load(this, db);

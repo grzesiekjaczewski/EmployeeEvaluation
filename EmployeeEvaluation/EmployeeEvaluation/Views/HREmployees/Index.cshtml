@@ -21,10 +21,7 @@
         <th>
             @Html.DisplayNameFor(model => model.TeamName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsManager)
-        </th>
-        
+       
         <th></th>
     </tr>
 
@@ -42,10 +39,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.TeamName)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsManager)
-        </td>
-
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |

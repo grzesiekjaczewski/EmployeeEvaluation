@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeEvaluation.Logic
 {
-    interface IViewBagParameterLoader<T>
+    interface IParameterLoader<T>
     {
         T Parameters { get; set; }
     }

@@ -11,7 +11,6 @@ namespace EmployeeEvaluation.Models
         public int Id { get; set; }
         [Required]
         public string UserId { get; set; }
-        public bool IsManager { get; set; }
         public int TeamId { get; set; }
         public List<Team> Teams { get; set; }
         public int PositionId { get; set; }
@@ -27,8 +26,6 @@ namespace EmployeeEvaluation.Models
         public int Id { get; set; }
         [Required]
         public string UserId { get; set; }
-        [Display(Name = "Menadżer")]
-        public bool IsManager { get; set; }
         [Display(Name = "Zespół")]
         public string TeamName { get; set; }
         public int TeamId { get; set; }
@@ -65,8 +62,8 @@ namespace EmployeeEvaluation.Models
 
     public class TeamStructure
     {
-        TeamExtended TeamExtended { get; set; }
-        List<EmployeeExtended> TeamMembers { get; set; }
+        public TeamExtended TeamExtended { get; set; }
+        public List<EmployeeExtended> TeamMembers { get; set; }
     }
 
 
