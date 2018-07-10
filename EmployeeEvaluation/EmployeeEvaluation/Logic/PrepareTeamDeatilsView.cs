@@ -48,6 +48,7 @@ namespace EmployeeEvaluation.Logic
             into Joinp
             from jp in Joinp.DefaultIfEmpty()
             where e.TeamId == id
+            orderby e.FirstName + e.LastName
             select new EmployeeExtended
             {
                 FirstName = e.FirstName,

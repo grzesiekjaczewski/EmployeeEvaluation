@@ -36,6 +36,8 @@ namespace EmployeeEvaluation.Models
         public string FirstName { get; set; }
         [Display(Name = "Nazwisko")]
         public string LastName { get; set; }
+        [Display(Name = "E-Mail")]
+        public string EMail { get; set; }
     }
 
     public class Team

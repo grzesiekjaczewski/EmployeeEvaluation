@@ -15,6 +15,7 @@ namespace EmployeeEvaluation.Logic
                 join m in db.T_Employees on t.ManagerId equals m.Id
                 into Joinm
                 from jm in Joinm.DefaultIfEmpty()
+                orderby t.Name
 
                 select new TeamExtended
                 {

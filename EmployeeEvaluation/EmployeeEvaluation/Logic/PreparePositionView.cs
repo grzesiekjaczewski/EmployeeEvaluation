@@ -12,6 +12,7 @@ namespace EmployeeEvaluation.Logic
         {
             List<PositionExtended> positionList =
            (from p in db.T_Positions
+            orderby p.Name
             select new PositionExtended
             {
                 Id = p.Id,
