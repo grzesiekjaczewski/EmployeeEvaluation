@@ -30,6 +30,19 @@ namespace EmployeeEvaluation.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name")] Position position)
+        {
+            if (ModelState.IsValid)
+            {
+                db.T_Positions.Add(position);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(position);
+        }
 
         // GET: HRPositions/Edit/5
         public ActionResult Edit(int? id)

@@ -3,10 +3,7 @@
     ViewBag.Title = "Administracja rolami użytkowników";
 }
 <p class="under-menu"><br /></p>
-@*@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
-{
-    <p class="under-menu"><br /></p>
-}*@
+
 <h2>Lista użytkowników</h2>
 
 @using (Html.BeginForm())
@@ -46,7 +43,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edytuj", "AdminUserRolesList", new { id = item.Id }) |
-                <a href="#" onclick="actionDelete('@item.Id','@item.UserName')">Usuń</a>
+                <a href="#" onclick="actionDelete('@item.Id','@item.UserName','użytkownika','/Admin/Delete/')">Usuń</a>
             </td>
         </tr>
     }
@@ -57,5 +54,5 @@
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/Scripts/myUserDeleteDialog.js")
+    @Scripts.Render("~/Scripts/myDeleteDialog.js")
 }
