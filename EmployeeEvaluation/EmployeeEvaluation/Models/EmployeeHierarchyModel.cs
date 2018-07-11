@@ -12,9 +12,7 @@ namespace EmployeeEvaluation.Models
         [Required]
         public string UserId { get; set; }
         public int TeamId { get; set; }
-        public List<Team> Teams { get; set; }
         public int PositionId { get; set; }
-        public List<Position> Positions { get; set; }
         [Display(Name = "Imię")]
         public string FirstName { get; set; }
         [Display(Name = "Nazwisko")]

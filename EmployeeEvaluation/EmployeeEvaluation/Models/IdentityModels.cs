@@ -34,5 +34,12 @@ namespace EmployeeEvaluation.Models
         public DbSet<Team> T_Teams { get; set; }
         public DbSet<Position> T_Positions { get; set; }
         public DbSet<Rating> T_Ratings { get; set; }
+
+        public DbSet<SurveyTemplate> T_SurveyTemplate { get; set; }
+        public DbSet<SurveyPartTemplate> T_SurveyPartTemplate { get; set; }
+        public DbSet<SurveyQuestionTemplate> T_SurveyQuestionTemplate { get; set; }
+        public DbSet<Survey> T_Survey { get; set; }
+        public DbSet<SurveyPart> T_SurveyPart { get; set; }
+        public DbSet<SurveyQuestion> T_SurveyQuestion { get; set; }
     }
 }

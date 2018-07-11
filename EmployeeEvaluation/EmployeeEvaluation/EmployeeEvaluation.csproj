@@ -243,8 +243,17 @@
     <Compile Include="Migrations\201807091728029_Ratings31.Designer.cs">
       <DependentUpon>201807091728029_Ratings31.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807111302461_Survey1.cs" />
+    <Compile Include="Migrations\201807111302461_Survey1.Designer.cs">
+      <DependentUpon>201807111302461_Survey1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807111452448_Survey2.cs" />
+    <Compile Include="Migrations\201807111452448_Survey2.Designer.cs">
+      <DependentUpon>201807111452448_Survey2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
+    <Compile Include="Models\EvaluationModel.cs" />
     <Compile Include="MyIdentityExtensions\CustomPasswordValidator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserGroupViewModel.cs" />
@@ -381,6 +390,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807091728029_Ratings31.resx">
       <DependentUpon>201807091728029_Ratings31.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807111302461_Survey1.resx">
+      <DependentUpon>201807111302461_Survey1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807111452448_Survey2.resx">
+      <DependentUpon>201807111452448_Survey2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
