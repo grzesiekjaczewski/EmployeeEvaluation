@@ -38,6 +38,14 @@ namespace EmployeeEvaluation.Models
         public string LastName { get; set; }
         [Display(Name = "E-Mail")]
         public string EMail { get; set; }
+        public bool IsManager { get; set; }
+    }
+
+    public class ManagerStructure
+    {
+        public string ManagerName { get; set; }
+        public string PositionName { get; set; }
+        public List<TeamExtended> Teams { get; set; }
     }
 
     public class Team
@@ -60,6 +68,7 @@ namespace EmployeeEvaluation.Models
         [Display(Name = "Menadżer")]
         public string ManagerName { get; set; }
         public int Members { get; set; }
+        public List<EmployeeExtended> MamberList { get; set; }
     }
 
     public class TeamStructure

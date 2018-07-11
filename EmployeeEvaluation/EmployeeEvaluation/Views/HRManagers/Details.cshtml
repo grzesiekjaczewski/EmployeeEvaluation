@@ -1,4 +1,4 @@
-﻿@model EmployeeEvaluation.Models.Employee
+﻿@model EmployeeEvaluation.Models.ManagerStructure
 
 @{
     ViewBag.Title = "Details";
@@ -8,52 +8,55 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Employee</h4>
+    <h4>Menadżer</h4>
+    <h4>@Model.ManagerName</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
+    <table class="table">
+        <tr>
+            <th>
+               Zespół
+            </th>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TeamId)
-        </dt>
+        @foreach (var item in Model.Teams)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Imię
+                            </th>
+                            <th>
+                                Nazwisko
+                            </th>
+                            <th>
+                                Stanowisko
+                            </th>
+                        </tr>
+                        @foreach (var item2 in item.MamberList)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem2 => item2.FirstName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem2 => item2.LastName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem2 => item2.PositionName)
+                                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.TeamId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PositionId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PositionId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-    </dl>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        }
+    </table>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

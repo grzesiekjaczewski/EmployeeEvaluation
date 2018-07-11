@@ -84,17 +84,6 @@ namespace EmployeeEvaluation.Controllers
             db.T_Employees.Remove(employee);
             db.SaveChanges();
             return RedirectToAction("Index");
-
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //Employee employee = db.T_Employees.Find(id);
-            //if (employee == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(employee);
         }
 
         protected override void Dispose(bool disposing)

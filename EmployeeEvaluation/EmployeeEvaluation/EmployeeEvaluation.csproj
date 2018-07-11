@@ -209,6 +209,8 @@
     <Compile Include="Logic\IViewBagLoader.cs" />
     <Compile Include="Logic\IParameterLoader.cs" />
     <Compile Include="Logic\PrepareEmployeeView.cs" />
+    <Compile Include="Logic\PrepareManagerDeatilsView.cs" />
+    <Compile Include="Logic\PrepareManagerView.cs" />
     <Compile Include="Logic\PreparePositionView.cs" />
     <Compile Include="Logic\PrepareTeamDeatilsView.cs" />
     <Compile Include="Logic\PrepareTeamView.cs" />
@@ -328,7 +330,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\AdminUserList.cshtml" />
     <Content Include="Views\Admin\AdminUserRolesList.cshtml" />
-    <Content Include="Views\HREmployees\Delete.cshtml" />
     <Content Include="Views\HREmployees\Details.cshtml" />
     <Content Include="Views\HREmployees\Edit.cshtml" />
     <Content Include="Views\HREmployees\Index.cshtml" />
@@ -336,10 +337,7 @@
     <Content Include="Views\HRTeams\Details.cshtml" />
     <Content Include="Views\HRTeams\Edit.cshtml" />
     <Content Include="Views\HRTeams\Index.cshtml" />
-    <Content Include="Views\HRManagers\Create.cshtml" />
-    <Content Include="Views\HRManagers\Delete.cshtml" />
     <Content Include="Views\HRManagers\Details.cshtml" />
-    <Content Include="Views\HRManagers\Edit.cshtml" />
     <Content Include="Views\HRManagers\Index.cshtml" />
     <Content Include="Views\HRPositions\Create.cshtml" />
     <Content Include="Views\HRPositions\Edit.cshtml" />
