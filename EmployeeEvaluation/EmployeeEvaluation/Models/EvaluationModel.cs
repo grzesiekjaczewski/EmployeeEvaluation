@@ -13,6 +13,7 @@ namespace EmployeeEvaluation.Models
         [Display(Name = "Nazwa ankiety")]
         public string Name { get; set; }
         [Display(Name = "Data")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime SurveyDate { get; set; }
         public List<SurveyPartTemplate> SurveyPartTemplates { get; set; }
     }
@@ -51,12 +52,16 @@ namespace EmployeeEvaluation.Models
         [Display(Name = "Nazwa ankiety")]
         public string Name { get; set; }
         [Display(Name = "Data ankiety")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime SurveyDate { get; set; }
         [Display(Name = "Termin")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime SurveyDadline { get; set; }
         [Display(Name = "Wyp. pracownik")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime CompliteEmployeeDate { get; set; }
         [Display(Name = "Wyp. manager")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime CompliteManagerDate { get; set; }
         public string EmployeeSummary { get; set; }
         public decimal EmployeeSummaryScore { get; set; }

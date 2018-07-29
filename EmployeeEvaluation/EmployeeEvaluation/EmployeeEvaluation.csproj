@@ -198,9 +198,11 @@
     <Compile Include="Controllers\HRTeamsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyProfileController.cs" />
+    <Compile Include="Controllers\SurveyTemplatesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\CalculateDate.cs" />
     <Compile Include="Logic\CreateUserEmployee.cs" />
     <Compile Include="Logic\EmployeeEditViewBagLoader.cs" />
     <Compile Include="Logic\IPrepareExtendedView.cs" />
@@ -352,6 +354,11 @@
     <Content Include="Views\HRPositions\Edit.cshtml" />
     <Content Include="Views\HRPositions\Index.cshtml" />
     <Content Include="Views\MyProfile\Index.cshtml" />
+    <Content Include="Views\SurveyTemplates\Create.cshtml" />
+    <Content Include="Views\SurveyTemplates\Delete.cshtml" />
+    <Content Include="Views\SurveyTemplates\Details.cshtml" />
+    <Content Include="Views\SurveyTemplates\Edit.cshtml" />
+    <Content Include="Views\SurveyTemplates\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
