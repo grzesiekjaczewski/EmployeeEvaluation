@@ -214,6 +214,7 @@
     <Compile Include="Logic\PrepareManagerDeatilsView.cs" />
     <Compile Include="Logic\PrepareManagerView.cs" />
     <Compile Include="Logic\PreparePositionView.cs" />
+    <Compile Include="Logic\PrepareServeyDeatilsView.cs" />
     <Compile Include="Logic\PrepareTeamDeatilsView.cs" />
     <Compile Include="Logic\PrepareTeamView.cs" />
     <Compile Include="Logic\TeamEditViewBagLoader.cs" />

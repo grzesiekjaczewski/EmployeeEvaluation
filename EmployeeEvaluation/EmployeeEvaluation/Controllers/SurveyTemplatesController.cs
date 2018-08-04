@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EmployeeEvaluation.Models;
+using EmployeeEvaluation.Logic;
 
 namespace EmployeeEvaluation.Controllers
 {
@@ -69,12 +70,18 @@ namespace EmployeeEvaluation.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            /*
             SurveyTemplate surveyTemplate = db.T_SurveyTemplate.Find(id);
             if (surveyTemplate == null)
             {
                 return HttpNotFound();
             }
             return View(surveyTemplate);
+            */
+
+            IPrepareExtendedView<SurveyTemplateExtemded, int?> modelExtendedLoader = new PrepareManagerDeatilsView<SurveyTemplateExtemded, int?>();
+            modelExtendedLoader.Parameters = id;
+            return View(modelExtendedLoader.GetView(db));
         }
 
         // POST: SurveyTemplates/Edit/5
