@@ -254,6 +254,10 @@
     <Compile Include="Migrations\201807111452448_Survey2.Designer.cs">
       <DependentUpon>201807111452448_Survey2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808052021277_Latest.cs" />
+    <Compile Include="Migrations\201808052021277_Latest.Designer.cs">
+      <DependentUpon>201808052021277_Latest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
     <Compile Include="Models\EvaluationModel.cs" />
@@ -404,6 +408,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807111452448_Survey2.resx">
       <DependentUpon>201807111452448_Survey2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808052021277_Latest.resx">
+      <DependentUpon>201808052021277_Latest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
