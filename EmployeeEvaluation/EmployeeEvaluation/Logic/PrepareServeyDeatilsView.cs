@@ -12,10 +12,22 @@ namespace EmployeeEvaluation.Logic
 
         public T1 GetView(ApplicationDbContext db)
         {
+            int? id = Parameters as int?;
+            if (id == null)
+            {
+                return null;
+            }
+
+            SurveyTemplate surveyTemplate = db.T_SurveyTemplate.Find(id);
+            List<SurveyPartTemplate> surveyPartTemplates = surveyTemplate.SurveyPartTemplates;
+            if (surveyPartTemplates == null) surveyPartTemplates = new List<SurveyPartTemplate>();
+            //List<SurveyQuestionTemplate> SurveyQuestionTemplates = new List<SurveyQuestionTemplate>();
+
             SurveyTemplateExtemded surveyTemplateExtemded = new SurveyTemplateExtemded()
             {
-                //ManagerName = employee.FirstName + " " + employee.LastName,
-                //Teams = teams
+                Name = surveyTemplate.Name,
+                SurveyDate = surveyTemplate.SurveyDate,
+                SurveyPartTemplates = surveyPartTemplates
             };
 
             return surveyTemplateExtemded as T1;

@@ -10,6 +10,8 @@ namespace EmployeeEvaluation.Models
     {
         public bool CanBeDeleted { get; set; }
         public List<SurveyPartTemplateExtended> MamberList { get; set; }
+        [Display(Name = "Nazwa")]
+        public string NewPart { get; set; }
     }
 
     public class SurveyTemplate
@@ -27,6 +29,9 @@ namespace EmployeeEvaluation.Models
     {
         public bool CanBeDeleted { get; set; }
         public List<SurveyQuestionTemplateExtended> MamberList { get; set; }
+        [Display(Name = "Nazwa")]
+        public string NewQuestion { get; set; }
+
     }
 
     public class SurveyPartTemplate

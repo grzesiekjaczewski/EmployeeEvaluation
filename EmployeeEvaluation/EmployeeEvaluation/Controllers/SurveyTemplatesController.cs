@@ -79,7 +79,7 @@ namespace EmployeeEvaluation.Controllers
             return View(surveyTemplate);
             */
 
-            IPrepareExtendedView<SurveyTemplateExtemded, int?> modelExtendedLoader = new PrepareManagerDeatilsView<SurveyTemplateExtemded, int?>();
+            IPrepareExtendedView<SurveyTemplateExtemded, int?> modelExtendedLoader = new PrepareServeyDeatilsView<SurveyTemplateExtemded, int?>();
             modelExtendedLoader.Parameters = id;
             return View(modelExtendedLoader.GetView(db));
         }

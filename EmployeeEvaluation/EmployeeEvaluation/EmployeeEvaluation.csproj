@@ -258,6 +258,10 @@
     <Compile Include="Migrations\201808052021277_Latest.Designer.cs">
       <DependentUpon>201808052021277_Latest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808112117471_nothing important.cs" />
+    <Compile Include="Migrations\201808112117471_nothing important.Designer.cs">
+      <DependentUpon>201808112117471_nothing important.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
     <Compile Include="Models\EvaluationModel.cs" />
@@ -308,6 +312,7 @@
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\myDeleteDialog.js" />
+    <Content Include="Scripts\myHideShow.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
@@ -411,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808052021277_Latest.resx">
       <DependentUpon>201808052021277_Latest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808112117471_nothing important.resx">
+      <DependentUpon>201808112117471_nothing important.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
