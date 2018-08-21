@@ -19,16 +19,38 @@ namespace EmployeeEvaluation.Logic
             }
 
             SurveyTemplate surveyTemplate = db.T_SurveyTemplate.Find(id);
+            db.Entry(surveyTemplate).Collection(p => p.SurveyPartTemplates).Load();
             List<SurveyPartTemplate> surveyPartTemplates = surveyTemplate.SurveyPartTemplates;
             if (surveyPartTemplates == null) surveyPartTemplates = new List<SurveyPartTemplate>();
             //List<SurveyQuestionTemplate> SurveyQuestionTemplates = new List<SurveyQuestionTemplate>();
 
-            SurveyTemplateExtemded surveyTemplateExtemded = new SurveyTemplateExtemded()
+            SurveyTemplateExtended surveyTemplateExtemded = new SurveyTemplateExtended()
             {
+                Id = surveyTemplate.Id,
                 Name = surveyTemplate.Name,
                 SurveyDate = surveyTemplate.SurveyDate,
-                SurveyPartTemplates = surveyPartTemplates
-            };
+                SurveyPartTemplates = surveyPartTemplates,
+                MamberList = new List<SurveyPartTemplateExtended>()
+        };
+
+            if (surveyTemplate.SurveyPartTemplates != null)
+            {
+                foreach (SurveyPartTemplate surveyPartTemplate in surveyTemplate.SurveyPartTemplates)
+                {
+                    SurveyPartTemplateExtended surveyPartTemplateExtended = new SurveyPartTemplateExtended()
+                    {
+                        Name = surveyPartTemplate.Name,
+                        Id = surveyPartTemplate.Id,
+                        SummaryTitle = surveyPartTemplate.SummaryTitle,
+                        SurveyTemplateId = surveyPartTemplate.SurveyTemplateId,
+                        CanBeDeleted = false,
+                        MamberList = new List<SurveyQuestionTemplateExtended>()
+                    };
+                    surveyTemplateExtemded.MamberList.Add(surveyPartTemplateExtended);
+                }
+            }
+
+            
 
             return surveyTemplateExtemded as T1;
         }

@@ -28,6 +28,7 @@ p.under-menu {
     height: 0px;
 }
 
+
 @media screen and (min-width: 768px) {
     p.under-menu {
         height: 50px;
@@ -43,4 +44,31 @@ p.under-menu {
 a.isDisabled {
     cursor: not-allowed;
     opacity: 0.5;
+}
+
+#customTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customTable td, #customTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#customTable tr:hover {
+    background-color: #ddd;
+}
+
+#customTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
 }

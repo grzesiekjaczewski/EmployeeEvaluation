@@ -207,6 +207,7 @@
     <Compile Include="Logic\EmployeeEditViewBagLoader.cs" />
     <Compile Include="Logic\IPrepareExtendedView.cs" />
     <Compile Include="Logic\IPrepareView.cs" />
+    <Compile Include="Logic\ISaveModel.cs" />
     <Compile Include="Logic\IViewBagExtendedLoader.cs" />
     <Compile Include="Logic\IViewBagLoader.cs" />
     <Compile Include="Logic\IParameterLoader.cs" />
@@ -217,6 +218,9 @@
     <Compile Include="Logic\PrepareServeyDeatilsView.cs" />
     <Compile Include="Logic\PrepareTeamDeatilsView.cs" />
     <Compile Include="Logic\PrepareTeamView.cs" />
+    <Compile Include="Logic\SaveSurveyTemplatePartAdd.cs" />
+    <Compile Include="Logic\SaveSurveyTemplate.cs" />
+    <Compile Include="Logic\SaveSurveyTemplatePartEdit.cs" />
     <Compile Include="Logic\TeamEditViewBagLoader.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.Designer.cs">
@@ -261,6 +265,18 @@
     <Compile Include="Migrations\201808112117471_nothing important.cs" />
     <Compile Include="Migrations\201808112117471_nothing important.Designer.cs">
       <DependentUpon>201808112117471_nothing important.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808121839540_Survey.cs" />
+    <Compile Include="Migrations\201808121839540_Survey.Designer.cs">
+      <DependentUpon>201808121839540_Survey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808121857350_Survey3.cs" />
+    <Compile Include="Migrations\201808121857350_Survey3.Designer.cs">
+      <DependentUpon>201808121857350_Survey3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808182224320_Refactoring.cs" />
+    <Compile Include="Migrations\201808182224320_Refactoring.Designer.cs">
+      <DependentUpon>201808182224320_Refactoring.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
@@ -311,7 +327,10 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\myAddDialog.js" />
+    <Content Include="Scripts\myAddQuestionDialog.js" />
     <Content Include="Scripts\myDeleteDialog.js" />
+    <Content Include="Scripts\myEditDialog.js" />
     <Content Include="Scripts\myHideShow.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -419,6 +438,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808112117471_nothing important.resx">
       <DependentUpon>201808112117471_nothing important.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808121839540_Survey.resx">
+      <DependentUpon>201808121839540_Survey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808121857350_Survey3.resx">
+      <DependentUpon>201808121857350_Survey3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808182224320_Refactoring.resx">
+      <DependentUpon>201808182224320_Refactoring.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

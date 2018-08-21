@@ -8,17 +8,24 @@ using System.Web;
 using System.Web.Mvc;
 using EmployeeEvaluation.Models;
 using EmployeeEvaluation.Logic;
+using Newtonsoft.Json.Linq;
 
 namespace EmployeeEvaluation.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = "HR Manager")]
     public class SurveyTemplatesController : Controller
     {
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: SurveyTemplates
         public ActionResult Index()
         {
+            //List<SurveyTemplate> surveyTemplate = (from s in db.T_SurveyTemplate select s).ToList();
+            //return View(surveyTemplate);
             return View(db.T_SurveyTemplate.ToList());
+            
         }
 
         // GET: SurveyTemplates/Details/5
@@ -79,7 +86,7 @@ namespace EmployeeEvaluation.Controllers
             return View(surveyTemplate);
             */
 
-            IPrepareExtendedView<SurveyTemplateExtemded, int?> modelExtendedLoader = new PrepareServeyDeatilsView<SurveyTemplateExtemded, int?>();
+            IPrepareExtendedView<SurveyTemplateExtended, int?> modelExtendedLoader = new PrepareServeyDeatilsView<SurveyTemplateExtended, int?>();
             modelExtendedLoader.Parameters = id;
             return View(modelExtendedLoader.GetView(db));
         }
@@ -89,15 +96,17 @@ namespace EmployeeEvaluation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,SurveyDate")] SurveyTemplate surveyTemplate)
+        public ActionResult Edit([Bind(Include = "Id,Name,SurveyDate,NewPart,SummaryTitle")] SurveyTemplateExtended surveyTemplateExtemded)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(surveyTemplate).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var surveyDate = Request["SurveyDate1"];
+                surveyTemplateExtemded.SurveyDate = Logic.CalculateDate.StringToDate(surveyDate, ".", "/", "-");
+
+                ISaveModel<SurveyTemplateExtended> saveSurveyTemplate = new SaveSurveyTemplate<SurveyTemplateExtended>();
+                saveSurveyTemplate.Save(surveyTemplateExtemded, db);
             }
-            return View(surveyTemplate);
+            return RedirectToAction("Index");
         }
 
         // GET: SurveyTemplates/Delete/5
@@ -126,6 +135,68 @@ namespace EmployeeEvaluation.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "HR Manager")]
+        [HttpPost]
+        public JsonResult AddPart(SurveyPartData model)
+        {
+            int id;
+            if (!int.TryParse(model.Id, out id))
+            {
+                return Json(new
+                {
+                    result = "Error"
+                });
+            }
+
+            ISaveModel<SurveyPartData> saveSurveyTemplate = new SaveSurveyTemplatePartAdd<SurveyPartData>();
+            saveSurveyTemplate.Save(model, db);
+
+            return Json(new
+            {
+                result = "OK"
+            });
+        }
+
+        [Authorize(Roles = "HR Manager")]
+        [HttpPost]
+        public JsonResult EditPart(SurveyPartData model)
+        {
+            int id;
+            if (!int.TryParse(model.Id, out id))
+            {
+                return Json(new
+                {
+                    result = "Error"
+                });
+            }
+
+            ISaveModel<SurveyPartData> saveSurveyTemplate = new SaveSurveyTemplatePartEdit<SurveyPartData>();
+            saveSurveyTemplate.Save(model, db);
+
+            return Json(new
+            {
+                result = "OK"
+            });
+        }
+
+        [Authorize(Roles = "HR Manager")]
+        public ActionResult DeletePart(int? id)
+        {
+            SurveyPartTemplate surveyPartTemplate = db.T_SurveyPartTemplate.Find(id);
+            //if (db.T_SurveyPartTemplate.Where(e => e.PositionId == id).ToList().Count() == 0)
+            if (surveyPartTemplate != null)
+            {
+                db.T_SurveyPartTemplate.Remove(surveyPartTemplate);
+                db.SaveChanges();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return RedirectToAction("Edit/" + surveyPartTemplate.SurveyTemplateId.ToString());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -134,5 +205,6 @@ namespace EmployeeEvaluation.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

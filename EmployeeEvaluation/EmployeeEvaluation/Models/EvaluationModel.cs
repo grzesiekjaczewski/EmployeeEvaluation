@@ -6,12 +6,17 @@ using System.Web;
 
 namespace EmployeeEvaluation.Models
 {
-    public class SurveyTemplateExtemded : SurveyTemplate
+    public class SurveyPartData
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Summary { get; set; }
+    }
+
+    public class SurveyTemplateExtended : SurveyTemplate
     {
         public bool CanBeDeleted { get; set; }
         public List<SurveyPartTemplateExtended> MamberList { get; set; }
-        [Display(Name = "Nazwa")]
-        public string NewPart { get; set; }
     }
 
     public class SurveyTemplate
@@ -29,9 +34,6 @@ namespace EmployeeEvaluation.Models
     {
         public bool CanBeDeleted { get; set; }
         public List<SurveyQuestionTemplateExtended> MamberList { get; set; }
-        [Display(Name = "Nazwa")]
-        public string NewQuestion { get; set; }
-
     }
 
     public class SurveyPartTemplate
