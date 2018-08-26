@@ -47,6 +47,19 @@ namespace EmployeeEvaluation.Logic
                         MamberList = new List<SurveyQuestionTemplateExtended>()
                     };
                     surveyTemplateExtemded.MamberList.Add(surveyPartTemplateExtended);
+                    db.Entry(surveyPartTemplate).Collection(p => p.SurveyQuestionTemplates).Load();
+                    foreach (SurveyQuestionTemplate surveyQuestionTemplate in surveyPartTemplate.SurveyQuestionTemplates)
+                    {
+                        SurveyQuestionTemplateExtended surveyQuestionTemplateExtended = new SurveyQuestionTemplateExtended()
+                        {
+                            Name = surveyQuestionTemplate.Name,
+                            Definition = surveyQuestionTemplate.Definition,
+                            QuestionType = surveyQuestionTemplate.QuestionType,
+                            SurveyPartTemplateId = surveyQuestionTemplate.SurveyPartTemplateId,
+                            CanBeDeleted = false
+                        };
+                        surveyPartTemplateExtended.MamberList.Add(surveyQuestionTemplateExtended);
+                    }
                 }
             }
 

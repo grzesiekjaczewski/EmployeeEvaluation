@@ -180,6 +180,28 @@ namespace EmployeeEvaluation.Controllers
         }
 
         [Authorize(Roles = "HR Manager")]
+        [HttpPost]
+        public JsonResult AddQuestion(SurveyQuestionData model)
+        {
+            int id;
+            if (!int.TryParse(model.Id, out id))
+            {
+                return Json(new
+                {
+                    result = "Error"
+                });
+            }
+
+            ISaveModel<SurveyQuestionData> saveSurveyTemplateQuestionAdd = new SaveSurveyTemplateQuestionAdd<SurveyQuestionData>();
+            saveSurveyTemplateQuestionAdd.Save(model, db);
+
+            return Json(new
+            {
+                result = "OK"
+            });
+        }
+
+        [Authorize(Roles = "HR Manager")]
         public ActionResult DeletePart(int? id)
         {
             SurveyPartTemplate surveyPartTemplate = db.T_SurveyPartTemplate.Find(id);

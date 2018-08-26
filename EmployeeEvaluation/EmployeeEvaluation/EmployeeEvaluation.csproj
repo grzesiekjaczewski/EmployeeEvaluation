@@ -221,6 +221,7 @@
     <Compile Include="Logic\SaveSurveyTemplatePartAdd.cs" />
     <Compile Include="Logic\SaveSurveyTemplate.cs" />
     <Compile Include="Logic\SaveSurveyTemplatePartEdit.cs" />
+    <Compile Include="Logic\SaveSurveyTemplateQuestionAdd.cs" />
     <Compile Include="Logic\TeamEditViewBagLoader.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.Designer.cs">

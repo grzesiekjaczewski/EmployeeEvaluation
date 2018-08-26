@@ -6,6 +6,14 @@ using System.Web;
 
 namespace EmployeeEvaluation.Models
 {
+    public class SurveyQuestionData
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Criteria { get; set; }
+        public string Type { get; set; }
+    }
+
     public class SurveyPartData
     {
         public string Id { get; set; }

@@ -93,7 +93,7 @@
                 </td>
                 <td>
                     <a href="#" onclick="actionEdit('@item.Id','actionNewSurveyPartText3','actionNewSurveyPartText4','actionDisplaySurveyPartText1_@item.Id','actionDisplaySurveyPartText2_@item.Id','/SurveyTemplates/EditPart')">Edytuj</a> |
-                    <a href="#" onclick="actionAddQuestion('@item.Id','actionNewSurveyPartText5','actionNewSurveyPartText6','/SurveyTemplates/AddQuestion')">Dodaj Pytanie</a>
+                    <a href="#" onclick="actionAddQuestion('@item.Id','actionNewSurveyPartText5','actionNewSurveyPartText6','actionNewSurveyPartText7','/SurveyTemplates/AddQuestion')">Dodaj Pytanie</a>
                     <a href="#" onclick="actionDelete('@item.Id','@item.Name','sekcję ankiety','/SurveyTemplates/DeletePart/')">Usuń</a>
                 </td>
             </tr>
@@ -102,11 +102,34 @@
                     <table>
                         @foreach (var subItem in item.MamberList)
                         {
-                            <tr>
-                                <td>
-                                    uuuuu
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                <div id="actionDisplaySurveyQuestionText1_@subItem.Id">
+                                    @Html.DisplayFor(modelItem => subItem.Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                </div>
+                            </td>
+                            <td>
+                                <div id="actionDisplaySurveyQuestionText2_@subItem.Id">
+                                    @Html.DisplayFor(modelItem => subItem.Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                </div>
+                            </td>
+                            <td>
+                                <div id="actionDisplaySurveyQuestionText3_@subItem.Id">
+                                    @if (subItem.QuestionType == 1)
+                                    {
+                                        <div class="control-label col-md-2">Według skali</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="control-label col-md-2">Pytanie otwarte</div>
+                                    }
+                                </div>
+                            </td>
+                            <td>
+                                <a href="#" onclick="actionEdit('@subItem.Id','actionNewSurveyPartText3','actionNewSurveyPartText4','actionDisplaySurveyPartText1_@item.Id','actionDisplaySurveyPartText2_@item.Id','/SurveyTemplates/EditPart')">Edytuj</a> |
+                                <a href="#" onclick="actionDelete('@subItem.Id','@subItem.Name','sekcję ankiety','/SurveyTemplates/DeletePart/')">Usuń</a>
+                            </td>
+                        </tr>
                         }
                     </table>
                 </td>
@@ -172,9 +195,7 @@
             Treść pytania
         </div>
         <div class="col-md-10">
-            <textarea id="actionNewSurveyPartText5" cols="40" rows="5" class="form-control"></textarea>
-            @*<input id="actionNewSurveyPartText3" type="text" class="form-control">*@
-
+            <textarea id="actionNewSurveyPartText5" cols="40" rows="3" class="form-control"></textarea>
         </div>
     </div>
     <div class="form-group">
@@ -182,7 +203,7 @@
             Kryteria oceny
         </div>
         <div class="col-md-10">
-            <input id="actionNewSurveyPartText6" type="text" class="form-control">
+            <textarea id="actionNewSurveyPartText6" cols="40" rows="3" class="form-control"></textarea>
         </div>
     </div>
     <div class="form-group">
@@ -190,17 +211,14 @@
             Rodzaj pytania
         </div>
         <div class="col-md-10">
-            <select class="form-control">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+            <select  id="actionNewSurveyPartText7" class="form-control">
+                <option value="1">Odpowiedź według skali</option>
+                <option value="2">Pytanie otwarte</option>
             </select>
         </div>
     </div>
 
 </div>
-
 
 <div id="dialog-confirm" title="Usuwanie sekcji ankiety">
     <p id="confirmchapter"><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy na pewno usunąć sekcję?</p>

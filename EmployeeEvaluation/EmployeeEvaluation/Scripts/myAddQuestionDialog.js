@@ -1,6 +1,7 @@
 ﻿var mid = '';
 var melemntId1 = '';
 var melemntId2 = '';
+var melemntId3 = '';
 var mcontroler = '';
 
 $(function () {
@@ -16,7 +17,8 @@ $(function () {
                 var model = {
                     id: mid,
                     name: $('#' + melemntId1).val(),
-                    summary: $('#' + melemntId2).val()
+                    criteria: $('#' + melemntId2).val(),
+                    type: $('#' + melemntId3).val()
                 };
                 $.ajax({
                     type: "post",
@@ -44,10 +46,14 @@ $(function () {
     });
 });
 
-function actionAddQuestion(id, elemntId1, elemntId2, controler) {
+function actionAddQuestion(id, elemntId1, elemntId2, elemntId3, controler) {
     mid = id;
     melemntId1 = elemntId1;
     melemntId2 = elemntId2;
+    melemntId3 = elemntId3;
     mcontroler = controler;
+    $('#' + melemntId1).val("");
+    $('#' + melemntId2).val("");
+    $('#' + melemntId3).val("1");
     $("#dialog-add-question").dialog("open")
 };
