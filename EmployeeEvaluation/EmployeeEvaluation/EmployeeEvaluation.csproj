@@ -332,6 +332,7 @@
     <Content Include="Scripts\myAddQuestionDialog.js" />
     <Content Include="Scripts\myDeleteDialog.js" />
     <Content Include="Scripts\myEditDialog.js" />
+    <Content Include="Scripts\myEditQuestionDialog.js" />
     <Content Include="Scripts\myHideShow.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

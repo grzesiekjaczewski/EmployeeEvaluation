@@ -2,14 +2,10 @@
 var melemntId1 = '';
 var melemntId2 = '';
 var melemntId3 = '';
-var melemntId4 = '';
-var melemntId5 = '';
-var melemntId6 = '';
-var mtype = '';
 var mcontroler = '';
 
 $(function () {
-    $("#dialog-add-question").dialog({
+    $("#dialog-edit-question").dialog({
         resizable: false,
         autoOpen: false,
         height: "auto",
@@ -50,19 +46,14 @@ $(function () {
     });
 });
 
-function actionAddQuestion(id, elemntId1, elemntId2, elemntId3, elemntId4, elemntId5, elemntId6, type, controler) {
+function actionEditQuestion(id, elemntId1, elemntId2, elemntId3, controler) {
     mid = id;
     melemntId1 = elemntId1;
     melemntId2 = elemntId2;
     melemntId3 = elemntId3;
-    melemntId4 = elemntId4;
-    melemntId5 = elemntId5;
-    melemntId6 = elemntId6;
-    mtype = type;
-
     mcontroler = controler;
     $('#' + melemntId1).val("");
     $('#' + melemntId2).val("");
     $('#' + melemntId3).val("1");
-    $("#dialog-add-question").dialog("open")
+    $("#dialog-edit-question").dialog("open")
 };

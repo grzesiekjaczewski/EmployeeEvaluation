@@ -157,6 +157,7 @@ namespace EmployeeEvaluation.Controllers
             });
         }
 
+
         [Authorize(Roles = "HR Manager")]
         [HttpPost]
         public JsonResult EditPart(SurveyPartData model)
@@ -205,10 +206,29 @@ namespace EmployeeEvaluation.Controllers
         public ActionResult DeletePart(int? id)
         {
             SurveyPartTemplate surveyPartTemplate = db.T_SurveyPartTemplate.Find(id);
-            //if (db.T_SurveyPartTemplate.Where(e => e.PositionId == id).ToList().Count() == 0)
             if (surveyPartTemplate != null)
             {
                 db.T_SurveyPartTemplate.Remove(surveyPartTemplate);
+                db.SaveChanges();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return RedirectToAction("Edit/" + surveyPartTemplate.SurveyTemplateId.ToString());
+        }
+
+        [Authorize(Roles = "HR Manager")]
+        public ActionResult DeleteQuestion(int? id)
+        {
+            SurveyQuestionTemplate surveyQuestionTemplate = db.T_SurveyQuestionTemplate.Find(id);
+            SurveyPartTemplate surveyPartTemplate = db.T_SurveyPartTemplate.Find(surveyQuestionTemplate.SurveyPartTemplateId);
+
+            //if (db.T_SurveyPartTemplate.Where(e => e.PositionId == id).ToList().Count() == 0)
+            if (surveyQuestionTemplate != null)
+            {
+                db.T_SurveyQuestionTemplate.Remove(surveyQuestionTemplate);
                 db.SaveChanges();
             }
             else

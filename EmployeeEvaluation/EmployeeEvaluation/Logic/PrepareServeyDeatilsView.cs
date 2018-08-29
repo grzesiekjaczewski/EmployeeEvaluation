@@ -53,6 +53,7 @@ namespace EmployeeEvaluation.Logic
                         SurveyQuestionTemplateExtended surveyQuestionTemplateExtended = new SurveyQuestionTemplateExtended()
                         {
                             Name = surveyQuestionTemplate.Name,
+                            Id = surveyQuestionTemplate.Id,
                             Definition = surveyQuestionTemplate.Definition,
                             QuestionType = surveyQuestionTemplate.QuestionType,
                             SurveyPartTemplateId = surveyQuestionTemplate.SurveyPartTemplateId,

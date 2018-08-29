@@ -39,45 +39,9 @@
         </div>
     </div>
 }
-
 <br />
-@*<div id="actionNewSurveyPart" style="display: none;">
-        <div class="form-group">
-            @Html.LabelFor(model => model.NewPart, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NewPart, new { htmlAttributes = new { @class = "form-control", @id = "actionNewSurveyPartText1" } })
-                @Html.ValidationMessageFor(model => model.NewPart, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.SummaryTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SummaryTitle, new { htmlAttributes = new { @class = "form-control", @id = "actionNewSurveyPartText2" } })
-                @Html.ValidationMessageFor(model => model.SummaryTitle, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-2"></div>
-            <div class="col-md-10">
-                <a href="javascript:document.forms[1].submit()">Zapisz</a>
-                <a href="#" onclick="hideAndClearMe('actionNewSurveyPart','actionNewSurveyPartText1','actionNewSurveyPartText2')">Anuluj</a>
-            </div>
-        </div>
-    </div>*@
 <div class="form-group">
     <table id="customTable">
-        @*<tr>
-                <th>
-                    Tytuł cześci
-                </th>
-                <th>
-                    Podsumowanie
-                </th>
-                <th>
-
-                </th>
-
-            </tr>*@
         @foreach (var item in Model.MamberList)
         {
             <tr>
@@ -102,34 +66,34 @@
                     <table>
                         @foreach (var subItem in item.MamberList)
                         {
-                        <tr>
-                            <td>
-                                <div id="actionDisplaySurveyQuestionText1_@subItem.Id">
-                                    @Html.DisplayFor(modelItem => subItem.Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                                </div>
-                            </td>
-                            <td>
-                                <div id="actionDisplaySurveyQuestionText2_@subItem.Id">
-                                    @Html.DisplayFor(modelItem => subItem.Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                                </div>
-                            </td>
-                            <td>
-                                <div id="actionDisplaySurveyQuestionText3_@subItem.Id">
-                                    @if (subItem.QuestionType == 1)
-                                    {
-                                        <div class="control-label col-md-2">Według skali</div>
-                                    }
-                                    else
-                                    {
-                                        <div class="control-label col-md-2">Pytanie otwarte</div>
-                                    }
-                                </div>
-                            </td>
-                            <td>
-                                <a href="#" onclick="actionEdit('@subItem.Id','actionNewSurveyPartText3','actionNewSurveyPartText4','actionDisplaySurveyPartText1_@item.Id','actionDisplaySurveyPartText2_@item.Id','/SurveyTemplates/EditPart')">Edytuj</a> |
-                                <a href="#" onclick="actionDelete('@subItem.Id','@subItem.Name','sekcję ankiety','/SurveyTemplates/DeletePart/')">Usuń</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <div id="actionDisplaySurveyQuestionText1_@subItem.Id">
+                                        @Html.DisplayFor(modelItem => subItem.Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                    </div>
+                                </td>
+                                <td>
+                                    <div id="actionDisplaySurveyQuestionText2_@subItem.Id">
+                                        @Html.DisplayFor(modelItem => subItem.Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                    </div>
+                                </td>
+                                <td>
+                                    <div id="actionDisplaySurveyQuestionText3_@subItem.Id">
+                                        @if (subItem.QuestionType == 1)
+                                        {
+                                            <div class="control-label col-md-2">Według skali</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="control-label col-md-2">Pytanie otwarte</div>
+                                        }
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="#" onclick="actionEditQuestion('@subItem.Id','actionNewSurveyPartText7','actionNewSurveyPartText8','actionNewSurveyPartText9','actionDisplaySurveyQuestionText1_@subItem.Id','actionDisplaySurveyQuestionText2_@subItem.Id','actionDisplaySurveyQuestionText3_@subItem.Id','@subItem.QuestionType','/SurveyTemplates/EditQuestion')">Edytuj</a> |
+                                    <a href="#" onclick="actionDelete('@subItem.Id','@subItem.Name','sekcję ankiety','/SurveyTemplates/DeleteQuestion/')">Usuń</a>
+                                </td>
+                            </tr>
                         }
                     </table>
                 </td>
@@ -211,13 +175,42 @@
             Rodzaj pytania
         </div>
         <div class="col-md-10">
-            <select  id="actionNewSurveyPartText7" class="form-control">
+            <select id="actionNewSurveyPartText7" class="form-control">
                 <option value="1">Odpowiedź według skali</option>
                 <option value="2">Pytanie otwarte</option>
             </select>
         </div>
     </div>
+</div>
 
+<div id="dialog-edit-question" title="Nowe Pytanie">
+    <div class="form-group">
+        <div class="control-label col-md-6">
+            Treść pytania
+        </div>
+        <div class="col-md-10">
+            <textarea id="actionNewSurveyPartText7" cols="40" rows="3" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="control-label col-md-6">
+            Kryteria oceny
+        </div>
+        <div class="col-md-10">
+            <textarea id="actionNewSurveyPartText8" cols="40" rows="3" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="control-label col-md-6">
+            Rodzaj pytania
+        </div>
+        <div class="col-md-10">
+            <select id="actionNewSurveyPartText9" class="form-control">
+                <option value="1">Odpowiedź według skali</option>
+                <option value="2">Pytanie otwarte</option>
+            </select>
+        </div>
+    </div>
 </div>
 
 <div id="dialog-confirm" title="Usuwanie sekcji ankiety">
@@ -228,5 +221,6 @@
     @Scripts.Render("~/Scripts/myEditDialog.js")
     @Scripts.Render("~/Scripts/myAddDialog.js")
     @Scripts.Render("~/Scripts/myAddQuestionDialog.js")
+    @Scripts.Render("~/Scripts/myEditQuestionDialog.js")
     @Scripts.Render("~/Scripts/myDeleteDialog.js")
 }
