@@ -2,6 +2,10 @@
 var melemntId1 = '';
 var melemntId2 = '';
 var melemntId3 = '';
+var melemntId4 = '';
+var melemntId5 = '';
+var melemntId6 = '';
+var mtype = '';
 var mcontroler = '';
 
 $(function () {
@@ -46,14 +50,24 @@ $(function () {
     });
 });
 
-function actionEditQuestion(id, elemntId1, elemntId2, elemntId3, controler) {
+function actionEditQuestion(id, elemntId1, elemntId2, elemntId3, elemntId4, elemntId5, elemntId6, type, controler) {
     mid = id;
     melemntId1 = elemntId1;
     melemntId2 = elemntId2;
     melemntId3 = elemntId3;
+    melemntId4 = elemntId4;
+    melemntId5 = elemntId5;
+    melemntId6 = elemntId6;
+    mtype = type;
+
     mcontroler = controler;
-    $('#' + melemntId1).val("");
-    $('#' + melemntId2).val("");
-    $('#' + melemntId3).val("1");
+
+    //alert(elemntId1);
+    //$('#' + elemntId1).val("dupa");
+    //alert($.trim($('#' + elemntId5).text()));
+
+    $('#' + elemntId1).val($.trim($('#' + elemntId4).text()));
+    $('#' + elemntId2).val($.trim($('#' + elemntId5).text()));
+    $('#' + elemntId3).val(type);
     $("#dialog-edit-question").dialog("open")
 };
