@@ -41,55 +41,55 @@
 }
 <br />
 <div class="form-group">
-    <table id="customTable">
+    <table class="customTable main">
         @foreach (var item in Model.MamberList)
         {
             <tr>
-                <td>
+                <td width="35%">
                     <div id="actionDisplaySurveyPartText1_@item.Id">
                         @Html.DisplayFor(modelItem => item.Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                     </div>
                 </td>
-                <td>
+                <td width="35%">
                     <div id="actionDisplaySurveyPartText2_@item.Id">
                         @Html.DisplayFor(modelItem => item.SummaryTitle, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                     </div>
                 </td>
                 <td>
                     <a href="#" onclick="actionEdit('@item.Id','actionNewSurveyPartText3','actionNewSurveyPartText4','actionDisplaySurveyPartText1_@item.Id','actionDisplaySurveyPartText2_@item.Id','/SurveyTemplates/EditPart')">Edytuj</a> |
-                    <a href="#" onclick="actionAddQuestion('@item.Id','actionNewSurveyPartText5','actionNewSurveyPartText6','actionNewSurveyPartText7','/SurveyTemplates/AddQuestion')">Dodaj Pytanie</a>
+                    <a href="#" onclick="actionAddQuestion('@item.Id','actionNewSurveyPartText5','actionNewSurveyPartText6','actionNewSurveyPartText7','/SurveyTemplates/AddQuestion')">Dodaj Pytanie</a> |
                     <a href="#" onclick="actionDelete('@item.Id','@item.Name','sekcję ankiety','/SurveyTemplates/DeletePart/')">Usuń</a>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <table>
+            <tr width="30%">
+                <td colspan="3" width="100%">
+                    <table class="customTable sub">
                         @foreach (var subItem in item.MamberList)
                         {
                             <tr>
-                                <td>
+                                <td width="35%">
                                     <div id="actionDisplaySurveyQuestionText3_@subItem.Id">
                                         @Html.DisplayFor(modelItem => subItem.Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                     </div>
                                 </td>
-                                <td>
+                                <td width="35%">
                                     <div id="actionDisplaySurveyQuestionText4_@subItem.Id">
                                         @Html.DisplayFor(modelItem => subItem.Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                     </div>
                                 </td>
-                                <td>
+                                <td width="15%">
                                     <div id="actionDisplaySurveyQuestionText5_@subItem.Id">
                                         @if (subItem.QuestionType == 1)
                                         {
-                                            <div class="control-label col-md-2">Według skali</div>
+                                            <div>Według skali</div>
                                         }
                                         else
                                         {
-                                            <div class="control-label col-md-2">Pytanie otwarte</div>
+                                            <div>Pytanie otwarte</div>
                                         }
                                     </div>
                                 </td>
-                                <td>
+                                <td width="15%">
                                     <a href="#" onclick="actionEditQuestion('@subItem.Id','actionNewSurveyPartText8','actionNewSurveyPartText9','actionNewSurveyPartText10','actionDisplaySurveyQuestionText3_@subItem.Id','actionDisplaySurveyQuestionText4_@subItem.Id','actionDisplaySurveyQuestionText5_@subItem.Id','@subItem.QuestionType','/SurveyTemplates/EditQuestion')">Edytuj</a> |
                                     <a href="#" onclick="actionDelete('@subItem.Id','@subItem.Name','sekcję ankiety','/SurveyTemplates/DeleteQuestion/')">Usuń</a>
                                 </td>
