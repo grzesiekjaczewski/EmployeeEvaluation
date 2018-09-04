@@ -21,11 +21,6 @@ namespace EmployeeEvaluation.Models
         public string Summary { get; set; }
     }
 
-    public class SurveyTemplateExtended : SurveyTemplate
-    {
-        public List<SurveyPartTemplate> MamberList { get; set; }
-    }
-
     public class SurveyTemplate
     {
         public int Id { get; set; }

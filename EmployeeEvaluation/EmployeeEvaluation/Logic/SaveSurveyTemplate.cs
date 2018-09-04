@@ -12,14 +12,10 @@ namespace EmployeeEvaluation.Logic
     {
         public void Save(T model, ApplicationDbContext db)
         {
-            SurveyTemplateExtended surveyTemplateExtended = model as SurveyTemplateExtended;
+            SurveyTemplate surveyTemplate = model as SurveyTemplate;
 
-            SurveyTemplate surveyTemplate = db.T_SurveyTemplate.Find(surveyTemplateExtended.Id);
             if (surveyTemplate != null)
             {
-                surveyTemplate.Name = surveyTemplateExtended.Name;
-                surveyTemplate.SurveyDate = surveyTemplateExtended.SurveyDate;
-
                 db.Entry(surveyTemplate).State = EntityState.Modified;
                 db.SaveChanges();
             }

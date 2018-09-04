@@ -86,7 +86,7 @@ namespace EmployeeEvaluation.Controllers
             return View(surveyTemplate);
             */
 
-            IPrepareExtendedView<SurveyTemplateExtended, int?> modelExtendedLoader = new PrepareServeyDeatilsView<SurveyTemplateExtended, int?>();
+            IPrepareExtendedView<SurveyTemplate, int?> modelExtendedLoader = new PrepareServeyDeatilsView<SurveyTemplate, int?>();
             modelExtendedLoader.Parameters = id;
             return View(modelExtendedLoader.GetView(db));
         }
@@ -96,15 +96,15 @@ namespace EmployeeEvaluation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,SurveyDate,NewPart,SummaryTitle")] SurveyTemplateExtended surveyTemplateExtemded)
+        public ActionResult Edit([Bind(Include = "Id,Name,SurveyDate,NewPart,SummaryTitle")] SurveyTemplate surveyTemplate)
         {
             if (ModelState.IsValid)
             {
                 var surveyDate = Request["SurveyDate1"];
-                surveyTemplateExtemded.SurveyDate = Logic.CalculateDate.StringToDate(surveyDate, ".", "/", "-");
+                surveyTemplate.SurveyDate = Logic.CalculateDate.StringToDate(surveyDate, ".", "/", "-");
 
-                ISaveModel<SurveyTemplateExtended> saveSurveyTemplate = new SaveSurveyTemplate<SurveyTemplateExtended>();
-                saveSurveyTemplate.Save(surveyTemplateExtemded, db);
+                ISaveModel<SurveyTemplate> saveSurveyTemplate = new SaveSurveyTemplate<SurveyTemplate>();
+                saveSurveyTemplate.Save(surveyTemplate, db);
             }
             return RedirectToAction("Index");
         }
