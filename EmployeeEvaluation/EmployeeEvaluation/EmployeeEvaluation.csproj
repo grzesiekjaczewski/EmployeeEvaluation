@@ -280,6 +280,42 @@
     <Compile Include="Migrations\201808182224320_Refactoring.Designer.cs">
       <DependentUpon>201808182224320_Refactoring.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809042001574_refactoring survey template 01.cs" />
+    <Compile Include="Migrations\201809042001574_refactoring survey template 01.Designer.cs">
+      <DependentUpon>201809042001574_refactoring survey template 01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809042021233_refactoring survey template 02.cs" />
+    <Compile Include="Migrations\201809042021233_refactoring survey template 02.Designer.cs">
+      <DependentUpon>201809042021233_refactoring survey template 02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809042032038_refactoring survey template 03.cs" />
+    <Compile Include="Migrations\201809042032038_refactoring survey template 03.Designer.cs">
+      <DependentUpon>201809042032038_refactoring survey template 03.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809042047212_refactoring survey template 04.cs" />
+    <Compile Include="Migrations\201809042047212_refactoring survey template 04.Designer.cs">
+      <DependentUpon>201809042047212_refactoring survey template 04.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809042051508_refactoring survey template 05.cs" />
+    <Compile Include="Migrations\201809042051508_refactoring survey template 05.Designer.cs">
+      <DependentUpon>201809042051508_refactoring survey template 05.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809042055172_refactoring survey template 06.cs" />
+    <Compile Include="Migrations\201809042055172_refactoring survey template 06.Designer.cs">
+      <DependentUpon>201809042055172_refactoring survey template 06.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809042104267_refactoring survey template 07.cs" />
+    <Compile Include="Migrations\201809042104267_refactoring survey template 07.Designer.cs">
+      <DependentUpon>201809042104267_refactoring survey template 07.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809042107263_refactoring survey template 08.cs" />
+    <Compile Include="Migrations\201809042107263_refactoring survey template 08.Designer.cs">
+      <DependentUpon>201809042107263_refactoring survey template 08.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809042109104_refactoring survey template 09.cs" />
+    <Compile Include="Migrations\201809042109104_refactoring survey template 09.Designer.cs">
+      <DependentUpon>201809042109104_refactoring survey template 09.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
     <Compile Include="Models\EvaluationModel.cs" />
@@ -450,6 +486,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808182224320_Refactoring.resx">
       <DependentUpon>201808182224320_Refactoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809042001574_refactoring survey template 01.resx">
+      <DependentUpon>201809042001574_refactoring survey template 01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809042021233_refactoring survey template 02.resx">
+      <DependentUpon>201809042021233_refactoring survey template 02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809042032038_refactoring survey template 03.resx">
+      <DependentUpon>201809042032038_refactoring survey template 03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809042047212_refactoring survey template 04.resx">
+      <DependentUpon>201809042047212_refactoring survey template 04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809042051508_refactoring survey template 05.resx">
+      <DependentUpon>201809042051508_refactoring survey template 05.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809042055172_refactoring survey template 06.resx">
+      <DependentUpon>201809042055172_refactoring survey template 06.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809042104267_refactoring survey template 07.resx">
+      <DependentUpon>201809042104267_refactoring survey template 07.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809042107263_refactoring survey template 08.resx">
+      <DependentUpon>201809042107263_refactoring survey template 08.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809042109104_refactoring survey template 09.resx">
+      <DependentUpon>201809042109104_refactoring survey template 09.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

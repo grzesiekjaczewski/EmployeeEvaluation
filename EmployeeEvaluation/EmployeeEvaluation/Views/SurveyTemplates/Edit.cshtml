@@ -42,7 +42,7 @@
 <br />
 <div class="form-group">
     <table class="customTable main">
-        @foreach (var item in Model.MamberList)
+        @foreach (var item in Model.SurveyPartTemplates)
         {
             <tr>
                 <td width="35%">
@@ -64,7 +64,7 @@
             <tr width="30%">
                 <td colspan="3" width="100%">
                     <table class="customTable sub">
-                        @foreach (var subItem in item.MamberList)
+                        @foreach (var subItem in item.SurveyQuestionTemplates)
                         {
                             <tr>
                                 <td width="35%">

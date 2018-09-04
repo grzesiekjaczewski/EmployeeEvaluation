@@ -22,45 +22,31 @@ namespace EmployeeEvaluation.Logic
             db.Entry(surveyTemplate).Collection(p => p.SurveyPartTemplates).Load();
             List<SurveyPartTemplate> surveyPartTemplates = surveyTemplate.SurveyPartTemplates;
             if (surveyPartTemplates == null) surveyPartTemplates = new List<SurveyPartTemplate>();
-            //List<SurveyQuestionTemplate> SurveyQuestionTemplates = new List<SurveyQuestionTemplate>();
 
             SurveyTemplateExtended surveyTemplateExtemded = new SurveyTemplateExtended()
             {
                 Id = surveyTemplate.Id,
                 Name = surveyTemplate.Name,
                 SurveyDate = surveyTemplate.SurveyDate,
-                SurveyPartTemplates = surveyPartTemplates,
-                MamberList = new List<SurveyPartTemplateExtended>()
-        };
+                SurveyPartTemplates = surveyPartTemplates
+                //MamberList = new List<SurveyPartTemplateExtended>()
+            };
 
             if (surveyTemplate.SurveyPartTemplates != null)
             {
                 foreach (SurveyPartTemplate surveyPartTemplate in surveyTemplate.SurveyPartTemplates)
                 {
-                    SurveyPartTemplateExtended surveyPartTemplateExtended = new SurveyPartTemplateExtended()
-                    {
-                        Name = surveyPartTemplate.Name,
-                        Id = surveyPartTemplate.Id,
-                        SummaryTitle = surveyPartTemplate.SummaryTitle,
-                        SurveyTemplateId = surveyPartTemplate.SurveyTemplateId,
-                        CanBeDeleted = false,
-                        MamberList = new List<SurveyQuestionTemplateExtended>()
-                    };
-                    surveyTemplateExtemded.MamberList.Add(surveyPartTemplateExtended);
                     db.Entry(surveyPartTemplate).Collection(p => p.SurveyQuestionTemplates).Load();
-                    foreach (SurveyQuestionTemplate surveyQuestionTemplate in surveyPartTemplate.SurveyQuestionTemplates)
-                    {
-                        SurveyQuestionTemplateExtended surveyQuestionTemplateExtended = new SurveyQuestionTemplateExtended()
-                        {
-                            Name = surveyQuestionTemplate.Name,
-                            Id = surveyQuestionTemplate.Id,
-                            Definition = surveyQuestionTemplate.Definition,
-                            QuestionType = surveyQuestionTemplate.QuestionType,
-                            SurveyPartTemplateId = surveyQuestionTemplate.SurveyPartTemplateId,
-                            CanBeDeleted = false
-                        };
-                        surveyPartTemplateExtended.MamberList.Add(surveyQuestionTemplateExtended);
-                    }
+                    //SurveyPartTemplateExtended surveyPartTemplateExtended = new SurveyPartTemplateExtended()
+                    //{
+                    //    Name = surveyPartTemplate.Name,
+                    //    Id = surveyPartTemplate.Id,
+                    //    SummaryTitle = surveyPartTemplate.SummaryTitle,
+                    //    SurveyTemplateId = surveyPartTemplate.SurveyTemplateId,
+                    //    CanBeDeleted = false,
+                    //    SurveyQuestionTemplates = surveyPartTemplate.SurveyQuestionTemplates
+                    //};
+                    //surveyTemplateExtemded.MamberList.Add(surveyPartTemplateExtended);
                 }
             }
 

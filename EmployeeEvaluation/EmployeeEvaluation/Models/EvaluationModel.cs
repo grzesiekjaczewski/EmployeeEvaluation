@@ -23,8 +23,7 @@ namespace EmployeeEvaluation.Models
 
     public class SurveyTemplateExtended : SurveyTemplate
     {
-        public bool CanBeDeleted { get; set; }
-        public List<SurveyPartTemplateExtended> MamberList { get; set; }
+        public List<SurveyPartTemplate> MamberList { get; set; }
     }
 
     public class SurveyTemplate
@@ -37,11 +36,6 @@ namespace EmployeeEvaluation.Models
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime SurveyDate { get; set; }
         public List<SurveyPartTemplate> SurveyPartTemplates { get; set; }
-    }
-    public class SurveyPartTemplateExtended : SurveyPartTemplate
-    {
-        public bool CanBeDeleted { get; set; }
-        public List<SurveyQuestionTemplateExtended> MamberList { get; set; }
     }
 
     public class SurveyPartTemplate
@@ -56,10 +50,6 @@ namespace EmployeeEvaluation.Models
         public List<SurveyQuestionTemplate> SurveyQuestionTemplates { get; set; }
     }
 
-    public class SurveyQuestionTemplateExtended : SurveyQuestionTemplate
-    {
-        public bool CanBeDeleted { get; set; }
-    }
 
     public class SurveyQuestionTemplate
     {
