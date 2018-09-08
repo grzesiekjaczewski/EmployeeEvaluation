@@ -77,14 +77,6 @@ namespace EmployeeEvaluation.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            /*
-            SurveyTemplate surveyTemplate = db.T_SurveyTemplate.Find(id);
-            if (surveyTemplate == null)
-            {
-                return HttpNotFound();
-            }
-            return View(surveyTemplate);
-            */
 
             IPrepareExtendedView<SurveyTemplate, int?> modelExtendedLoader = new PrepareServeyDeatilsView<SurveyTemplate, int?>();
             modelExtendedLoader.Parameters = id;
