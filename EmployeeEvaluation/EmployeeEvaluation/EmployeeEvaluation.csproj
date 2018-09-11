@@ -198,6 +198,8 @@
     <Compile Include="Controllers\HRTeamsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyProfileController.cs" />
+    <Compile Include="Controllers\HRRatingsController.cs" />
+    <Compile Include="Controllers\EmpEvaluationsController.cs" />
     <Compile Include="Controllers\SurveyTemplatesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -324,6 +326,26 @@
     <Compile Include="Migrations\201809042138533_refactoring survey template 11.Designer.cs">
       <DependentUpon>201809042138533_refactoring survey template 11.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809092001017_Ratings and Survey Satatus.cs" />
+    <Compile Include="Migrations\201809092001017_Ratings and Survey Satatus.Designer.cs">
+      <DependentUpon>201809092001017_Ratings and Survey Satatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809092009055_Ratings and Survey Satatus 2.cs" />
+    <Compile Include="Migrations\201809092009055_Ratings and Survey Satatus 2.Designer.cs">
+      <DependentUpon>201809092009055_Ratings and Survey Satatus 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809092013386_Ratings and Survey Satatus 3.cs" />
+    <Compile Include="Migrations\201809092013386_Ratings and Survey Satatus 3.Designer.cs">
+      <DependentUpon>201809092013386_Ratings and Survey Satatus 3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809092021079_Ratings and Survey Satatus 4.cs" />
+    <Compile Include="Migrations\201809092021079_Ratings and Survey Satatus 4.Designer.cs">
+      <DependentUpon>201809092021079_Ratings and Survey Satatus 4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809092040042_Ratings and Survey Satatus 5.cs" />
+    <Compile Include="Migrations\201809092040042_Ratings and Survey Satatus 5.Designer.cs">
+      <DependentUpon>201809092040042_Ratings and Survey Satatus 5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
     <Compile Include="Models\EvaluationModel.cs" />
@@ -435,6 +457,15 @@
     <Content Include="Views\SurveyTemplates\Details.cshtml" />
     <Content Include="Views\SurveyTemplates\Edit.cshtml" />
     <Content Include="Views\SurveyTemplates\Index.cshtml" />
+    <Content Include="Views\HRRatings\Create.cshtml" />
+    <Content Include="Views\HRRatings\Delete.cshtml" />
+    <Content Include="Views\HRRatings\Edit.cshtml" />
+    <Content Include="Views\HRRatings\Index.cshtml" />
+    <Content Include="Views\EmpEvaluations\Create.cshtml" />
+    <Content Include="Views\EmpEvaluations\Delete.cshtml" />
+    <Content Include="Views\EmpEvaluations\Details.cshtml" />
+    <Content Include="Views\EmpEvaluations\Edit.cshtml" />
+    <Content Include="Views\EmpEvaluations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -527,6 +558,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809042138533_refactoring survey template 11.resx">
       <DependentUpon>201809042138533_refactoring survey template 11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809092001017_Ratings and Survey Satatus.resx">
+      <DependentUpon>201809092001017_Ratings and Survey Satatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809092009055_Ratings and Survey Satatus 2.resx">
+      <DependentUpon>201809092009055_Ratings and Survey Satatus 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809092013386_Ratings and Survey Satatus 3.resx">
+      <DependentUpon>201809092013386_Ratings and Survey Satatus 3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809092021079_Ratings and Survey Satatus 4.resx">
+      <DependentUpon>201809092021079_Ratings and Survey Satatus 4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809092040042_Ratings and Survey Satatus 5.resx">
+      <DependentUpon>201809092040042_Ratings and Survey Satatus 5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

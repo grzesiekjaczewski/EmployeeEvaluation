@@ -41,5 +41,6 @@ namespace EmployeeEvaluation.Models
         public DbSet<Survey> T_Survey { get; set; }
         public DbSet<SurveyPart> T_SurveyPart { get; set; }
         public DbSet<SurveyQuestion> T_SurveyQuestion { get; set; }
+        public DbSet<SurveySatus> T_SurveySatus { get; set; }
     }
 }

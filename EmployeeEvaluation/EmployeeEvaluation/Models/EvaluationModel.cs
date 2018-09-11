@@ -64,6 +64,7 @@ namespace EmployeeEvaluation.Models
         public int EmployeeId { get; set; }
         public int ManagerId { get; set; }
         public int SurveyTemplateId { get; set; }
+        public int SurveyStatusId { get; set; }
         [Required]
         [Display(Name = "Nazwa ankiety")]
         public string Name { get; set; }
@@ -118,5 +119,13 @@ namespace EmployeeEvaluation.Models
         public int EmployeeScore { get; set; }
         public string ManagerComment { get; set; }
         public int ManagerScore { get; set; }
+    }
+
+    public class SurveySatus
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Score { get; set; }
+        public List<Survey> Surveys { get; set; }
     }
 }

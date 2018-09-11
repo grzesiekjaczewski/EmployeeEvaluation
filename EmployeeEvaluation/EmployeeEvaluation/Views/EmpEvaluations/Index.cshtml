@@ -1,0 +1,118 @@
+﻿@model IEnumerable<EmployeeEvaluation.Models.Survey>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SurveyTemplateId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SurveyStatusId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SurveyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SurveyDadline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompliteEmployeeDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompliteManagerDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeSummary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeSummaryScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerSummary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerSummaryScore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeCompleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerCompleted)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurveyTemplateId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurveyStatusId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurveyDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SurveyDadline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompliteEmployeeDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompliteManagerDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeSummary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeSummaryScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerSummary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerSummaryScore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeCompleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerCompleted)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
