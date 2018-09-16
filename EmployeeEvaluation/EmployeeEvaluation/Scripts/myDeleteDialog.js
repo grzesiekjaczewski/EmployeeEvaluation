@@ -33,5 +33,5 @@ function actionDelete(id, name, statement, controler) {
     mcontroler = controler;
 
     $("#confirmchapter").text('Czy na pewno usunąć ' + mstatement + ' ' + mname + '?');
-    $("#dialog-confirm").dialog("open")
-};
+    $("#dialog-confirm").dialog("open");
+}

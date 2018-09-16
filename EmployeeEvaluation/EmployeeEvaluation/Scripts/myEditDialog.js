@@ -51,6 +51,6 @@ function actionEdit(id, elemntId1, elemntId2, elemntId3, elemntId4, controler) {
     mcontroler = controler;
     $('#' + elemntId1).val($.trim($('#' + elemntId3).text()));
     $('#' + elemntId2).val($.trim($('#' + elemntId4).text()));
-    $("#dialog-edit").dialog("open")
-};
+    $("#dialog-edit").dialog("open");
+}
 

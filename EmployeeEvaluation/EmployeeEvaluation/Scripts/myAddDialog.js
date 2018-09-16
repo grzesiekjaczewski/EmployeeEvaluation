@@ -49,5 +49,5 @@ function actionAdd(id, elemntId1, elemntId2, controler) {
     melemntId1 = elemntId1;
     melemntId2 = elemntId2;
     mcontroler = controler;
-    $("#dialog-add").dialog("open")
-};
+    $("#dialog-add").dialog("open");
+}

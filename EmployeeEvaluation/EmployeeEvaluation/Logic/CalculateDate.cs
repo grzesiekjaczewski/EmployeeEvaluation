@@ -19,5 +19,17 @@ namespace EmployeeEvaluation.Logic
 
             return new DateTime(year, month, day);
         }
+
+        static public DateTime StringToDate(string inputDate, string separator)
+        {
+            int firstDot = inputDate.IndexOf(separator);
+            int secondDot = inputDate.Substring(firstDot + 1).IndexOf(separator);
+            int year, month, day;
+            int.TryParse(inputDate.Substring(0, firstDot), out day);
+            int.TryParse(inputDate.Substring(firstDot + 1, secondDot), out month);
+            int.TryParse(inputDate.Substring(firstDot + secondDot + 2, 4), out year);
+
+            return new DateTime(year, month, day);
+        }
     }
 }

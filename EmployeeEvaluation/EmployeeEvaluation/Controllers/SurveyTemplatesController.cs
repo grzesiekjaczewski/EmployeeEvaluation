@@ -253,6 +253,29 @@ namespace EmployeeEvaluation.Controllers
             return RedirectToAction("Edit/" + surveyPartTemplate.SurveyTemplateId.ToString());
         }
 
+        [Authorize(Roles = "HR Manager")]
+        [HttpPost]
+        public JsonResult PublishSurvey(SurveyPartData model)
+        {
+            int id;
+            if (!int.TryParse(model.Id, out id))
+            {
+                return Json(new
+                {
+                    result = "Error"
+                });
+            }
+
+            ISaveModel<SurveyPartData> saveSurveyTemplate = new PublishSurvey<SurveyPartData>();
+            saveSurveyTemplate.Save(model, db);
+
+            return Json(new
+            {
+                result = "OK"
+            });
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

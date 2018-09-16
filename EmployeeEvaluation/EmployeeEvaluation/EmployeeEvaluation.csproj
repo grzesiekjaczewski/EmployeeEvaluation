@@ -220,6 +220,7 @@
     <Compile Include="Logic\PrepareServeyDeatilsView.cs" />
     <Compile Include="Logic\PrepareTeamDeatilsView.cs" />
     <Compile Include="Logic\PrepareTeamView.cs" />
+    <Compile Include="Logic\PublishSurvey.cs" />
     <Compile Include="Logic\SaveSurveyTemplatePartAdd.cs" />
     <Compile Include="Logic\SaveSurveyTemplate.cs" />
     <Compile Include="Logic\SaveSurveyTemplatePartEdit.cs" />
@@ -346,6 +347,10 @@
     <Compile Include="Migrations\201809092040042_Ratings and Survey Satatus 5.Designer.cs">
       <DependentUpon>201809092040042_Ratings and Survey Satatus 5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809162106150_Publish Template 1.cs" />
+    <Compile Include="Migrations\201809162106150_Publish Template 1.Designer.cs">
+      <DependentUpon>201809162106150_Publish Template 1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
     <Compile Include="Models\EvaluationModel.cs" />
@@ -401,6 +406,7 @@
     <Content Include="Scripts\myEditDialog.js" />
     <Content Include="Scripts\myEditQuestionDialog.js" />
     <Content Include="Scripts\myHideShow.js" />
+    <Content Include="Scripts\myPublishSurvey.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
@@ -454,7 +460,6 @@
     <Content Include="Views\MyProfile\Index.cshtml" />
     <Content Include="Views\SurveyTemplates\Create.cshtml" />
     <Content Include="Views\SurveyTemplates\Delete.cshtml" />
-    <Content Include="Views\SurveyTemplates\Details.cshtml" />
     <Content Include="Views\SurveyTemplates\Edit.cshtml" />
     <Content Include="Views\SurveyTemplates\Index.cshtml" />
     <Content Include="Views\HRRatings\Create.cshtml" />
@@ -573,6 +578,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809092040042_Ratings and Survey Satatus 5.resx">
       <DependentUpon>201809092040042_Ratings and Survey Satatus 5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809162106150_Publish Template 1.resx">
+      <DependentUpon>201809162106150_Publish Template 1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

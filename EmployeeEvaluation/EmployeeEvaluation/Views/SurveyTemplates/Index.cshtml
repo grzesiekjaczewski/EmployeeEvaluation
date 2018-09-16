@@ -21,19 +21,50 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SurveyDate, "{0:dd.MM.yyyy}")
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div id="actionDisplayText1">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </div>
+            </td>
+            <td>
+                <div id="actionDisplayText2">
+                    @Html.DisplayFor(modelItem => item.SurveyDate, "{0:dd.MM.yyyy}")
+                </div>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                <a href="#" onclick="actionPublishSurvey('@item.Id','actionSurveyName','deadline','actionDisplayText1','actionDisplayText2','/SurveyTemplates/PublishSurvey')">Publikuj</a> |
+                @Html.ActionLink("Kopiuj", "Copy", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<div id="dialog-publish-survey" title="Publikacja ankiety">
+    <div class="form-group">
+        <div class="control-label col-md-6">
+            Nazwa ankiety
+        </div>
+        <div class="col-md-10">
+            <textarea id="actionSurveyName" cols="40" rows="3" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="control-label col-md-6">
+            Termin
+        </div>
+        <div class="col-md-10">
+            <input class="form-control text-box single-line" data-val="true" data-val-date="Powyższe pole mysi zawierać datę!." data-val-required="Pole Przyjęto jest wymagane." id="deadline" name="deadline" type="datetime" value="@DateTime.Now.Day.ToString("00").@DateTime.Now.Month.ToString("00").@DateTime.Now.Year.ToString("0000")" />
+            <span class="field-validation-valid text-danger" data-valmsg-for="deadline" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/myPublishSurvey.js")
+}

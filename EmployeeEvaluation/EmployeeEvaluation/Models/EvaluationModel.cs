@@ -126,6 +126,5 @@ namespace EmployeeEvaluation.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int Score { get; set; }
-        public List<Survey> Surveys { get; set; }
     }
 }

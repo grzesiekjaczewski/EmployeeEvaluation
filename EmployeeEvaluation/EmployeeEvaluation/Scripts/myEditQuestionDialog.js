@@ -69,5 +69,5 @@ function actionEditQuestion(id, elemntId1, elemntId2, elemntId3, elemntId4, elem
     $('#' + elemntId1).val($.trim($('#' + elemntId4).text()));
     $('#' + elemntId2).val($.trim($('#' + elemntId5).text()));
     $('#' + elemntId3).val(type);
-    $("#dialog-edit-question").dialog("open")
-};
+    $("#dialog-edit-question").dialog("open");
+}

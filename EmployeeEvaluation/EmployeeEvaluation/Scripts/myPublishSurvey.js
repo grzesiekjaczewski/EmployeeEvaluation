@@ -1,11 +1,10 @@
 ﻿var mid = '';
 var melemntId1 = '';
 var melemntId2 = '';
-var melemntId3 = '';
 var mcontroler = '';
 
 $(function () {
-    $("#dialog-add-question").dialog({
+    $("#dialog-publish-survey").dialog({
         resizable: false,
         autoOpen: false,
         height: "auto",
@@ -17,8 +16,7 @@ $(function () {
                 var model = {
                     id: mid,
                     name: $('#' + melemntId1).val(),
-                    criteria: $('#' + melemntId2).val(),
-                    type: $('#' + melemntId3).val()
+                    summary: $('#' + melemntId2).val()
                 };
                 $.ajax({
                     type: "post",
@@ -46,15 +44,13 @@ $(function () {
     });
 });
 
-function actionAddQuestion(id, elemntId1, elemntId2, elemntId3, controler) {
+function actionPublishSurvey(id, elemntId1, elemntId2, elemntId3, elemntId4, controler) {
     mid = id;
     melemntId1 = elemntId1;
     melemntId2 = elemntId2;
-    melemntId3 = elemntId3;
-
+    $('#' + elemntId1).val($.trim($('#' + elemntId3).text()));
+    //$('#' + elemntId2).val($.trim($('#' + elemntId4).text()));
+    $('#' + elemntId2).val(moment(new Date()).add('days', 14).format("DD.MM.YYYY"));
     mcontroler = controler;
-    $('#' + melemntId1).val("");
-    $('#' + melemntId2).val("");
-    $('#' + melemntId3).val("1");
-    $("#dialog-add-question").dialog("open");
+    $("#dialog-publish-survey").dialog("open");
 }
