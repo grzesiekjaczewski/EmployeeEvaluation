@@ -218,6 +218,7 @@
     <Compile Include="Logic\PrepareManagerView.cs" />
     <Compile Include="Logic\PreparePositionView.cs" />
     <Compile Include="Logic\PrepareServeyDeatilsView.cs" />
+    <Compile Include="Logic\PrepareSurveyView.cs" />
     <Compile Include="Logic\PrepareTeamDeatilsView.cs" />
     <Compile Include="Logic\PrepareTeamView.cs" />
     <Compile Include="Logic\PublishSurvey.cs" />
@@ -350,6 +351,14 @@
     <Compile Include="Migrations\201809162106150_Publish Template 1.cs" />
     <Compile Include="Migrations\201809162106150_Publish Template 1.Designer.cs">
       <DependentUpon>201809162106150_Publish Template 1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809232143175_surveydisplay.cs" />
+    <Compile Include="Migrations\201809232143175_surveydisplay.Designer.cs">
+      <DependentUpon>201809232143175_surveydisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809232147210_surveydisplay2.cs" />
+    <Compile Include="Migrations\201809232147210_surveydisplay2.Designer.cs">
+      <DependentUpon>201809232147210_surveydisplay2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
@@ -581,6 +590,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809162106150_Publish Template 1.resx">
       <DependentUpon>201809162106150_Publish Template 1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809232143175_surveydisplay.resx">
+      <DependentUpon>201809232143175_surveydisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809232147210_surveydisplay2.resx">
+      <DependentUpon>201809232147210_surveydisplay2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

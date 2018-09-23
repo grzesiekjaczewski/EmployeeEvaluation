@@ -6,18 +6,31 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using EmployeeEvaluation.Logic;
 using EmployeeEvaluation.Models;
+using Microsoft.AspNet.Identity;
 
 namespace EmployeeEvaluation.Controllers
 {
     public class EmpEvaluationsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Surveys
         public ActionResult Index()
         {
-            return View(db.T_Survey.ToList());
+            var userId = User.Identity.GetUserId();
+            List<Employee>employees = _db.T_Employees.Where(i => i.UserId == userId).ToList();
+
+            int employeeId = 0;
+            if (employees.Count > 0)
+            {
+                employeeId = employees[0].Id;
+            }
+
+            IPrepareExtendedView<List<SurveyDisplay>, int?> modelExtendedLoader = new PrepareSurveyView<List<SurveyDisplay>, int?>();
+            modelExtendedLoader.Parameters = employeeId;
+            return View(modelExtendedLoader.GetView(_db));
         }
 
         // GET: Surveys/Details/5
@@ -27,7 +40,7 @@ namespace EmployeeEvaluation.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Survey survey = db.T_Survey.Find(id);
+            Survey survey = _db.T_Survey.Find(id);
             if (survey == null)
             {
                 return HttpNotFound();
@@ -50,8 +63,8 @@ namespace EmployeeEvaluation.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.T_Survey.Add(survey);
-                db.SaveChanges();
+                _db.T_Survey.Add(survey);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +78,7 @@ namespace EmployeeEvaluation.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Survey survey = db.T_Survey.Find(id);
+            Survey survey = _db.T_Survey.Find(id);
             if (survey == null)
             {
                 return HttpNotFound();
@@ -82,8 +95,8 @@ namespace EmployeeEvaluation.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(survey).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(survey).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(survey);
@@ -96,7 +109,7 @@ namespace EmployeeEvaluation.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Survey survey = db.T_Survey.Find(id);
+            Survey survey = _db.T_Survey.Find(id);
             if (survey == null)
             {
                 return HttpNotFound();
@@ -109,9 +122,9 @@ namespace EmployeeEvaluation.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Survey survey = db.T_Survey.Find(id);
-            db.T_Survey.Remove(survey);
-            db.SaveChanges();
+            Survey survey = _db.T_Survey.Find(id);
+            _db.T_Survey.Remove(survey);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -119,7 +132,7 @@ namespace EmployeeEvaluation.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

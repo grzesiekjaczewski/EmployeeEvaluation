@@ -58,6 +58,20 @@ namespace EmployeeEvaluation.Models
         public int QuestionType { get; set; }
     }
 
+    public class SurveyDisplay
+    {
+        public int Id { get; set; }
+        [Display(Name = "Nazwa ankiety")]
+        public string Name { get; set; }
+        [Display(Name = "Termin")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime SurveyDadline { get; set; }
+        [Display(Name = "Status")]
+        public string Status { get; set; }
+        public bool EmployeeCompleted { get; set; }
+    }
+
+
     public class Survey
     {
         public int Id { get; set; }
