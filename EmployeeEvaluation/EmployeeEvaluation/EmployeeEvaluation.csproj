@@ -217,8 +217,10 @@
     <Compile Include="Logic\PrepareManagerDeatilsView.cs" />
     <Compile Include="Logic\PrepareManagerView.cs" />
     <Compile Include="Logic\PreparePositionView.cs" />
+    <Compile Include="Logic\PrepareSectionQuestionView.cs" />
     <Compile Include="Logic\PrepareServeyDeatilsView.cs" />
     <Compile Include="Logic\PrepareSurveyView.cs" />
+    <Compile Include="Logic\PrepareSurveyViewBag.cs" />
     <Compile Include="Logic\PrepareTeamDeatilsView.cs" />
     <Compile Include="Logic\PrepareTeamView.cs" />
     <Compile Include="Logic\PublishSurvey.cs" />
@@ -227,6 +229,7 @@
     <Compile Include="Logic\SaveSurveyTemplatePartEdit.cs" />
     <Compile Include="Logic\SaveSurveyTemplateQuestionAdd.cs" />
     <Compile Include="Logic\SaveSurveyTemplateQuestionEdit.cs" />
+    <Compile Include="Logic\StringToValue.cs" />
     <Compile Include="Logic\TeamEditViewBagLoader.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.cs" />
     <Compile Include="Migrations\201712132139231_InitialCreate.Designer.cs">
@@ -416,6 +419,7 @@
     <Content Include="Scripts\myEditQuestionDialog.js" />
     <Content Include="Scripts\myHideShow.js" />
     <Content Include="Scripts\myPublishSurvey.js" />
+    <Content Include="Scripts\mySurvey.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
@@ -475,8 +479,6 @@
     <Content Include="Views\HRRatings\Delete.cshtml" />
     <Content Include="Views\HRRatings\Edit.cshtml" />
     <Content Include="Views\HRRatings\Index.cshtml" />
-    <Content Include="Views\EmpEvaluations\Create.cshtml" />
-    <Content Include="Views\EmpEvaluations\Delete.cshtml" />
     <Content Include="Views\EmpEvaluations\Details.cshtml" />
     <Content Include="Views\EmpEvaluations\Edit.cshtml" />
     <Content Include="Views\EmpEvaluations\Index.cshtml" />

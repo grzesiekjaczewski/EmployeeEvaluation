@@ -6,6 +6,40 @@ using System.Web;
 
 namespace EmployeeEvaluation.Models
 {
+    public class SurveyUserData
+    {
+        public string Id { get; set; }
+        public string SectionId { get; set; }
+        public string QuestionId { get; set; }
+        public string Page { get; set; }
+        public string NextPrev { get; set; }
+        public string Name { get; set; }
+        public string Summary { get; set; }
+    }
+
+    public class SurveyUserDataReturn
+    {
+        public int TotalQuestins { get; set; }
+        public int TotalSections { get; set; }
+        public int TotalSectionQuestins { get; set; }
+        public int QuestinId { get; set; }
+        public int SectionId { get; set; }
+        public int QuestionNo { get; set; }
+        public int SectionNo { get; set; }
+        public string SectionName { get; set; }
+        public string SectionTitle { get; set; }
+        public string SectionEmployeeSummary { get; set; }
+        public decimal SectionEmployeeScore { get; set; }
+        public string QuestionName { get; set; }
+        public string QuestionDescription { get; set; }
+        public int QuestionType { get; set; }
+        public int QuestionEmployeeScore { get; set; }
+        public string QuestionEmployeeComment { get; set; }
+
+
+    }
+
+
     public class SurveyQuestionData
     {
         public string Id { get; set; }

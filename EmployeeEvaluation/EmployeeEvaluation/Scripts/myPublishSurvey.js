@@ -49,7 +49,6 @@ function actionPublishSurvey(id, elemntId1, elemntId2, elemntId3, elemntId4, con
     melemntId1 = elemntId1;
     melemntId2 = elemntId2;
     $('#' + elemntId1).val($.trim($('#' + elemntId3).text()));
-    //$('#' + elemntId2).val($.trim($('#' + elemntId4).text()));
     $('#' + elemntId2).val(moment(new Date()).add('days', 14).format("DD.MM.YYYY"));
     mcontroler = controler;
     $("#dialog-publish-survey").dialog("open");

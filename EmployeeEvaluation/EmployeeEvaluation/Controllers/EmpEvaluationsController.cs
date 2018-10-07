@@ -12,6 +12,8 @@ using Microsoft.AspNet.Identity;
 
 namespace EmployeeEvaluation.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = "Pracownik")]
     public class EmpEvaluationsController : Controller
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
@@ -48,28 +50,6 @@ namespace EmployeeEvaluation.Controllers
             return View(survey);
         }
 
-        // GET: Surveys/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Surveys/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,EmployeeId,ManagerId,SurveyTemplateId,SurveyStatusId,Name,SurveyDate,SurveyDadline,CompliteEmployeeDate,CompliteManagerDate,EmployeeSummary,EmployeeSummaryScore,ManagerSummary,ManagerSummaryScore,EmployeeCompleted,ManagerCompleted")] Survey survey)
-        {
-            if (ModelState.IsValid)
-            {
-                _db.T_Survey.Add(survey);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(survey);
-        }
 
         // GET: Surveys/Edit/5
         public ActionResult Edit(int? id)
@@ -83,6 +63,14 @@ namespace EmployeeEvaluation.Controllers
             {
                 return HttpNotFound();
             }
+
+            var userId = User.Identity.GetUserId();
+            var parameters = new { UserId = userId, Survey = survey };
+
+            IViewBagExtendedLoader<dynamic> prepareSurveyViewBagLoader = new PrepareSurveyViewBagLoader<dynamic>();
+            prepareSurveyViewBagLoader.Parameters = parameters;
+            prepareSurveyViewBagLoader.Load(this, _db);
+
             return View(survey);
         }
 
@@ -102,31 +90,55 @@ namespace EmployeeEvaluation.Controllers
             return View(survey);
         }
 
-        // GET: Surveys/Delete/5
-        public ActionResult Delete(int? id)
+
+        [HttpPost]
+        public JsonResult PrevSurveyPage(SurveyUserData model)
         {
-            if (id == null)
+            int id;
+            if (!int.TryParse(model.Id, out id))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return Json(new
+                {
+                    result = "Error"
+                });
             }
-            Survey survey = _db.T_Survey.Find(id);
-            if (survey == null)
+            //ISaveModel<SurveyPartData> saveSurveyTemplate = new PublishSurvey<SurveyPartData>();
+            //saveSurveyTemplate.Save(model, db);
+
+            return Json(new
             {
-                return HttpNotFound();
-            }
-            return View(survey);
+                success = true,
+                result = "OK",
+                JsonRequestBehavior.AllowGet
+            });
         }
 
-        // POST: Surveys/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+
+        [HttpPost]
+        public JsonResult NextSurveyPage(SurveyUserData model)
         {
-            Survey survey = _db.T_Survey.Find(id);
-            _db.T_Survey.Remove(survey);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            int id;
+            if (!int.TryParse(model.Id, out id))
+            {
+                return Json(new
+                {
+                    result = "Error"
+                });
+            }
+
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PrepareSectionQuestionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+
+            return Json(new
+            {
+                success = true,
+                result = "OK",
+                surveyUserDataReturn = surveyUserDataReturn,
+                JsonRequestBehavior.AllowGet
+            });
         }
+
 
         protected override void Dispose(bool disposing)
         {

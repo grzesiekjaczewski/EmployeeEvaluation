@@ -5,150 +5,77 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Ankieta oceny okrsowej pracownika</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Survey</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmployeeId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EmployeeId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
-            </div>
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    <input type="hidden" id="page" name="page" value="1">
+    <input type="hidden" id="section" name="section" value="0">
+    <input type="hidden" id="question" name="question" value="0">
+    <input type="hidden" id="sectionCount" name="sectionCount" value="@ViewBag.SurveySections">
+    <input type="hidden" id="questionCount" name="questionCount" value="@ViewBag.SurveyQuestions">
+    <input type="hidden" id="sectionId" name="sectionId" value="0">
+    <input type="hidden" id="questionId" name="questionId" value="0">
+    <input type="hidden" id="questionType" name="questionType" value="0">
+
+
+    <div class="form-group" id="userInfo">
+
+        <div class="col-md-10">
+            <h3>Pracownik: @ViewBag.UserInfo</h3>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ManagerId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ManagerId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ManagerId, "", new { @class = "text-danger" })
-            </div>
+        <div class="col-md-10">
+            <h3>Ankieta: @Model.Name</h3>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SurveyTemplateId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SurveyTemplateId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SurveyTemplateId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SurveyStatusId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SurveyStatusId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SurveyStatusId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SurveyDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SurveyDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SurveyDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SurveyDadline, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SurveyDadline, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SurveyDadline, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompliteEmployeeDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompliteEmployeeDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CompliteEmployeeDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CompliteManagerDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CompliteManagerDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CompliteManagerDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmployeeSummary, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EmployeeSummary, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EmployeeSummary, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmployeeSummaryScore, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EmployeeSummaryScore, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EmployeeSummaryScore, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ManagerSummary, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ManagerSummary, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ManagerSummary, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ManagerSummaryScore, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ManagerSummaryScore, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ManagerSummaryScore, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EmployeeCompleted, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.EmployeeCompleted)
-                    @Html.ValidationMessageFor(model => model.EmployeeCompleted, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ManagerCompleted, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.ManagerCompleted)
-                    @Html.ValidationMessageFor(model => model.ManagerCompleted, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        <div class="col-md-10">
+            <h3>Termin wypęłninia: @Model.SurveyDadline.ToShortDateString()</h3>
         </div>
     </div>
+    <div class="form-group" id="sectionName">
+    </div>
+    <div class="form-group" id="sectionTitle">
+    </div>
+    <div class="form-group" id="questionName">
+    </div>
+    <div class="form-group" id="questionDescription">
+    </div>
+    <div class="form-group" id="questionName">
+    </div>
+    <div class="form-group" id="questionEmployeeScore">
+    </div>
+    <div class="form-group" id="questionEmployeeComment">
+    </div>
+
+    <div class="form-group" id="sectionEmployeeSummary">
+    </div>
+    <div class="form-group" id="sectionEmployeeScore">
+    </div>
+
+    <div class="form-group">
+        <div id="prevDiv" hidden="hidden" class="col-md-1">
+            <a href="#" id="prevBtn" onclick="actionPrev('@Model.Id','/EmpEvaluations/PrevQuestion')" class="btn btn-default"> Poprzednie pytanie </a>
+        </div>
+        <div class="col-md-8">
+            <a href="#" id="startBtn" onclick="actionNext('@Model.Id','/EmpEvaluations/NextQuestion')" class="btn btn-default"> Rozpocznij </a>
+        </div>
+        <div id="nextDiv" hidden="hidden" class="col-md-1">
+            <a href="#" id="nextBtn" onclick="actionNext('@Model.Id','/EmpEvaluations/NextQuestion')" class="btn btn-default"> Następne pytanie </a>
+        </div>
+    </div>
+</div>
 }
 
-<div>
+<div class="form-group">
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/mySurvey.js")
+}
