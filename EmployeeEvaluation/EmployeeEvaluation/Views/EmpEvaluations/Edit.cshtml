@@ -24,6 +24,7 @@
     <input type="hidden" id="sectionId" name="sectionId" value="0">
     <input type="hidden" id="questionId" name="questionId" value="0">
     <input type="hidden" id="questionType" name="questionType" value="0">
+    <input type="hidden" id="sectionEmployeeScore" name="sectionEmployeeScore" value="0">
 
 
     <div class="form-group" id="userInfo">
@@ -32,24 +33,29 @@
             <h3>Pracownik: @ViewBag.UserInfo</h3>
         </div>
         <div class="col-md-10">
-            <h3>Ankieta: @Model.Name</h3>
+            <h4>Ankieta: @Model.Name</h4>
         </div>
         <div class="col-md-10">
-            <h3>Termin wypęłninia: @Model.SurveyDadline.ToShortDateString()</h3>
+            <h4>Termin wypęłninia: @Model.SurveyDadline.ToShortDateString()</h4>
         </div>
     </div>
-    <div class="form-group" id="sectionName">
+    <div class="form-group">
+        <h4 id="sectionTitle"></h4>
+        <p id="sectionName"></p>
     </div>
-    <div class="form-group" id="sectionTitle">
+
+    <div class="form-group">
+        <h4 id="questionName"></h4>
+        <p id="questionDescription"></p>
+        <p hidden="hidden" id="sectionEmployeeScore0">
+            <input type="radio" id="sectionEmployeeScore1" name="employeeScore" value="1">Zdecydowanie poniżej oczekiwań<br />
+            <input type="radio" id="sectionEmployeeScore2" name="employeeScore" value="2">Poniżej oczekiwań<br />
+            <input type="radio" id="sectionEmployeeScore3" name="employeeScore" value="3">Zadowalająca<br />
+            <input type="radio" id="sectionEmployeeScore4" name="employeeScore" value="4">Przewyższa oczekiwania<br />
+            <input type="radio" id="sectionEmployeeScore5" name="employeeScore" value="5">Zdecydowanie powyżej oczekiwań
+        </p>
     </div>
-    <div class="form-group" id="questionName">
-    </div>
-    <div class="form-group" id="questionDescription">
-    </div>
-    <div class="form-group" id="questionName">
-    </div>
-    <div class="form-group" id="questionEmployeeScore">
-    </div>
+
     <div class="form-group" id="questionEmployeeComment">
     </div>
 

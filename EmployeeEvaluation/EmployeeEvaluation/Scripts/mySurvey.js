@@ -60,16 +60,12 @@ function actionNext(surveyId) {
         cache: false,
         success: function (data) {
 
-            alert("jestem tu");
-            alert(data.surveyUserDataReturn.SectionNo);
-            alert(data.surveyUserDataReturn.SectionName);
-
             $('#section').val(data.surveyUserDataReturn.SectionNo);
             $('#question').val(data.surveyUserDataReturn.QuestionNo);
             $('#sectionCount').val(data.surveyUserDataReturn.TotalSections);
             $('#questionCount').val(data.surveyUserDataReturn.TotalQuestins);
-            $('#sectionId').val(data.surveyUserDataReturn.QuestinId);
-            $('#questionId').val(data.surveyUserDataReturn.SectionId);
+            $('#sectionId').val(data.surveyUserDataReturn.SectionId);
+            $('#questionId').val(data.surveyUserDataReturn.QuestinId);
             $('#questionType').val(data.surveyUserDataReturn.QuestionType);
            
             $('#sectionName').html(data.surveyUserDataReturn.SectionName);
@@ -80,7 +76,14 @@ function actionNext(surveyId) {
             $('#questionDescription').html(data.surveyUserDataReturn.QuestionDescription);
             $('#questionEmployeeScore').html(data.surveyUserDataReturn.QuestionEmployeeScore);
             $('#questionEmployeeComment').html(data.surveyUserDataReturn.QuestionEmployeeComment);
-         
+
+            if (data.surveyUserDataReturn.QuestionType === 1) {
+                $('#sectionEmployeeScore0').show();
+            }
+            else {
+                $('#sectionEmployeeScore0').hide();
+            }
+            
             //location.reload();
         },
         error: function (xhr) {

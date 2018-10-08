@@ -1,0 +1,14 @@
+﻿using EmployeeEvaluation.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EmployeeEvaluation.Logic.CheckData
+{
+    interface ICheckData<T> where T : class
+    {
+        int Check(T model, out string message, ApplicationDbContext db);
+    }
+}

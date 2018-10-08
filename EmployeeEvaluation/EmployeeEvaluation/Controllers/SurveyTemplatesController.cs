@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using EmployeeEvaluation.Models;
 using EmployeeEvaluation.Logic;
 using Newtonsoft.Json.Linq;
+using EmployeeEvaluation.Logic.CheckData;
 
 namespace EmployeeEvaluation.Controllers
 {
@@ -257,17 +258,19 @@ namespace EmployeeEvaluation.Controllers
         [HttpPost]
         public JsonResult PublishSurvey(SurveyPartData model)
         {
-            int id;
-            if (!int.TryParse(model.Id, out id))
+            string msg;
+            ICheckData<SurveyPartData> checkSurveyTemplate = new CheckSurveyTemplate<SurveyPartData>();
+            if (checkSurveyTemplate.Check(model, out msg, db) > 0)
             {
                 return Json(new
                 {
-                    result = "Error"
+                    result = "Error",
+                    message = msg
                 });
             }
 
-            ISaveModel<SurveyPartData> saveSurveyTemplate = new PublishSurvey<SurveyPartData>();
-            saveSurveyTemplate.Save(model, db);
+            ISaveModel<SurveyPartData> publishSurvey = new PublishSurvey<SurveyPartData>();
+            publishSurvey.Save(model, db);
 
             return Json(new
             {

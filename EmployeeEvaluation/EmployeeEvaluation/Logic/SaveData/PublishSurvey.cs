@@ -14,8 +14,7 @@ namespace EmployeeEvaluation.Logic
         {
             SurveyPartData modelData = model as SurveyPartData;
 
-            int id;
-            int.TryParse(modelData.Id, out id);
+            int id = StringToValue.ParseInt(modelData.Id);
             DateTime deadline = CalculateDate.StringToDate(modelData.Summary, ".");
 
             SurveyTemplate surveyTemplate = db.T_SurveyTemplate.Find(id);

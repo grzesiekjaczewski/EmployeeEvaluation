@@ -26,7 +26,13 @@ $(function () {
                     datatype: "JSON",
                     cache: false,
                     success: function (data) {
-                        location.reload();
+                        if (data.result === "OK") {
+                            location.reload();
+                        }
+                        else {
+                            $("#errorMessage").html(data.message);
+                            $("#errorDialog").dialog();
+                        }
                     },
                     error: function (xhr) {
                         alert('coś poszło nie tak');
