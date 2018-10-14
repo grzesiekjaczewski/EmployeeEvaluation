@@ -63,7 +63,6 @@ function actionEditQuestion(id, elemntId1, elemntId2, elemntId3, elemntId4, elem
     mcontroler = controler;
 
     //alert(elemntId1);
-    //$('#' + elemntId1).val("dupa");
     //alert($.trim($('#' + elemntId5).text()));
 
     $('#' + elemntId1).val($.trim($('#' + elemntId4).text()));

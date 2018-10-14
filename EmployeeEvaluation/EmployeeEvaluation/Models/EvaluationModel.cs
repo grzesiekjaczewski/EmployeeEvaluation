@@ -11,20 +11,23 @@ namespace EmployeeEvaluation.Models
         public string Id { get; set; }
         public string SectionId { get; set; }
         public string QuestionId { get; set; }
+        public string QuestionSelection { get; set; }
         public string Page { get; set; }
         public string NextPrev { get; set; }
         public string Name { get; set; }
         public string Summary { get; set; }
+        public string QuestionEmployeeComment { get; set; }
     }
 
     public class SurveyUserDataReturn
     {
-        public int TotalQuestins { get; set; }
+        public int TotalQuestions { get; set; }
         public int TotalSections { get; set; }
-        public int TotalSectionQuestins { get; set; }
-        public int QuestinId { get; set; }
+        public int TotalSectionQuestions { get; set; }
+        public int QuestionId { get; set; }
         public int SectionId { get; set; }
         public int QuestionNo { get; set; }
+        public int QuestionSectionNo { get; set; }
         public int SectionNo { get; set; }
         public string SectionName { get; set; }
         public string SectionTitle { get; set; }

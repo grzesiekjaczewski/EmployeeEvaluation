@@ -211,6 +211,13 @@
     <Compile Include="Logic\LoadViewBag\EmployeeEditViewBagLoader.cs" />
     <Compile Include="Logic\PrepareView\IPrepareExtendedView.cs" />
     <Compile Include="Logic\PrepareView\IPrepareView.cs" />
+    <Compile Include="Logic\PrepareView\PrepareFirstQuestionView.cs" />
+    <Compile Include="Logic\PrepareView\PrepareNextSectionView.cs" />
+    <Compile Include="Logic\PrepareView\PreparePrevSectionView.cs" />
+    <Compile Include="Logic\PrepareView\PrepareSectionFirstQuestionView.cs" />
+    <Compile Include="Logic\PrepareView\PrepareSectionHeaderView.cs" />
+    <Compile Include="Logic\PrepareView\PrepareSectionPrevQuestionView.cs" />
+    <Compile Include="Logic\PrepareView\PrepareSectionView.cs" />
     <Compile Include="Logic\SaveData\ISaveModel.cs" />
     <Compile Include="Logic\LoadViewBag\IViewBagExtendedLoader.cs" />
     <Compile Include="Logic\LoadViewBag\IViewBagLoader.cs" />
@@ -226,6 +233,8 @@
     <Compile Include="Logic\PrepareView\PrepareTeamDeatilsView.cs" />
     <Compile Include="Logic\PrepareView\PrepareTeamView.cs" />
     <Compile Include="Logic\SaveData\PublishSurvey.cs" />
+    <Compile Include="Logic\SaveData\SaveEmployeeSurveyComplete.cs" />
+    <Compile Include="Logic\SaveData\SaveEmployeeSurveyScore.cs" />
     <Compile Include="Logic\SaveData\SaveSurveyTemplatePartAdd.cs" />
     <Compile Include="Logic\SaveData\SaveSurveyTemplate.cs" />
     <Compile Include="Logic\SaveData\SaveSurveyTemplatePartEdit.cs" />

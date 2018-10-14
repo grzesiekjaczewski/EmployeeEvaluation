@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EmployeeEvaluation.Logic;
+using EmployeeEvaluation.Logic.PrepareView;
+using EmployeeEvaluation.Logic.SaveData;
 using EmployeeEvaluation.Models;
 using Microsoft.AspNet.Identity;
 
@@ -90,46 +92,106 @@ namespace EmployeeEvaluation.Controllers
             return View(survey);
         }
 
-
         [HttpPost]
-        public JsonResult PrevSurveyPage(SurveyUserData model)
+        public JsonResult StartSurvey(SurveyUserData model)
         {
-            int id;
-            if (!int.TryParse(model.Id, out id))
-            {
-                return Json(new
-                {
-                    result = "Error"
-                });
-            }
-            //ISaveModel<SurveyPartData> saveSurveyTemplate = new PublishSurvey<SurveyPartData>();
-            //saveSurveyTemplate.Save(model, db);
-
-            return Json(new
-            {
-                success = true,
-                result = "OK",
-                JsonRequestBehavior.AllowGet
-            });
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareStartSurveyView = new PrepareSectionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareStartSurveyView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareStartSurveyView.GetView(_db);
+            return getResult(surveyUserDataReturn);
         }
-
-
         [HttpPost]
-        public JsonResult NextSurveyPage(SurveyUserData model)
+        public JsonResult NextSection(SurveyUserData model)
         {
-            int id;
-            if (!int.TryParse(model.Id, out id))
-            {
-                return Json(new
-                {
-                    result = "Error"
-                });
-            }
+            ISaveModel<SurveyUserData> saveEmployeeSurveyScore = new SaveEmployeeSurveyScore<SurveyUserData>();
+            saveEmployeeSurveyScore.Save(model, _db);
+
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareStartSurveyView = new PrepareNextSectionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareStartSurveyView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareStartSurveyView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult PrevSection(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PreparePrevSectionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+
+        }
+        [HttpPost]
+        public JsonResult NextSectionQuestion(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PrepareSectionQuestionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult FirstQuestion(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PrepareSectionFirstQuestionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult NextQuestion(SurveyUserData model)
+        {
+            ISaveModel<SurveyUserData> saveEmployeeSurveyScore = new SaveEmployeeSurveyScore<SurveyUserData>();
+            saveEmployeeSurveyScore.Save(model, _db);
 
             IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PrepareSectionQuestionView<SurveyUserDataReturn, SurveyUserData>();
             prepareExtendedView.Parameters = model;
             SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult PrevQuestion(SurveyUserData model)
+        {
+            ISaveModel<SurveyUserData> saveEmployeeSurveyScore = new SaveEmployeeSurveyScore<SurveyUserData>();
+            saveEmployeeSurveyScore.Save(model, _db);
 
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PrepareSectionPrevQuestionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult FirstSectionQuestion(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PrepareSectionPrevQuestionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult SectionHeader(SurveyUserData model)
+        {
+            ISaveModel<SurveyUserData> saveEmployeeSurveyScore = new SaveEmployeeSurveyScore<SurveyUserData>();
+            saveEmployeeSurveyScore.Save(model, _db);
+
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareStartSurveyView = new PrepareSectionHeaderView<SurveyUserDataReturn, SurveyUserData>();
+            prepareStartSurveyView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareStartSurveyView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult CompleteSurveyn(SurveyUserData model)
+        {
+            ISaveModel<SurveyUserData> saveEmployeeSurveyScore = new SaveEmployeeSurveyScore<SurveyUserData>();
+            saveEmployeeSurveyScore.Save(model, _db);
+
+            ISaveModel<SurveyUserData> saveEmployeeSurveyComplete = new SaveEmployeeSurveyComplete<SurveyUserData>();
+            saveEmployeeSurveyComplete.Save(model, _db);
+
+            SurveyUserDataReturn surveyUserDataReturn = new SurveyUserDataReturn();
+            return getResult(surveyUserDataReturn);
+        }
+
+        private JsonResult getResult(SurveyUserDataReturn surveyUserDataReturn)
+        {
             return Json(new
             {
                 success = true,
@@ -138,7 +200,6 @@ namespace EmployeeEvaluation.Controllers
                 JsonRequestBehavior.AllowGet
             });
         }
-
 
         protected override void Dispose(bool disposing)
         {
