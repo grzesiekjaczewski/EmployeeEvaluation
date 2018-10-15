@@ -190,6 +190,82 @@ namespace EmployeeEvaluation.Controllers
             return getResult(surveyUserDataReturn);
         }
 
+
+        [HttpPost]
+        public JsonResult StartSurveyView(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareStartSurveyView = new PrepareSectionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareStartSurveyView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareStartSurveyView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult NextSectionView(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareStartSurveyView = new PrepareNextSectionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareStartSurveyView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareStartSurveyView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult PrevSectionView(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PreparePrevSectionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+
+        }
+        [HttpPost]
+        public JsonResult NextSectionQuestionView(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PrepareSectionQuestionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult FirstQuestionView(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PrepareSectionFirstQuestionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult NextQuestionView(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PrepareSectionQuestionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult PrevQuestionView(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PrepareSectionPrevQuestionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult FirstSectionQuestionView(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareExtendedView = new PrepareSectionPrevQuestionView<SurveyUserDataReturn, SurveyUserData>();
+            prepareExtendedView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareExtendedView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+        [HttpPost]
+        public JsonResult SectionHeaderView(SurveyUserData model)
+        {
+            IPrepareExtendedView<SurveyUserDataReturn, SurveyUserData> prepareStartSurveyView = new PrepareSectionHeaderView<SurveyUserDataReturn, SurveyUserData>();
+            prepareStartSurveyView.Parameters = model;
+            SurveyUserDataReturn surveyUserDataReturn = prepareStartSurveyView.GetView(_db);
+            return getResult(surveyUserDataReturn);
+        }
+
+
         private JsonResult getResult(SurveyUserDataReturn surveyUserDataReturn)
         {
             return Json(new

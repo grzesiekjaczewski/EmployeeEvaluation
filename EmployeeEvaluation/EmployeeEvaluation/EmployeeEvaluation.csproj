@@ -430,6 +430,7 @@
     <Content Include="Scripts\myEditQuestionDialog.js" />
     <Content Include="Scripts\myHideShow.js" />
     <Content Include="Scripts\myPublishSurvey.js" />
+    <Content Include="Scripts\mySurveyView.js" />
     <Content Include="Scripts\mySurvey.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
