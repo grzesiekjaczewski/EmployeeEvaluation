@@ -197,6 +197,7 @@
     <Compile Include="Controllers\HRPositionsController.cs" />
     <Compile Include="Controllers\HRTeamsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MGEmployeesController.cs" />
     <Compile Include="Controllers\MyProfileController.cs" />
     <Compile Include="Controllers\HRRatingsController.cs" />
     <Compile Include="Controllers\EmpEvaluationsController.cs" />
@@ -494,6 +495,11 @@
     <Content Include="Views\EmpEvaluations\Details.cshtml" />
     <Content Include="Views\EmpEvaluations\Edit.cshtml" />
     <Content Include="Views\EmpEvaluations\Index.cshtml" />
+    <Content Include="Views\MGEmployees\Create.cshtml" />
+    <Content Include="Views\MGEmployees\Delete.cshtml" />
+    <Content Include="Views\MGEmployees\Details.cshtml" />
+    <Content Include="Views\MGEmployees\Edit.cshtml" />
+    <Content Include="Views\MGEmployees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

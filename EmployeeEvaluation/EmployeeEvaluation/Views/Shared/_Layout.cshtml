@@ -58,7 +58,7 @@
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("Manager"))
                     {
-                        <li>@Html.ActionLink("Pracownicy", "Employees", "ManEmployees")</li>
+                        <li>@Html.ActionLink("Pracownicy", "Index", "MGEmployees")</li>
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("HR Manager"))
                     { 
