@@ -46,8 +46,8 @@
             @Html.DisplayFor(modelItem => item.TeamName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.Id }) |
             <a href="#" onclick="actionDelete('@item.Id','@item.FirstName' + ' ' + '@item.LastName','pracownik','/HREmployees/Delete/')">Usuń</a>
         </td>
     </tr>

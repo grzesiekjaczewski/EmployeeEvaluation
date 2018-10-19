@@ -24,7 +24,7 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.Id }) |
             @if (@item.Members == 0)
             {
                 <a href="#" onclick="actionDelete('@item.Id','@item.Name','stanowisko','/HRPositions/Delete/')">Usuń</a>
