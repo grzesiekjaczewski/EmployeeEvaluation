@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<EmployeeEvaluation.Models.SurveyTemplate>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Definicje ankiet";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Definicje ankiet</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nowa ankieta", "Create")
 </p>
 <table class="table">
     <tr>
@@ -59,7 +59,7 @@
             Termin
         </div>
         <div class="col-md-10">
-            <input class="form-control text-box single-line" data-val="true" data-val-date="Powyższe pole mysi zawierać datę!." data-val-required="Pole Przyjęto jest wymagane." id="deadline" name="deadline" type="datetime" value="@DateTime.Now.Day.ToString("00").@DateTime.Now.Month.ToString("00").@DateTime.Now.Year.ToString("0000")" />
+            <input class="form-control text-box single-line" data-val="true" data-val-date="Powyższe pole musi zawierać datę!." data-val-required="Pole Przyjęto jest wymagane." id="deadline" name="deadline" type="datetime" value="@DateTime.Now.Day.ToString("00").@DateTime.Now.Month.ToString("00").@DateTime.Now.Year.ToString("0000")" />
             <span class="field-validation-valid text-danger" data-valmsg-for="deadline" data-valmsg-replace="true"></span>
         </div>
     </div>

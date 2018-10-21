@@ -1,18 +1,18 @@
 ﻿@model EmployeeEvaluation.Models.SurveyTemplate
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edycja ankiety";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Edycja ankiety</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>SurveyTemplate</h4>
+        @*<h4>SurveyTemplate</h4>*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -28,13 +28,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SurveyDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input class="form-control text-box single-line" data-val="true" data-val-date="Powyższe pole mysi zawierać datę!." data-val-required="Pole Przyjęto jest wymagane." id="StartUsingDate1" name="SurveyDate1" type="datetime" value="@DateTime.Now.Day.ToString("00").@DateTime.Now.Month.ToString("00").@DateTime.Now.Year.ToString("0000")" />
+                <input class="form-control text-box single-line" data-val="true" data-val-date="Powyższe pole musi zawierać datę!." data-val-required="Pole Przyjęto jest wymagane." id="StartUsingDate1" name="SurveyDate1" type="datetime" value="@DateTime.Now.Day.ToString("00").@DateTime.Now.Month.ToString("00").@DateTime.Now.Year.ToString("0000")" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="SurveyDate1" data-valmsg-replace="true"></span>
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Zapisz" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@
                                 </td>
                                 <td width="15%">
                                     <a href="#" onclick="actionEditQuestion('@subItem.Id','actionNewSurveyPartText8','actionNewSurveyPartText9','actionNewSurveyPartText10','actionDisplaySurveyQuestionText3_@subItem.Id','actionDisplaySurveyQuestionText4_@subItem.Id','actionDisplaySurveyQuestionText5_@subItem.Id','@subItem.QuestionType','/SurveyTemplates/EditQuestion')">Edytuj</a> |
-                                    <a href="#" onclick="actionDelete('@subItem.Id','@subItem.Name','sekcję ankiety','/SurveyTemplates/DeleteQuestion/')">Usuń</a>
+                                    <a href="#" onclick="actionDelete('@subItem.Id','@subItem.Name','pytanie','/SurveyTemplates/DeleteQuestion/')">Usuń</a>
                                 </td>
                             </tr>
                         }
@@ -213,7 +213,7 @@
     </div>
 </div>
 
-<div id="dialog-confirm" title="Usuwanie sekcji ankiety">
+<div id="dialog-confirm" title="Usuwanie">
     <p id="confirmchapter"><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy na pewno usunąć sekcję?</p>
 </div>
 
