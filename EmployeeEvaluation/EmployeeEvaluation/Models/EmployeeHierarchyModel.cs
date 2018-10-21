@@ -100,7 +100,7 @@ namespace EmployeeEvaluation.Models
         [Required]
         [Display(Name = "Nota")]
         public string Name { get; set; }
-        [Display(Description = "Opis")]
+        [Display(Name = "Opis")]
         public string Description { get; set; }
     }
 
