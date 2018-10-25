@@ -1,0 +1,11 @@
+Lista ankiet
+Ankieta | Data utworzenia | Data publikacji
+
+Po opublikowaniu ankiety tylko Podgl¹d | Kopiuj
+
+
+Usuwanie
+Usuwanie pozycji na d³ugiej liœcie - po klikniêciu okno g³ówne przewijane jest do góry. 
+Formatka do usuwania niewidoczna.
+
+Zamiast nowej strony z usuwaniem - wszêdzie powinno byæ okno z pytaniem czy usun¹æ.
