@@ -20,6 +20,8 @@ namespace EmployeeEvaluation.Logic
             SurveyTemplate surveyTemplate = db.T_SurveyTemplate.Find(id);
             if (surveyTemplate != null)
             {
+                surveyTemplate.PublishDate = DateTime.Now;
+
                 List<Survey> surveys = new List<Survey>();
                 List<Employee> employees = db.T_Employees.ToList();
 

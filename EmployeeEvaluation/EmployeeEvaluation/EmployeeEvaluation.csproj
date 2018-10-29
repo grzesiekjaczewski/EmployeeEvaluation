@@ -375,6 +375,10 @@
     <Compile Include="Migrations\201809232147210_surveydisplay2.Designer.cs">
       <DependentUpon>201809232147210_surveydisplay2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810292143570_publish_date.cs" />
+    <Compile Include="Migrations\201810292143570_publish_date.Designer.cs">
+      <DependentUpon>201810292143570_publish_date.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
     <Compile Include="Models\EvaluationModel.cs" />
@@ -621,6 +625,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809232147210_surveydisplay2.resx">
       <DependentUpon>201809232147210_surveydisplay2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810292143570_publish_date.resx">
+      <DependentUpon>201810292143570_publish_date.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -64,9 +64,12 @@ namespace EmployeeEvaluation.Models
         [Required]
         [Display(Name = "Nazwa ankiety")]
         public string Name { get; set; }
-        [Display(Name = "Data")]
+        [Display(Name = "Data utworzenia")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime SurveyDate { get; set; }
+        [Display(Name = "Data publikacji")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime PublishDate { get; set; }
         public List<SurveyPartTemplate> SurveyPartTemplates { get; set; }
     }
 
