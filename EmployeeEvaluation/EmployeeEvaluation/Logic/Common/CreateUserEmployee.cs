@@ -17,7 +17,9 @@ namespace EmployeeEvaluation.Logic
             {
                 UserId = userId,
                 FirstName = extractFirstName(userName),
-                LastName = extractLastName(userName)
+                LastName = extractLastName(userName),
+                PositionId = 1,
+                TeamId = 1                
             };
 
             _db.T_Employees.Add(employee);

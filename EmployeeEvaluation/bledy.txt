@@ -11,7 +11,6 @@ Formatka do usuwania niewidoczna.
 Zamiast nowej strony z usuwaniem - wszêdzie powinno byæ okno z pytaniem czy usun¹æ.
 
 Rejestracja
-B³¹d podczas rejestracji - po zarejestrowaniu wyskakuje b³¹d, rejestracja przebiega prawid³owo
 Weryfikacja po adresie e-mail nie nazwisku (sprawdzanie czy istnieje)
 
 Lista u¿ytkowników

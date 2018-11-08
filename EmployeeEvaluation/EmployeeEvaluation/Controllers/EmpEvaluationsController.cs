@@ -45,6 +45,12 @@ namespace EmployeeEvaluation.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Survey survey = _db.T_Survey.Find(id);
+
+            IPrepareExtendedView<BrowseSurvey, string> prepareStartSurveyView = new PrepareSurveyBrowseView<BrowseSurvey, string>();
+            prepareStartSurveyView.Parameters = "";
+            BrowseSurvey browseSurvey = prepareStartSurveyView.GetView(_db);
+
+
             if (survey == null)
             {
                 return HttpNotFound();
