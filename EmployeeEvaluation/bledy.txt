@@ -17,3 +17,7 @@ Weryfikacja po adresie e-mail nie nazwisku (sprawdzanie czy istnieje)
 Lista u¿ytkowników
 Pogrubiony u¿ytkownik o uprawnieniach administratora
 Filtrowanie po uprawnieniach
+Wyszukiwanie - nie dzia³a
+
+Nowa ankieta
+Data utworzenia (czy edytowalna?), jeœli tak to powinna to byæ pole data, teraz przyjmuje liczby i litery, przy próbie zapisania wyskakuje b³¹d
