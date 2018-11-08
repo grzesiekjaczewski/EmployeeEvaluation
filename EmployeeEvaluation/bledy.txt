@@ -9,3 +9,10 @@ Usuwanie pozycji na d³ugiej liœcie - po klikniêciu okno g³ówne przewijane jest d
 Formatka do usuwania niewidoczna.
 
 Zamiast nowej strony z usuwaniem - wszêdzie powinno byæ okno z pytaniem czy usun¹æ.
+
+Rejestracja
+B³¹d podczas rejestracji - po zarejestrowaniu wyskakuje b³¹d, rejestracja przebiega prawid³owo
+
+Lista u¿ytkowników
+Pogrubiony u¿ytkownik o uprawnieniach administratora
+Filtrowanie po uprawnieniach
