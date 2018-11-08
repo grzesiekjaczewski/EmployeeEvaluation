@@ -6,6 +6,27 @@ using System.Web;
 
 namespace EmployeeEvaluation.Models
 {
+    public class BrowseSurvey
+    { 
+        public Survey Survey { get; set; }
+        public SurveyTemplate SurveyTemplate { get; set; }
+        public List<BrowsePartSurvey> BrowsePartSurvey { get; set; }
+    }
+
+    public class BrowsePartSurvey
+    {
+        public SurveyPart SurveyPart { get; set; }
+        public SurveyPartTemplate SurveyPartTemplate { get; set; }
+        public List<BrowseQuestionSurvey> BrowseQuestionSurvey { get; set; }
+    }
+
+    public class BrowseQuestionSurvey
+    {
+        public SurveyQuestion SurveyQuestion { get; set; }
+        public SurveyQuestionTemplate SurveyQuestionTemplate { get; set; }
+    }
+
+
     public class SurveyUserData
     {
         public string Id { get; set; }
