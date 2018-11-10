@@ -16,8 +16,8 @@ namespace EmployeeEvaluation.Logic
             Employee employee = new Employee
             {
                 UserId = userId,
-                FirstName = extractFirstName(userName),
-                LastName = extractLastName(userName),
+                FirstName = ExtractFirstName(userName),
+                LastName = ExtractLastName(userName),
                 PositionId = 1,
                 TeamId = 1                
             };
@@ -26,7 +26,7 @@ namespace EmployeeEvaluation.Logic
             _db.SaveChanges();
         }
 
-        private string extractLastName(string userName)
+        public string ExtractLastName(string userName)
         {
             if (userName.IndexOf(" ") > 0)
             {
@@ -36,7 +36,7 @@ namespace EmployeeEvaluation.Logic
             return "";
         }
 
-        private string extractFirstName(string userName)
+        public string ExtractFirstName(string userName)
         {
             if (userName.LastIndexOf(" ") > 0)
             {

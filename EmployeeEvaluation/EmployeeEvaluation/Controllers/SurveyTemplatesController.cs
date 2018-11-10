@@ -58,8 +58,7 @@ namespace EmployeeEvaluation.Controllers
         public ActionResult Create([Bind(Include = "Id,Name,SurveyDate")] SurveyTemplate surveyTemplate)
         {
             var surveyDate = Request["SurveyDate1"];
-            surveyTemplate.SurveyDate = Logic.CalculateDate.StringToDate(surveyDate, ".", "/", "-");
-            //_controllerVieBagHelper.PrepareViewBagDictionaryForEdit(this, db);
+            surveyTemplate.SurveyDate = CalculateDate.StringToDate(surveyDate, ".", "/", "-");
 
             if (ModelState.IsValid)
             {

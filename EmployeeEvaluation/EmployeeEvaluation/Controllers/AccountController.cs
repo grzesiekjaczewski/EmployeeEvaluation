@@ -159,8 +159,12 @@ namespace EmployeeEvaluation.Controllers
             if (ModelState.IsValid)
             {
                 var userName = model.UserName;
-                var tmpUeser = UserManager.Users.FirstOrDefault(u => u.UserName == userName);
-                if (tmpUeser != null) { userName += " "; }
+                var orgUserName = model.UserName;
+                var tmpUesers = UserManager.Users.Where(u => u.UserName.Replace(" ","") == userName.Replace(" ", ""));
+                if (tmpUesers.Count() > 0) {
+                    CreateUserEmployee createUserEmployee = new CreateUserEmployee();
+                    userName = createUserEmployee.ExtractFirstName(userName) + new String(' ', tmpUesers.Count() + 1) + createUserEmployee.ExtractLastName(userName);
+                }
 
                 var user = new ApplicationUser { UserName = userName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
@@ -169,7 +173,7 @@ namespace EmployeeEvaluation.Controllers
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     CreateUserEmployee createUserEmployee = new CreateUserEmployee();
-                    createUserEmployee.Create(user.UserName.TrimEnd(), user.Id);
+                    createUserEmployee.Create(orgUserName, user.Id);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
