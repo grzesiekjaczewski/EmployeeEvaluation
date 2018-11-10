@@ -12,6 +12,8 @@ Zamiast nowej strony z usuwaniem - wszêdzie powinno byæ okno z pytaniem czy usun
 
 Rejestracja
 Weryfikacja po adresie e-mail nie nazwisku (sprawdzanie czy istnieje)
+Po rejestracji pokazuje siê Witaj ... - po klikniêciu okbo logowania. Wg. mnie powinno byæ tak jak przed rejestracj¹
+Po rejestracji krótkie info ¿e konto zosta³o zarejestrowane i czeka na nadanie uprawnieñ przez administratora
 
 Lista u¿ytkowników
 Pogrubiony u¿ytkownik o uprawnieniach administratora
