@@ -64,11 +64,11 @@ namespace EmployeeEvaluation.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Pole Imię i Nazwisko jest wymagane.")]
         [Display(Name = "Imię i Nazwisko")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Pole E-mail jest wymagane.")]
         [EmailAddress]
         [Display(Name = "E-mail")]
         public string Email { get; set; }

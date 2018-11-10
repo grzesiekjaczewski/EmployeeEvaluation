@@ -158,7 +158,11 @@ namespace EmployeeEvaluation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                var userName = model.UserName;
+                var tmpUeser = UserManager.Users.FirstOrDefault(u => u.UserName == userName);
+                if (tmpUeser != null) { userName += " "; }
+
+                var user = new ApplicationUser { UserName = userName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

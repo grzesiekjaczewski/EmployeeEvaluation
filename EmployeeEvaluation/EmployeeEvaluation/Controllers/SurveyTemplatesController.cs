@@ -63,6 +63,7 @@ namespace EmployeeEvaluation.Controllers
 
             if (ModelState.IsValid)
             {
+                if (surveyTemplate.PublishDate.Year < 1900) { surveyTemplate.PublishDate = new DateTime(1900, 1, 1); }
                 db.T_SurveyTemplate.Add(surveyTemplate);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -94,7 +95,7 @@ namespace EmployeeEvaluation.Controllers
             if (ModelState.IsValid)
             {
                 var surveyDate = Request["SurveyDate1"];
-                surveyTemplate.SurveyDate = Logic.CalculateDate.StringToDate(surveyDate, ".", "/", "-");
+                surveyTemplate.SurveyDate = CalculateDate.StringToDate(surveyDate, ".", "/", "-");
 
                 ISaveModel<SurveyTemplate> saveSurveyTemplate = new SaveSurveyTemplate<SurveyTemplate>();
                 saveSurveyTemplate.Save(surveyTemplate, db);

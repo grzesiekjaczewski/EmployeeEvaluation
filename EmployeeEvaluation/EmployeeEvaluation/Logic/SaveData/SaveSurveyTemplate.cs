@@ -16,6 +16,7 @@ namespace EmployeeEvaluation.Logic
 
             if (surveyTemplate != null)
             {
+                if (surveyTemplate.PublishDate.Year < 1900) { surveyTemplate.PublishDate = new DateTime(1900, 1, 1); }
                 db.Entry(surveyTemplate).State = EntityState.Modified;
                 db.SaveChanges();
             }
