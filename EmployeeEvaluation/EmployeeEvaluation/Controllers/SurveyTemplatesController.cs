@@ -71,6 +71,19 @@ namespace EmployeeEvaluation.Controllers
             return View(surveyTemplate);
         }
 
+        // GET: SurveyTemplates/View/5
+        public ActionResult View(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            IPrepareExtendedView<SurveyTemplate, int?> modelExtendedLoader = new PrepareServeyDeatilsView<SurveyTemplate, int?>();
+            modelExtendedLoader.Parameters = id;
+            return View(modelExtendedLoader.GetView(db));
+        }
+
         // GET: SurveyTemplates/Edit/5
         public ActionResult Edit(int? id)
         {

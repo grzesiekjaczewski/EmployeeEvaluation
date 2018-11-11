@@ -18,6 +18,11 @@ $(function () {
                     name: $('#' + melemntId1).val(),
                     summary: $('#' + melemntId2).val()
                 };
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $("#inProgressDialog").offset().top
+                }, 500);
+                $('#inProgressDialog').show();
+                $('#inProgressDialog').dialog({ modal: true });
                 $.ajax({
                     type: "post",
                     url: mcontroler,
@@ -27,14 +32,20 @@ $(function () {
                     cache: false,
                     success: function (data) {
                         if (data.result === "OK") {
+                            $('#inProgressDialog').hide();
                             location.reload();
                         }
                         else {
+                            $('#inProgressDialog').hide();
+                            $('#inProgressDialog').dialog("close");
                             $("#errorMessage").html(data.message);
                             $("#errorDialog").dialog();
                         }
+
                     },
                     error: function (xhr) {
+                        $('#inProgressDialog').hide();
+                        $('#inProgressDialog').dialog("close");
                         alert('coś poszło nie tak');
                     }
                 });
@@ -54,6 +65,9 @@ function actionPublishSurvey(id, elemntId1, elemntId2, elemntId3, elemntId4, con
     mid = id;
     melemntId1 = elemntId1;
     melemntId2 = elemntId2;
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $("#dialog-publish-survey").offset().top
+    }, 500);
     $('#' + elemntId1).val($.trim($('#' + elemntId3).text()));
     $('#' + elemntId2).val(moment(new Date()).add('days', 14).format("DD.MM.YYYY"));
     mcontroler = controler;

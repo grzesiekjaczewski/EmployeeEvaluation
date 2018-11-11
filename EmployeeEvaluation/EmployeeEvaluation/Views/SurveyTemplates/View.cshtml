@@ -1,0 +1,98 @@
+﻿@model EmployeeEvaluation.Models.SurveyTemplate
+
+@{
+    ViewBag.Title = "Edycja ankiety";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edycja ankiety</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @*<h4>SurveyTemplate</h4>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div class="col-md-10">
+                @Model.Name
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.SurveyDate)
+            </div>
+            <div class="col-md-10">
+                @Model.SurveyDate.Day.ToString("00").@Model.SurveyDate.Month.ToString("00").@Model.SurveyDate.Year.ToString("0000")
+            </div>
+        </div>
+    </div>
+}
+<br />
+<div class="form-group">
+    <table class="customTable main">
+        @foreach (var item in Model.SurveyPartTemplates)
+        {
+            <tr>
+                <td width="35%">
+                    <div id="actionDisplaySurveyPartText1_@item.Id">
+                        @Html.DisplayFor(modelItem => item.Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                    </div>
+                </td>
+                <td width="35%">
+                    <div id="actionDisplaySurveyPartText2_@item.Id">
+                        @Html.DisplayFor(modelItem => item.SummaryTitle, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                    </div>
+                </td>
+            </tr>
+            <tr width="30%">
+                <td colspan="3" width="100%">
+                    <table class="customTable sub">
+                        @foreach (var subItem in item.SurveyQuestionTemplates)
+                        {
+                            <tr>
+                                <td width="35%">
+                                    <div id="actionDisplaySurveyQuestionText3_@subItem.Id">
+                                        @Html.DisplayFor(modelItem => subItem.Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                    </div>
+                                </td>
+                                <td width="35%">
+                                    <div id="actionDisplaySurveyQuestionText4_@subItem.Id">
+                                        @Html.DisplayFor(modelItem => subItem.Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                    </div>
+                                </td>
+                                <td width="15%">
+                                    <div id="actionDisplaySurveyQuestionText5_@subItem.Id">
+                                        @if (subItem.QuestionType == 1)
+                                        {
+                                            <div>Według skali</div>
+                                        }
+                                        else
+                                        {
+                                            <div>Pytanie otwarte</div>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<br />
+
+<div class="form-group">
+    <div class="col-md-2">
+        @Html.ActionLink("Powrót do listy", "Index")
+    </div>
+</div>

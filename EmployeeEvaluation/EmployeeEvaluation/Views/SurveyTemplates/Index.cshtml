@@ -26,44 +26,44 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            <div id="actionDisplayText1_@item.Id">
-                @Html.DisplayFor(modelItem => item.Name)
-            </div>
-        </td>
-        <td>
-            <div id="actionDisplayText2_@item.Id">
-                @Html.DisplayFor(modelItem => item.SurveyDate, "{0:dd.MM.yyyy}")
-            </div>
-        </td>
-        <td>
-            <div id="actionDisplayText3_@item.Id">
-                @if (item.PublishDate.Year > 1901)
+        <tr>
+            <td>
+                <div id="actionDisplayText1_@item.Id">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </div>
+            </td>
+            <td>
+                <div id="actionDisplayText2_@item.Id">
+                    @Html.DisplayFor(modelItem => item.SurveyDate, "{0:dd.MM.yyyy}")
+                </div>
+            </td>
+            <td>
+                <div id="actionDisplayText3_@item.Id">
+                    @if (item.PublishDate.Year > 1901)
+                    {
+                        @Html.DisplayFor(modelItem => item.PublishDate, "{0:dd.MM.yyyy}")
+                    }
+                </div>
+            </td>
+
+            <td>
+                @if (item.PublishDate.Year < 1901)
                 {
-                    @Html.DisplayFor(modelItem => item.PublishDate, "{0:dd.MM.yyyy}")
+                    @Html.ActionLink("Edytuj ", "Edit", new { id = item.Id })<label>&nbsp;&nbsp;</label>
+                    <a href="#" onclick="actionPublishSurvey('@item.Id','actionSurveyName','deadline','actionDisplayText1_@item.Id','actionDisplayText2_@item.Id','/SurveyTemplates/PublishSurvey')">Publikuj</a><label>&nbsp;&nbsp;</label>
                 }
-            </div>
-        </td>
+                else
+                {
+                    @Html.ActionLink("Podgląd", "View", new { id = item.Id }) <label>&nbsp;&nbsp;</label>
+                }
 
-        <td>
-            @if (item.PublishDate.Year < 1901)
-            {
-                @Html.ActionLink("Edytuj ", "Edit", new { id = item.Id })<label>&nbsp;&nbsp;</label>
-            <a href="#" onclick="actionPublishSurvey('@item.Id','actionSurveyName','deadline','actionDisplayText1_@item.Id','actionDisplayText2_@item.Id','/SurveyTemplates/PublishSurvey')">Publikuj</a><label>&nbsp;&nbsp;</label>
-            }
-            else
-            {
-            @Html.ActionLink("Podgląd", "Edit", new { id = item.Id }) <label>&nbsp;&nbsp;</label>
-            }
-
-            @Html.ActionLink(" Kopiuj ", "Copy", new { id = item.Id })
-            @if (item.PublishDate.Year < 1901)
-            {
-                <label>&nbsp;&nbsp;</label>@Html.ActionLink(" Usuń", "Delete", new { id = item.Id })
-            }
-        </td>
-    </tr>
+                @Html.ActionLink(" Kopiuj ", "Copy", new { id = item.Id })
+                @if (item.PublishDate.Year < 1901)
+                {
+                    <label>&nbsp;&nbsp;</label>@Html.ActionLink(" Usuń", "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
     }
 
 </table>
@@ -93,6 +93,12 @@
         <p id="errorMessage"></p>
     </div>
 </div>
+<div id="inProgressDialog" hidden="hidden" title="Trwa publikacja ankiety">
+    <div align="center">
+        <img src='@Url.Content("~/Content/images/ajaxloader.gif")' />
+    </div>
+</div>
+
 @section Scripts {
     @Scripts.Render("~/Scripts/myPublishSurvey.js")
 }
