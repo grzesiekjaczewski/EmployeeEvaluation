@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SurveyDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input class="form-control text-box single-line" data-val="true" data-val-date="Powyższe pole mysi zawierać datę!." data-val-required="Pole Przyjęto jest wymagane." id="StartUsingDate1" name="SurveyDate1" type="datetime" value="@DateTime.Now.Day.ToString("00").@DateTime.Now.Month.ToString("00").@DateTime.Now.Year.ToString("0000")" />
+                <input class="form-control text-box single-line" readonly="readonly" data-val="true" data-val-date="Powyższe pole mysi zawierać datę!." data-val-required="Pole Przyjęto jest wymagane." id="StartUsingDate1" name="SurveyDate1" type="datetime" value="@DateTime.Now.Day.ToString("00").@DateTime.Now.Month.ToString("00").@DateTime.Now.Year.ToString("0000")" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="SurveyDate1" data-valmsg-replace="true"></span>
             </div>
         </div>
