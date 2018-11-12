@@ -220,6 +220,7 @@
     <Compile Include="Logic\PrepareView\PrepareSectionPrevQuestionView.cs" />
     <Compile Include="Logic\PrepareView\PrepareSectionView.cs" />
     <Compile Include="Logic\PrepareView\PrepareSurveyBrowseView.cs" />
+    <Compile Include="Logic\SaveData\CopySurvey.cs" />
     <Compile Include="Logic\SaveData\ISaveModel.cs" />
     <Compile Include="Logic\LoadViewBag\IViewBagExtendedLoader.cs" />
     <Compile Include="Logic\LoadViewBag\IViewBagLoader.cs" />
@@ -438,6 +439,7 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\myAddDialog.js" />
     <Content Include="Scripts\myAddQuestionDialog.js" />
+    <Content Include="Scripts\myCopySurvey.js" />
     <Content Include="Scripts\myDeleteDialog.js" />
     <Content Include="Scripts\myEditDialog.js" />
     <Content Include="Scripts\myEditQuestionDialog.js" />

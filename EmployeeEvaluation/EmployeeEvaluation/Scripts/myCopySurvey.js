@@ -1,10 +1,9 @@
 ﻿var mid = '';
 var melemntId1 = '';
-var melemntId2 = '';
 var mcontroler = '';
 
 $(function () {
-    $("#dialog-publish-survey").dialog({
+    $("#dialog-copy-survey").dialog({
         resizable: false,
         autoOpen: false,
         height: "auto",
@@ -15,14 +14,13 @@ $(function () {
                 $(this).dialog("close");
                 var model = {
                     id: mid,
-                    name: $('#' + melemntId1).val(),
-                    summary: $('#' + melemntId2).val()
+                    name: $('#' + melemntId1).val()
                 };
                 $([document.documentElement, document.body]).animate({
                     scrollTop: $("#inProgressDialog").offset().top
                 }, 500);
                 $('#inProgressDialog').show();
-                $('#inProgressDialog').dialog({ modal: true, title: "Trwa publikacja ankiety" });
+                $('#inProgressDialog').dialog({ modal: true, title: "Trwa kopiowanie ankiety" });
                 $.ajax({
                     type: "post",
                     url: mcontroler,
@@ -61,15 +59,15 @@ $(function () {
     });
 });
 
-function actionPublishSurvey(id, elemntId1, elemntId2, elemntId3, elemntId4, controler) {
+function actionCopySurvey(id, elemntId1, elemntId2, controler) {
     mid = id;
     melemntId1 = elemntId1;
-    melemntId2 = elemntId2;
+
     $([document.documentElement, document.body]).animate({
-        scrollTop: $("#dialog-publish-survey").offset().top
+        scrollTop: $("#dialog-copy-survey").offset().top
     }, 500);
-    $('#' + elemntId1).val($.trim($('#' + elemntId3).text()));
-    $('#' + elemntId2).val(moment(new Date()).add('days', 14).format("DD.MM.YYYY"));
+    $('#' + elemntId1).val($.trim($('#' + elemntId2).text()));
+
     mcontroler = controler;
-    $("#dialog-publish-survey").dialog("open");
+    $("#dialog-copy-survey").dialog("open");
 }

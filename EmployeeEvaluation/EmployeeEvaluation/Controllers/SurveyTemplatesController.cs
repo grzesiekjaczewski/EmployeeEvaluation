@@ -269,6 +269,31 @@ namespace EmployeeEvaluation.Controllers
 
         [Authorize(Roles = "HR Manager")]
         [HttpPost]
+        public JsonResult CopySurvey(SurveyPartData model)
+        {
+            string msg;
+            ICheckData<SurveyPartData> checkSurveyTemplate = new CheckSurveyTemplate<SurveyPartData>();
+            if (checkSurveyTemplate.Check(model, out msg, db) > 0)
+            {
+                return Json(new
+                {
+                    result = "Error",
+                    message = msg
+                });
+            }
+
+            ISaveModel<SurveyPartData> copySurvey = new CopySurvey<SurveyPartData>();
+            copySurvey.Save(model, db);
+
+            return Json(new
+            {
+                result = "OK"
+            });
+        }
+
+
+        [Authorize(Roles = "HR Manager")]
+        [HttpPost]
         public JsonResult PublishSurvey(SurveyPartData model)
         {
             string msg;
