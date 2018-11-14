@@ -1,8 +1,4 @@
 ﻿using EmployeeEvaluation.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace EmployeeEvaluation.Logic.PrepareView
 {
@@ -12,8 +8,30 @@ namespace EmployeeEvaluation.Logic.PrepareView
 
         public T1 GetView(ApplicationDbContext db)
         {
-            string id = Parameters as string;
-            return null;
+            int? id = Parameters as int?;
+
+            Survey survey = db.T_Survey.Find(id);
+            SurveyTemplate surveyTemplate = db.T_SurveyTemplate.Find(survey.SurveyTemplateId);
+
+            db.Entry(survey).Collection(p => p.SurveyParts).Load();
+            db.Entry(surveyTemplate).Collection(p => p.SurveyPartTemplates).Load();
+            foreach (SurveyPart surveyPart in survey.SurveyParts)
+            {
+                db.Entry(surveyPart).Collection(p => p.SurveyQuestions).Load();
+            }
+
+            foreach (SurveyPartTemplate surveyPartTemplate in surveyTemplate.SurveyPartTemplates)
+            {
+                db.Entry(surveyPartTemplate).Collection(p => p.SurveyQuestionTemplates).Load();
+            }
+
+            BrowseSurvey browseSurvey = new BrowseSurvey()
+            {
+                Survey = survey,
+                SurveyTemplate = surveyTemplate
+            };
+
+            return browseSurvey as T1;
         }
     }
 }

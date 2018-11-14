@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace EmployeeEvaluation.Models
 {
@@ -10,22 +8,7 @@ namespace EmployeeEvaluation.Models
     { 
         public Survey Survey { get; set; }
         public SurveyTemplate SurveyTemplate { get; set; }
-        public List<BrowsePartSurvey> BrowsePartSurvey { get; set; }
     }
-
-    public class BrowsePartSurvey
-    {
-        public SurveyPart SurveyPart { get; set; }
-        public SurveyPartTemplate SurveyPartTemplate { get; set; }
-        public List<BrowseQuestionSurvey> BrowseQuestionSurvey { get; set; }
-    }
-
-    public class BrowseQuestionSurvey
-    {
-        public SurveyQuestion SurveyQuestion { get; set; }
-        public SurveyQuestionTemplate SurveyQuestionTemplate { get; set; }
-    }
-
 
     public class SurveyUserData
     {
@@ -59,10 +42,7 @@ namespace EmployeeEvaluation.Models
         public int QuestionType { get; set; }
         public int QuestionEmployeeScore { get; set; }
         public string QuestionEmployeeComment { get; set; }
-
-
     }
-
 
     public class SurveyQuestionData
     {
@@ -106,7 +86,6 @@ namespace EmployeeEvaluation.Models
         public List<SurveyQuestionTemplate> SurveyQuestionTemplates { get; set; }
     }
 
-
     public class SurveyQuestionTemplate
     {
         public int Id { get; set; }
@@ -131,7 +110,6 @@ namespace EmployeeEvaluation.Models
         public string Status { get; set; }
         public bool EmployeeCompleted { get; set; }
     }
-
 
     public class Survey
     {

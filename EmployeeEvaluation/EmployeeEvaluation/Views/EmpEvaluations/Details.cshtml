@@ -1,4 +1,4 @@
-﻿@model EmployeeEvaluation.Models.Survey
+﻿@model EmployeeEvaluation.Models.BrowseSurvey
 
 @{
     ViewBag.Title = "Edit";
@@ -10,95 +10,100 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-
-
-    <div class="form-horizontal">
-
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group" id="userInfo">
-
+    <div class="form-group" id="userInfo">
+        <div class="col-md-10">
+            <h3>Pracownik: @ViewBag.UserInfo</h3>
+        </div>
+        <div id="HeadPart">
             <div class="col-md-10">
-                <h3>Pracownik: @ViewBag.UserInfo</h3>
+                <h4>Ankieta: @Model.Survey.Name</h4>
             </div>
-            <div id="HeadPart">
-                <div class="col-md-10">
-                    <h4>Ankieta: @Model.Name</h4>
-                </div>
-                <div id="Deadline" class="col-md-10">
-                    <h4>Data wypełnienia: @Model.CompliteEmployeeDate.ToShortDateString()</h4>
-                </div>
+            <div class="col-md-10">
+                <h4>Data wypełnienia: @Model.Survey.CompliteEmployeeDate.ToShortDateString()</h4>
             </div>
-        </div>
-
-        <div id="SectionPart">
-            <div class="form-group">
-                <h4 id="sectionTitle"></h4>
-                <p id="sectionName"></p>
-            </div>
-
-            <div class="form-group">
-                <div id="prevSectionDiv" class="col-md-1">
-                    <a href="#" style="display: none" id="prevSectionBtn" onclick="actionPrevSection('@Model.Id','/EmpEvaluations/PrevSectionView')" class="btn btn-default"> Poprzednia sekcja</a>
-                </div>
-                <div id="startSectionDiv" class="col-md-8">
-                    <a href="#" id="startSectionBtn" onclick="actionStartSurvey('@Model.Id','/EmpEvaluations/StartSurveyView')" class="btn btn-default"> Przeglądaj ankietę </a>
-                    <a href="#" style="display: none" id="firstNextSectionBtn" onclick="actionFirstQuestion('@Model.Id','/EmpEvaluations/FirstQuestionView')" class="btn btn-default"> Twoje pytania </a>
-                </div>
-                <div id="nextSectionDiv" class="col-md-1">
-                    <a href="#" style="display: none" id="nextSectionQuestionBtn" onclick="actionSectionFirstQuestion('@Model.Id','/EmpEvaluations/NextSectionQuestionView')" class="btn btn-default"> Pytnia z kolenej sekcji </a>
-                </div>
-            </div>
-
-
-        </div>
-        <div hidden id="QuestionPart">
-            <div class="form-group">
-                <h4 id="questionName"></h4>
-                <p id="questionDescription"></p>
-                <div hidden="hidden" class="form-group" id="questionEmployeeScore0">
-                    <input type="radio" id="questionEmployeeScore5" name="employeeScore" value="5" disabled>Zdecydowanie powyżej oczekiwań<br />
-                    <input type="radio" id="questionEmployeeScore4" name="employeeScore" value="4" disabled>Przewyższa oczekiwania<br />
-                    <input type="radio" id="questionEmployeeScore3" name="employeeScore" value="3" disabled>Zadowalająca<br />
-                    <input type="radio" id="questionEmployeeScore2" name="employeeScore" value="2" disabled>Poniżej oczekiwań<br />
-                    <input type="radio" id="questionEmployeeScore1" name="employeeScore" value="1" disabled>Zdecydowanie poniżej oczekiwań
-                </div>
-                <div hidden="hidden" class="form-group" id="QuestionCommentDiv">
-                    <div class="col-md-10">
-                        <textarea id="QuestionCommentText" cols="40" rows="3" class="form-control" readonly></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group" id="sectionEmployeeSummarySection">
-            </div>
-            <div class="form-group" id="sectionEmployeeScoreSection">
-            </div>
-
-            <div class="form-group">
-                <div id="prevQuestionDiv" class="col-md-1">
-                    <a href="#" style="display: none" id="prevQuestionBtn" onclick="actionPrevQuestion('@Model.Id','/EmpEvaluations/PrevQuestionView')" class="btn btn-default"> Poprzednie pytanie </a>
-                    <a href="#" style="display: none" id="sectionHeaderBtn" onclick="actionSectionHeader('@Model.Id','/EmpEvaluations/SectionHeaderView')" class="btn btn-default"> Nagłówek sekcji </a>
-                </div>
-                <div class="col-md-8">
-                </div>
-                <div id="nextQuestionDiv" class="col-md-1">
-                    <a href="#" style="display: none" id="nextQuestionBtn" onclick="actionNextQuestion('@Model.Id','/EmpEvaluations/NextQuestionView')" class="btn btn-default"> Następne pytanie </a>
-                    <a href="#" style="display: none" id="nextSectionBtn" onclick="actionNextSection('@Model.Id','/EmpEvaluations/NextSectionView')" class="btn btn-default"> Następna sekcja </a>
-                    <a href="#" style="display: none" id="completeSurveyBtn" onclick="actionCompleteSurvey('@Model.Id','/EmpEvaluations/CompleteSurveynView')" class="btn btn-default"> Powrót do listy </a>
-                </div>
+            <div class="col-md-10">
+                <h4>Termin wypełnienia: @Model.Survey.SurveyDadline.ToShortDateString()</h4>
             </div>
         </div>
     </div>
+    <br />
+    <div class="form-group">
+        <table class="customTable main">
+            @foreach (var surveyPart in Model.Survey.SurveyParts)
+            {
+                <tr>
+                    <td width="45%">
+                        @Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                    </td>
+                    <td width="55%">
+                        @Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].SummaryTitle, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                    </td>
+                </tr>
+                <tr width="30%">
+                    <td colspan="3" width="100%">
+                        <table class="customTable sub">
+                            @foreach (var surveyQuestion in surveyPart.SurveyQuestions)
+                            {
+                                int questionType = Model.SurveyTemplate
+                                .SurveyPartTemplates
+                                .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                .ToList()[0]
+                                .SurveyQuestionTemplates
+                                .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                .ToList()[0]
+                                .QuestionType;
+                                <tr>
+                                    <td width="45%">
+                                        @Html.DisplayFor(modelItem => Model.SurveyTemplate
+                                                                        .SurveyPartTemplates
+                                                                        .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                                                        .ToList()[0]
+                                                                        .SurveyQuestionTemplates
+                                                                        .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                                                        .ToList()[0]
+                                                                        .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                    </td>
+                                    <td colspan="@questionType">
+                                        @Html.DisplayFor(modelItem => Model.SurveyTemplate
+                                                                        .SurveyPartTemplates
+                                                                        .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                                                        .ToList()[0]
+                                                                        .SurveyQuestionTemplates
+                                                                        .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                                                        .ToList()[0]
+                                                                        .Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                    </td>
+                                    @if (questionType == 1)
+                                    {
+                                        <td width="10%">
+                                            <div>@surveyQuestion.EmployeeScore</div>
+                                        </td>
+                                    }
+                                </tr>
+                                <tr>
+                                    @if (questionType == 2)
+                                    {
+                                        <td colspan="3">
+                                            <p>@surveyQuestion.EmployeeComment</p>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </table>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 }
 
 <div class="form-group">
-        @Html.ActionLink("Powrót do listy", "Index")
-    </div>
+    @Html.ActionLink("Powrót do listy", "Index")
+</div>
 
-@section Scripts {
-    @Scripts.Render("~/Scripts/mySurveyView.js")
-}
+
