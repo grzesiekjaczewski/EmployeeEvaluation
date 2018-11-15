@@ -213,6 +213,7 @@
     <Compile Include="Logic\PrepareView\IPrepareExtendedView.cs" />
     <Compile Include="Logic\PrepareView\IPrepareView.cs" />
     <Compile Include="Logic\PrepareView\PrepareFirstQuestionView.cs" />
+    <Compile Include="Logic\PrepareView\PrepareManagerEmployeeView.cs" />
     <Compile Include="Logic\PrepareView\PrepareNextSectionView.cs" />
     <Compile Include="Logic\PrepareView\PreparePrevSectionView.cs" />
     <Compile Include="Logic\PrepareView\PrepareSectionFirstQuestionView.cs" />
@@ -508,9 +509,7 @@
     <Content Include="Views\EmpEvaluations\Details.cshtml" />
     <Content Include="Views\EmpEvaluations\Edit.cshtml" />
     <Content Include="Views\EmpEvaluations\Index.cshtml" />
-    <Content Include="Views\MGEmployees\Create.cshtml" />
     <Content Include="Views\MGEmployees\Delete.cshtml" />
-    <Content Include="Views\MGEmployees\Details.cshtml" />
     <Content Include="Views\MGEmployees\Edit.cshtml" />
     <Content Include="Views\MGEmployees\Index.cshtml" />
     <Content Include="Views\SurveyTemplates\View.cshtml" />
