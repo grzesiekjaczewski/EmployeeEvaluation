@@ -17,13 +17,24 @@ namespace EmployeeEvaluation.Logic.PrepareView
             Team team = db.T_Teams.Where(t => t.ManagerId == manager.Id).FirstOrDefault();
             
             List<EmployeeExtended> employees = new List<EmployeeExtended>();
-            employees = db.T_Employees.Where(e => e.TeamId == team.Id).Select(e => new EmployeeExtended()
+            employees = db.T_Employees.Where(e => e.TeamId == team.Id && e.UserId != userId).Select(e => new EmployeeExtended()
                 {
                     Id = e.Id,
                     FirstName = e.FirstName,
                     LastName = e.LastName,
                     PositionName = db.T_Positions.Where(p => p.Id == e.PositionId).FirstOrDefault().Name,
-                    TeamName = team.Name
+                    TeamName = team.Name,
+                    Status = ( 
+                        db.T_Survey.Where(s => s.EmployeeId == e.Id && s.SurveyStatusId == 1).ToList().Count() > 0  
+                        ?   1 
+                        :   db.T_Survey.Where(s => s.EmployeeId == e.Id && s.SurveyStatusId == 2).ToList().Count() > 0
+                        ?   2
+                        :   db.T_Survey.Where(s => s.EmployeeId == e.Id && s.SurveyStatusId == 3).ToList().Count() > 0
+                        ?   3
+                        :   db.T_Survey.Where(s => s.EmployeeId == e.Id && s.SurveyStatusId == 4).ToList().Count() > 0
+                        ?   4
+                        : 0
+                    )
                 }
             ).ToList();
 

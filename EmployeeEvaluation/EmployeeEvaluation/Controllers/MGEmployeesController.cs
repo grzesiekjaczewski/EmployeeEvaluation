@@ -53,12 +53,9 @@ namespace EmployeeEvaluation.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Employee employee = db.T_Employees.Find(id);
-            if (employee == null)
-            {
-                return HttpNotFound();
-            }
-            return View(employee);
+            IPrepareExtendedView<List<SurveyDisplay>, int?> modelExtendedLoader = new PrepareSurveyView<List<SurveyDisplay>, int?>();
+            modelExtendedLoader.Parameters = id;
+            return View(modelExtendedLoader.GetView(db));
         }
 
         // POST: MGEmployees/Edit/5

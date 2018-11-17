@@ -509,7 +509,6 @@
     <Content Include="Views\EmpEvaluations\Details.cshtml" />
     <Content Include="Views\EmpEvaluations\Edit.cshtml" />
     <Content Include="Views\EmpEvaluations\Index.cshtml" />
-    <Content Include="Views\MGEmployees\Delete.cshtml" />
     <Content Include="Views\MGEmployees\Edit.cshtml" />
     <Content Include="Views\MGEmployees\Index.cshtml" />
     <Content Include="Views\SurveyTemplates\View.cshtml" />

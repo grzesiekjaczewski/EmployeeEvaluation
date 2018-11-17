@@ -24,14 +24,30 @@
         <th>
             @Html.DisplayNameFor(model => model.TeamName)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    string bgcolor = "";
+    switch (item.Status)
+    {
+        case 0:
+            bgcolor = "#FFFFFF";
+            break;
+        case 1:
+            bgcolor = "#FCABAB";
+            break;
+        case 2:
+            bgcolor = "#FD864D";
+            break;
+        case 3:
+            bgcolor = "#FFFF00";
+            break;
+        case 4:
+            bgcolor = "#AAFD77";
+            break;
+    };
+    <tr bgcolor="@bgcolor">
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
@@ -44,13 +60,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.TeamName)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>*@
         <td>
             @Html.ActionLink("Ankiety pracownika", "Edit", new { id = item.Id })
         </td>
-    </tr>
+    </tr">
 }
 
 </table>
