@@ -74,6 +74,28 @@ namespace EmployeeEvaluation.Controllers
             return View(employee);
         }
 
+        // GET: Surveys/Edit/5
+        public ActionResult EditSurvey(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Survey survey = db.T_Survey.Find(id);
+            if (survey == null)
+            {
+                return HttpNotFound();
+            }
+
+            var userId = User.Identity.GetUserId();
+            var parameters = new { UserId = userId, Survey = survey };
+
+            IViewBagExtendedLoader<dynamic> prepareSurveyViewBagLoader = new PrepareSurveyViewBagLoader<dynamic>();
+            prepareSurveyViewBagLoader.Parameters = parameters;
+            prepareSurveyViewBagLoader.Load(this, db);
+
+            return View(survey);
+        }
 
         protected override void Dispose(bool disposing)
         {
