@@ -35,11 +35,14 @@
             <td>
                 @if (item.EmployeeCompleted)
                 {
-                    @Html.ActionLink("Przeglądaj", "ViewSurvey", new { id = item.Id })
-                }
-                else
-                {
-                    @Html.ActionLink("Wypełnij", "EditSurvey", new { id = item.Id })
+                    if (item.ManagerCompleted)
+                    {
+                        @Html.ActionLink("Przeglądaj", "ViewSurvey", new { id = item.Id })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Wypełnij", "EditSurvey", new { id = item.Id })
+                    }
                 }
             </td>
         </tr>

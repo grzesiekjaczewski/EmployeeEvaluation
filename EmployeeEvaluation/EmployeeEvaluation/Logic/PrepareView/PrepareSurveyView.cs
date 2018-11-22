@@ -30,7 +30,8 @@ namespace EmployeeEvaluation.Logic
                     Name = s.Name,
                     Status = ss.Name,
                     SurveyDadline = s.SurveyDadline,
-                    EmployeeCompleted = s.EmployeeCompleted
+                    EmployeeCompleted = s.EmployeeCompleted,
+                    ManagerCompleted = s.ManagerCompleted
                 }).ToList();
 
             return surveyList as T1;

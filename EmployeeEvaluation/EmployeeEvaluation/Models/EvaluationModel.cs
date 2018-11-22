@@ -109,6 +109,7 @@ namespace EmployeeEvaluation.Models
         [Display(Name = "Status")]
         public string Status { get; set; }
         public bool EmployeeCompleted { get; set; }
+        public bool ManagerCompleted { get; set; }
     }
 
     public class Survey
