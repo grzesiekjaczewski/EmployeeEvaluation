@@ -10,11 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-
-
     <div class="form-horizontal">
-
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -42,14 +38,14 @@
 
             <div class="form-group">
                 <div id="prevSectionDiv" class="col-md-1">
-                    <a href="#" style="display: none" id="prevSectionBtn" onclick="actionPrevSection('@Model.Id','/EmpEvaluations/PrevSection')" class="btn btn-default"> Poprzednia sekcja</a>
+                    <a href="#" style="display: none" id="prevSectionBtn" onclick="actionPrevSection('@Model.Id','/MGEmployees/PrevSection')" class="btn btn-default"> Poprzednia sekcja</a>
                 </div>
                 <div id="startSectionDiv" class="col-md-8">
-                    <a href="#" id="startSectionBtn" onclick="actionStartSurvey('@Model.Id','/EmpEvaluations/StartSurvey')" class="btn btn-default"> Rozpocznij ankietę </a>
-                    <a href="#" style="display: none" id="firstNextSectionBtn" onclick="actionFirstQuestion('@Model.Id','/EmpEvaluations/FirstQuestion')" class="btn btn-default"> Przejdź do pytań </a>
+                    <a href="#" id="startSectionBtn" onclick="actionStartSurvey('@Model.Id','/MGEmployees/StartSurvey')" class="btn btn-default"> Rozpocznij ankietę </a>
+                    <a href="#" style="display: none" id="firstNextSectionBtn" onclick="actionFirstQuestion('@Model.Id','/MGEmployees/FirstQuestion')" class="btn btn-default"> Przejdź do pytań </a>
                 </div>
                 <div id="nextSectionDiv" class="col-md-1">
-                    <a href="#" style="display: none" id="nextSectionQuestionBtn" onclick="actionSectionFirstQuestion('@Model.Id','/EmpEvaluations/NextSectionQuestion')" class="btn btn-default"> Pytnia z kolenej sekcji </a>
+                    <a href="#" style="display: none" id="nextSectionQuestionBtn" onclick="actionSectionFirstQuestion('@Model.Id','/MGEmployees/NextSectionQuestion')" class="btn btn-default"> Pytnia z kolenej sekcji </a>
                 </div>
             </div>
 
@@ -80,15 +76,15 @@
 
             <div class="form-group">
                 <div id="prevQuestionDiv" class="col-md-1">
-                    <a href="#" style="display: none" id="prevQuestionBtn" onclick="actionPrevQuestion('@Model.Id','/EmpEvaluations/PrevQuestion')" class="btn btn-default"> Poprzednie pytanie </a>
-                    <a href="#" style="display: none" id="sectionHeaderBtn" onclick="actionSectionHeader('@Model.Id','/EmpEvaluations/SectionHeader')" class="btn btn-default"> Nagłówek sekcji </a>
+                    <a href="#" style="display: none" id="prevQuestionBtn" onclick="actionPrevQuestion('@Model.Id','/MGEmployees/PrevQuestion')" class="btn btn-default"> Poprzednie pytanie </a>
+                    <a href="#" style="display: none" id="sectionHeaderBtn" onclick="actionSectionHeader('@Model.Id','/MGEmployees/SectionHeader')" class="btn btn-default"> Nagłówek sekcji </a>
                 </div>
                 <div class="col-md-8">
                 </div>
                 <div id="nextQuestionDiv" class="col-md-1">
-                    <a href="#" style="display: none" id="nextQuestionBtn" onclick="actionNextQuestion('@Model.Id','/EmpEvaluations/NextQuestion')" class="btn btn-default"> Następne pytanie </a>
-                    <a href="#" style="display: none" id="nextSectionBtn" onclick="actionNextSection('@Model.Id','/EmpEvaluations/NextSection')" class="btn btn-default"> Następna sekcja </a>
-                    <a href="#" style="display: none" id="completeSurveyBtn" onclick="actionCompleteSurvey('@Model.Id','/EmpEvaluations/CompleteSurveyn')" class="btn btn-default"> Zatwierdź ankietę </a>
+                    <a href="#" style="display: none" id="nextQuestionBtn" onclick="actionNextQuestion('@Model.Id','/MGEmployees/NextQuestion')" class="btn btn-default"> Następne pytanie </a>
+                    <a href="#" style="display: none" id="nextSectionBtn" onclick="actionNextSection('@Model.Id','/MGEmployees/NextSection')" class="btn btn-default"> Następna sekcja </a>
+                    <a href="#" style="display: none" id="completeSurveyBtn" onclick="actionCompleteSurvey('@Model.Id','/MGEmployees/CompleteSurveyn')" class="btn btn-default"> Zatwierdź ankietę </a>
                 </div>
             </div>
         </div>

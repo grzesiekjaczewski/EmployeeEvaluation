@@ -7,7 +7,7 @@ using System.Web;
 
 namespace EmployeeEvaluation.Logic.SaveData
 {
-    public class SaveEmployeeSurveyComplete<T> : ISaveModel<T> where T : class
+    public class SaveEmployeeMGSurveyComplete<T> : ISaveModel<T> where T : class
     {
         public void Save(T model, ApplicationDbContext db)
         {
@@ -17,8 +17,8 @@ namespace EmployeeEvaluation.Logic.SaveData
             {
                 Survey survey = db.T_Survey.Find(StringToValue.ParseInt(surveyUserData.Id));
                 survey.CompliteEmployeeDate = DateTime.Now;
-                survey.EmployeeCompleted = true;
-                survey.SurveyStatusId = 2;
+                survey.ManagerCompleted = true;
+                survey.SurveyStatusId = 3;
 
                 db.Entry(survey).State = EntityState.Modified;
                 db.SaveChanges();

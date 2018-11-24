@@ -35,7 +35,6 @@ namespace EmployeeEvaluation.Logic
                 }).ToList();
 
             return surveyList as T1;
-
         }
     }
 }

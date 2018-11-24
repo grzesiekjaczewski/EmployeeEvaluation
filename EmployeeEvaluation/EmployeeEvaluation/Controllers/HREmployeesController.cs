@@ -12,7 +12,7 @@ using EmployeeEvaluation.Logic;
 namespace EmployeeEvaluation.Controllers
 {
     [Authorize]
-    [Authorize(Roles = "Pracownik")]
+    [Authorize(Roles = "HR Manager")]
     public class HREmployeesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

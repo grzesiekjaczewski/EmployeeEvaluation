@@ -49,6 +49,8 @@ namespace EmployeeEvaluation.Controllers
             prepareStartSurveyView.Parameters = id;
             BrowseSurvey browseSurvey = prepareStartSurveyView.GetView(_db);
 
+            List<Employee> employees = _db.T_Employees.Where(i => i.Id == browseSurvey.Survey.EmployeeId).ToList();
+            ViewBag.UserInfo = employees[0].FirstName + " " + employees[0].LastName;
 
             if (browseSurvey == null)
             {
