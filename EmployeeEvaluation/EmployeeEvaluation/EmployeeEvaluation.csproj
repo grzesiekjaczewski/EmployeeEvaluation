@@ -195,6 +195,7 @@
     <Compile Include="Controllers\HREmployeesController.cs" />
     <Compile Include="Controllers\HRManagersController.cs" />
     <Compile Include="Controllers\HRPositionsController.cs" />
+    <Compile Include="Controllers\HRSurveyController.cs" />
     <Compile Include="Controllers\HRTeamsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MGEmployeesController.cs" />
@@ -388,6 +389,10 @@
     <Compile Include="Migrations\201810292143570_publish_date.Designer.cs">
       <DependentUpon>201810292143570_publish_date.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811241955260_HRSurveyComment.cs" />
+    <Compile Include="Migrations\201811241955260_HRSurveyComment.Designer.cs">
+      <DependentUpon>201811241955260_HRSurveyComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
     <Compile Include="Models\EvaluationModel.cs" />
@@ -520,6 +525,8 @@
     <Content Include="Views\SurveyTemplates\View.cshtml" />
     <Content Include="Views\MGEmployees\EditSurvey.cshtml" />
     <Content Include="Views\MGEmployees\ViewSurvey.cshtml" />
+    <Content Include="Views\HRSurvey\Details.cshtml" />
+    <Content Include="Views\HRSurvey\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -639,6 +646,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810292143570_publish_date.resx">
       <DependentUpon>201810292143570_publish_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811241955260_HRSurveyComment.resx">
+      <DependentUpon>201811241955260_HRSurveyComment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

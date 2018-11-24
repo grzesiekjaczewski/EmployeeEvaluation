@@ -1,0 +1,139 @@
+﻿@model EmployeeEvaluation.Models.Survey
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Survey</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagerId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SurveyTemplateId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SurveyTemplateId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SurveyStatusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SurveyStatusId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SurveyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SurveyDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SurveyDadline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SurveyDadline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompliteEmployeeDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompliteEmployeeDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompliteManagerDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompliteManagerDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeSummary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeSummary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeSummaryScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeSummaryScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerSummary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagerSummary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerSummaryScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagerSummaryScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeCompleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeCompleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ManagerCompleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ManagerCompleted)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

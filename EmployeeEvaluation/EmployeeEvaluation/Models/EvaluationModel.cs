@@ -137,6 +137,7 @@ namespace EmployeeEvaluation.Models
         public string EmployeeSummary { get; set; }
         public decimal EmployeeSummaryScore { get; set; }
         public string ManagerSummary { get; set; }
+        public string HRSummary { get; set; }
         public decimal ManagerSummaryScore { get; set; }
         public bool EmployeeCompleted { get; set; }
         public bool ManagerCompleted { get; set; }
