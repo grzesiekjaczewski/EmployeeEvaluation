@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using EmployeeEvaluation.Logic;
+using EmployeeEvaluation.Logic.PrepareView;
 using EmployeeEvaluation.Models;
 
 namespace EmployeeEvaluation.Controllers
@@ -17,7 +19,10 @@ namespace EmployeeEvaluation.Controllers
         // GET: HRSurvey
         public ActionResult Index()
         {
-            return View(db.T_Survey.ToList());
+            IPrepareView<List<HRBrowseSurvey>> prepare = new PrepareHRSurveyView<List<HRBrowseSurvey>>();
+            List<HRBrowseSurvey> view = prepare.GetView(db);
+
+            return View(view);
         }
 
         // GET: HRSurvey/Details/5

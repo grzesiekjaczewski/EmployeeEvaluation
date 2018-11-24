@@ -4,6 +4,28 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeEvaluation.Models
 {
+
+    public class HRBrowseSurvey
+    {
+        public int SurveyId { get; set; }
+        public int EmployeeId { get; set; }
+        [Display(Name = "Pracownik")]
+        public string Employee { get; set; }
+        [Display(Name = "Menadżer")]
+        public string Manager { get; set; }
+        [Display(Name = "Zespół")]
+        public string Team { get; set; }
+        [Display(Name = "Nazwa ankiety")]
+        public string SurveyName { get; set; }
+        [Display(Name = "Data ankiety")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime SurveyDate { get; set; }
+        [Display(Name = "Termin")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime SurveyDadline { get; set; }
+        public int SurveyStatusId { get; set; }
+    }
+
     public class BrowseSurvey
     { 
         public Survey Survey { get; set; }
@@ -149,11 +171,6 @@ namespace EmployeeEvaluation.Models
         public int Id { get; set; }
         public int SurveyId { get; set; }
         public int SurveyPartTemplateId { get; set; }
-//        [Required]
-//       [Display(Name = "Tytuł części")]
-//        public string Name { get; set; }
-//        [Display(Name = "Podsumowanie")]
-//        public string SummaryTitle { get; set; }
         public string EmployeeSummary { get; set; }
         public decimal EmployeeSummaryScore { get; set; }
         public string ManagerSummary { get; set; }
@@ -166,10 +183,6 @@ namespace EmployeeEvaluation.Models
         public int Id { get; set; }
         public int SurveyPartId { get; set; }
         public int SurveyQuestionTemplateId { get; set; }
-//        [Display(Name = "Pytanie")]
-//        public string Name { get; set; }
-//        public int QuestionType { get; set; }
-//        public string CommentTitle { get; set; }
         public string EmployeeComment { get; set; }
         public int EmployeeScore { get; set; }
         public string ManagerComment { get; set; }

@@ -214,6 +214,7 @@
     <Compile Include="Logic\PrepareView\IPrepareExtendedView.cs" />
     <Compile Include="Logic\PrepareView\IPrepareView.cs" />
     <Compile Include="Logic\PrepareView\PrepareFirstQuestionView.cs" />
+    <Compile Include="Logic\PrepareView\PrepareHRSurveyView.cs" />
     <Compile Include="Logic\PrepareView\PrepareManagerEmployeeView.cs" />
     <Compile Include="Logic\PrepareView\PrepareNextSectionView.cs" />
     <Compile Include="Logic\PrepareView\PreparePrevMGSectionView.cs" />
