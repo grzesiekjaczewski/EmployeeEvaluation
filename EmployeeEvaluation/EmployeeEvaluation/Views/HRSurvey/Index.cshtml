@@ -47,11 +47,11 @@
         <td>
             @if (item.SurveyStatusId < 4)
             {
-                @Html.ActionLink("Akcetuj", "Details", new { id = item.SurveyId })
+                @Html.ActionLink("Akceptuj", "AcceptSurvey", new { id = item.SurveyId })
             }
             else
             {
-                @Html.ActionLink("Przeglądaj", "Details", new { id = item.SurveyId })
+                @Html.ActionLink("Przeglądaj", "ViewSurvey", new { id = item.SurveyId })
             }
 
         </td>

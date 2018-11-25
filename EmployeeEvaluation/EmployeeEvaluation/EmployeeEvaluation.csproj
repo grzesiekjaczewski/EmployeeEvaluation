@@ -247,6 +247,7 @@
     <Compile Include="Logic\SaveData\SaveEmployeeMGSurveyScore.cs" />
     <Compile Include="Logic\SaveData\SaveEmployeeSurveyComplete.cs" />
     <Compile Include="Logic\SaveData\SaveEmployeeSurveyScore.cs" />
+    <Compile Include="Logic\SaveData\SaveSurveyHRAccept.cs" />
     <Compile Include="Logic\SaveData\SaveSurveyTemplatePartAdd.cs" />
     <Compile Include="Logic\SaveData\SaveSurveyTemplate.cs" />
     <Compile Include="Logic\SaveData\SaveSurveyTemplatePartEdit.cs" />
@@ -526,8 +527,9 @@
     <Content Include="Views\SurveyTemplates\View.cshtml" />
     <Content Include="Views\MGEmployees\EditSurvey.cshtml" />
     <Content Include="Views\MGEmployees\ViewSurvey.cshtml" />
-    <Content Include="Views\HRSurvey\Details.cshtml" />
     <Content Include="Views\HRSurvey\Index.cshtml" />
+    <Content Include="Views\HRSurvey\AcceptSurvey.cshtml" />
+    <Content Include="Views\HRSurvey\ViewSurvey.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

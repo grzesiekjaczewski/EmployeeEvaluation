@@ -54,7 +54,11 @@ a.isDisabled {
 
     .customTable td, #customTable th {
         border: 1px solid #ddd;
-        padding: 8px;
+        padding: 1px;
+    }
+
+    .customTable.template td, #customTable th {
+        padding: 4px;
     }
 
     .customTable th {
