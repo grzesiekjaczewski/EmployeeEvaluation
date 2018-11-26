@@ -195,6 +195,7 @@
     <Compile Include="Controllers\HREmployeesController.cs" />
     <Compile Include="Controllers\HRManagersController.cs" />
     <Compile Include="Controllers\HRPositionsController.cs" />
+    <Compile Include="Controllers\HRStructureController.cs" />
     <Compile Include="Controllers\HRSurveyController.cs" />
     <Compile Include="Controllers\HRTeamsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -532,6 +533,7 @@
     <Content Include="Views\HRSurvey\ViewSurvey.cshtml" />
     <Content Include="Views\MGEmployees\AcceptedSurvey.cshtml" />
     <Content Include="Views\EmpEvaluations\AcceptedSurvey.cshtml" />
+    <Content Include="Views\HRStructure\Structure.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
