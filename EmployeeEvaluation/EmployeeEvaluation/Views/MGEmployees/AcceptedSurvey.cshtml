@@ -1,0 +1,146 @@
+﻿
+@model EmployeeEvaluation.Models.BrowseSurvey
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ankieta oceny okresowej pracownika</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Survey.Id)
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group" id="userInfo">
+            <div class="col-md-10">
+                <h3>Pracownik: @ViewBag.UserInfo</h3>
+            </div>
+            <div id="HeadPart">
+                <div class="col-md-10">
+                    <h4>Ankieta: @Model.Survey.Name</h4>
+                </div>
+                <div class="col-md-10">
+                    <h4>Data wypełnienia: @Model.Survey.CompliteEmployeeDate.ToShortDateString()</h4>
+                </div>
+                <div class="col-md-10">
+                    <h4>Termin wypełnienia: @Model.Survey.SurveyDadline.ToShortDateString()</h4>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <table class="customTable main">
+                @foreach (var surveyPart in Model.Survey.SurveyParts)
+                {
+                    <tr>
+                        <td width="40%">
+                            @Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                        </td>
+                        <td width="40%">
+                            @Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].SummaryTitle, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                        </td>
+                        <td width="10%">
+                            Samoocena pracownika
+                        </td>
+                        <td width="10%">
+                            Ocena menadżera
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" width="100%">
+                            <table class="customTable sub">
+                                @foreach (var surveyQuestion in surveyPart.SurveyQuestions)
+                                {
+                                    int questionType = Model.SurveyTemplate
+                                    .SurveyPartTemplates
+                                    .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                    .ToList()[0]
+                                    .SurveyQuestionTemplates
+                                    .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                    .ToList()[0]
+                                    .QuestionType;
+                                    <tr>
+                                        <td width="40%">
+                                            @Html.DisplayFor(modelItem => Model.SurveyTemplate
+                                                                            .SurveyPartTemplates
+                                                                            .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                                                            .ToList()[0]
+                                                                            .SurveyQuestionTemplates
+                                                                            .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                                                            .ToList()[0]
+                                                                            .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                        </td>
+                                        <td colspan="@questionType">
+                                            @Html.DisplayFor(modelItem => Model.SurveyTemplate
+                                                                            .SurveyPartTemplates
+                                                                            .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                                                            .ToList()[0]
+                                                                            .SurveyQuestionTemplates
+                                                                            .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                                                            .ToList()[0]
+                                                                            .Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                        </td>
+                                        @if (questionType == 1)
+                                        {
+                                            <td width="10%">
+                                                <div>@surveyQuestion.EmployeeScore</div>
+                                            </td>
+                                            <td width="10%">
+                                                <div>@surveyQuestion.ManagerScore</div>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @if (questionType == 2)
+                                        {
+                                            <td>
+                                                <p>Komentaż pracownika</p>
+                                            </td>
+                                            <td colspan="3">
+                                                <p>Komentaż pracownika: @surveyQuestion.EmployeeComment</p>
+                                            </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @if (questionType == 2)
+                                        {
+                                            <td>
+                                                <p>Komentaż menadżera</p>
+                                            </td>
+                                            <td colspan="3">
+                                                <p>@surveyQuestion.ManagerComment</p>
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <p>Komentaż HR menadżera</p>
+                    </td>
+                    <td colspan="3">
+                        @Model.Survey.HRSummary
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+}
+
+<div class="form-group">
+    @Html.ActionLink("Powrót do listy", "Index")
+</div>
+
+
+
+
+

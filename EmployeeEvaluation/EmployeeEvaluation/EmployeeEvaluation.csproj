@@ -530,6 +530,8 @@
     <Content Include="Views\HRSurvey\Index.cshtml" />
     <Content Include="Views\HRSurvey\AcceptSurvey.cshtml" />
     <Content Include="Views\HRSurvey\ViewSurvey.cshtml" />
+    <Content Include="Views\MGEmployees\AcceptedSurvey.cshtml" />
+    <Content Include="Views\EmpEvaluations\AcceptedSurvey.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

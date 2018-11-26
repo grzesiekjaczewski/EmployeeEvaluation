@@ -59,6 +59,27 @@ namespace EmployeeEvaluation.Controllers
             return View(browseSurvey);
         }
 
+        // GET: Surveys/AcceptedSurvey/5
+        public ActionResult AcceptedSurvey(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            IPrepareExtendedView<BrowseSurvey, int?> prepareStartSurveyView = new PrepareSurveyBrowseView<BrowseSurvey, int?>();
+            prepareStartSurveyView.Parameters = id;
+            BrowseSurvey browseSurvey = prepareStartSurveyView.GetView(_db);
+
+            List<Employee> employees = _db.T_Employees.Where(i => i.Id == browseSurvey.Survey.EmployeeId).ToList();
+            ViewBag.UserInfo = employees[0].FirstName + " " + employees[0].LastName;
+
+            if (browseSurvey == null)
+            {
+                return HttpNotFound();
+            }
+            return View(browseSurvey);
+        }
 
         // GET: Surveys/Edit/5
         public ActionResult Edit(int? id)
