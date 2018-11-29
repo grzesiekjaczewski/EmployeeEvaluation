@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeEvaluation.Logic
 {
-    interface IPrepareView<T> where T : class
+    public interface IPrepareView<T> where T : class
     {
         T GetView(ApplicationDbContext db);
     }

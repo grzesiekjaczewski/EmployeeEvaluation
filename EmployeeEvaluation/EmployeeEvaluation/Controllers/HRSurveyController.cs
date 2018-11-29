@@ -13,6 +13,8 @@ using EmployeeEvaluation.Models;
 
 namespace EmployeeEvaluation.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = "HR Manager")]
     public class HRSurveyController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

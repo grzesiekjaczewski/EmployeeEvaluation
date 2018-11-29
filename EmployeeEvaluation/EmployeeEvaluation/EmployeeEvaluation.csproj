@@ -227,6 +227,7 @@
     <Compile Include="Logic\PrepareView\PrepareSectionPrevMGQuestionView.cs" />
     <Compile Include="Logic\PrepareView\PrepareSectionPrevQuestionView.cs" />
     <Compile Include="Logic\PrepareView\PrepareSectionView.cs" />
+    <Compile Include="Logic\PrepareView\PrepareStructureView.cs" />
     <Compile Include="Logic\PrepareView\PrepareSurveyBrowseView.cs" />
     <Compile Include="Logic\SaveData\CopySurvey.cs" />
     <Compile Include="Logic\SaveData\ISaveModel.cs" />
@@ -399,6 +400,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
     <Compile Include="Models\EvaluationModel.cs" />
+    <Compile Include="Models\Structure.cs" />
     <Compile Include="MyIdentityExtensions\CustomPasswordValidator.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserGroupViewModel.cs" />
