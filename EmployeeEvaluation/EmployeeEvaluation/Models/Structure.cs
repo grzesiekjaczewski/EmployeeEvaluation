@@ -18,6 +18,7 @@ namespace EmployeeEvaluation.Models
 
     public class Persson
     {
+        public int Id { get; set; }
         [Display(Name = "Imię")]
         public string FirstName { get; set; }
         [Display(Name = "Nazwisko")]

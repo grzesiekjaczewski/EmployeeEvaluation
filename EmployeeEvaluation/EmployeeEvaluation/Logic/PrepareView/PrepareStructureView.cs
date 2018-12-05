@@ -16,15 +16,29 @@ namespace EmployeeEvaluation.Logic.PrepareView
                               join p in db.T_Positions on e.PositionId equals p.Id
                               where t.ManagerId == e.Id
                               && t.Id != 1
-                              select new Boss {
-                                  FirstName = e.FirstName,
-                                  LastName = e.LastName,
-                                  Position = p.Name,
-                                  Team = t.Name
-                              }
-                            ).ToList()[0];
+                              select new Boss
+                                  {
+                                      Id = e.Id,
+                                      FirstName = e.FirstName,
+                                      LastName = e.LastName,
+                                      Position = p.Name,
+                                      Team = t.Name
+                                  }
+                              ).ToList()[0];
 
-            
+            structure.Boss.Employees = (from e in db.T_Employees
+                                        join t in db.T_Teams on e.TeamId equals t.Id
+                                        join p in db.T_Positions on e.PositionId equals p.Id
+                                        where t.ManagerId == structure.Boss.Id
+                                        select new Persson
+                                            {
+                                                Id = e.Id,
+                                                FirstName = e.FirstName,
+                                                LastName = e.LastName,
+                                                Position = p.Name,
+                                                Team = t.Name
+                                            }
+                                        ).ToList();
 
             return structure as T1;
         }
