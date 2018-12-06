@@ -33,23 +33,20 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @if (item.EmployeeCompleted)
+                @switch (item.StatusId)
                 {
-                    switch (item.StatusId)
-                    {
-                        case 1:
-                            @Html.ActionLink("Wypełnij", "Edit", new { id = item.Id })
-                            break;
-                        case 2:
-                            @Html.ActionLink("Przeglądaj", "Details", new { id = item.Id })
-                            break;
-                        case 3:
-                            @Html.ActionLink("Przeglądaj", "Details", new { id = item.Id })
-                            break;
-                        case 4:
-                            @Html.ActionLink("Przeglądaj", "AcceptedSurvey", new { id = item.Id })
-                            break;
-                    }
+                    case 1:
+                        @Html.ActionLink("Wypełnij", "Edit", new { id = item.Id })
+                        break;
+                    case 2:
+                        @Html.ActionLink("Przeglądaj", "Details", new { id = item.Id })
+                        break;
+                    case 3:
+                        @Html.ActionLink("Przeglądaj", "Details", new { id = item.Id })
+                        break;
+                    case 4:
+                        @Html.ActionLink("Przeglądaj", "AcceptedSurvey", new { id = item.Id })
+                        break;
                 }
             </td>
         </tr>

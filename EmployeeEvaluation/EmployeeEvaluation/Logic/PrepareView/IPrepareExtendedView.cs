@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeEvaluation.Logic
 {
-    interface IPrepareExtendedView<T1, T2>: IPrepareView<T1>, IParameterLoader<T2> where T1 : class
+    public interface IPrepareExtendedView<T1, T2>: IPrepareView<T1>, IParameterLoader<T2> where T1 : class
     {
     }
 }

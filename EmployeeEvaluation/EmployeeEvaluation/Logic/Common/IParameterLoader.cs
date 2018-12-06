@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeEvaluation.Logic
 {
-    interface IParameterLoader<T>
+    public interface IParameterLoader<T>
     {
         T Parameters { get; set; }
     }
