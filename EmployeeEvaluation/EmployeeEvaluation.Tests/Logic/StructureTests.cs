@@ -25,6 +25,12 @@ namespace EmployeeEvaluation.Tests.Logic
             Structure structure = prepareView.GetView(db);
 
             Assert.AreEqual(structure.Boss.FirstName, "Krzysztof");
+            Assert.AreEqual(structure.Boss.Teams.Count(), 1);
+            Assert.AreEqual(structure.Boss.Teams[0].Name, "Dyrekcja generalna");
+            Assert.AreEqual(structure.Boss.Teams[0].Persons.Count(), 2);
+            Assert.AreEqual(structure.Boss.Teams[0].Persons[0].Teams[0].Persons[0].LastName, "Pierwszy Bryg");
+            Assert.AreEqual(structure.Boss.Teams[0].Persons[0].Teams[0].Persons[0].Teams[0].Persons[0].LastName, "Czwarty");
+
         }
 
         [TestMethod]
@@ -97,14 +103,36 @@ namespace EmployeeEvaluation.Tests.Logic
 
         private void arrangeStructure()
         {
-            Position position = new Position()
+            Position position1 = new Position()
             {
                 Id = 2,
                 Name = "CEO",
                 Employees = new List<Employee>()
             };
 
-            Team team = new Team()
+            Position position2 = new Position()
+            {
+                Id = 3,
+                Name = "Menadżer",
+                Employees = new List<Employee>()
+            };
+
+            Position position3 = new Position()
+            {
+                Id = 4,
+                Name = "Pracownik",
+                Employees = new List<Employee>()
+            };
+
+            Position position4 = new Position()
+            {
+                Id = 5,
+                Name = "Brygadzista",
+                Employees = new List<Employee>()
+            };
+
+
+            Team team1 = new Team()
             {
                 Id = 2,
                 Name = "Dyrekcja generalna",
@@ -121,12 +149,98 @@ namespace EmployeeEvaluation.Tests.Logic
                 TeamId = 2
             };
 
-            position.Employees.Add(ceo);
-            team.Employees.Add(ceo);
+            Employee p1 = new Employee()
+            {
+                Id = 3,
+                FirstName = "Menadżer",
+                LastName = "Pierwszy",
+                PositionId = 3,
+                TeamId = 2
+            };
 
-            List<Team> t = new List<Team>() { team };
-            List<Position> p = new List<Position>() { position };
-            List<Employee> e = new List<Employee>() { ceo };
+            Team team2 = new Team()
+            {
+                Id = 3,
+                Name = "Team 1",
+                ManagerId = 3,
+                Employees = new List<Employee>()
+            };
+
+            Employee p3 = new Employee()
+            {
+                Id = 5,
+                FirstName = "Pracownik",
+                LastName = "Pierwszy Bryg",
+                PositionId = 5,
+                TeamId = 3
+            };
+
+            Team team4 = new Team()
+            {
+                Id = 5,
+                Name = "Team 1 2",
+                ManagerId = 5,
+                Employees = new List<Employee>()
+            };
+
+            Employee p6 = new Employee()
+            {
+                Id = 8,
+                FirstName = "Pracownik",
+                LastName = "Czwarty",
+                PositionId = 4,
+                TeamId = 5
+            };
+
+            Employee p7 = new Employee()
+            {
+                Id = 9,
+                FirstName = "Pracownik",
+                LastName = "Piąty",
+                PositionId = 4,
+                TeamId = 5
+            };
+
+
+
+            Employee p2 = new Employee()
+            {
+                Id = 4,
+                FirstName = "Menadżer",
+                LastName = "Drugi",
+                PositionId = 3,
+                TeamId = 2
+            };
+
+            Team team3 = new Team()
+            {
+                Id = 4,
+                Name = "Team 2",
+                ManagerId = 4,
+                Employees = new List<Employee>()
+            };
+
+            Employee p4 = new Employee()
+            {
+                Id = 6,
+                FirstName = "Pracownik",
+                LastName = "Drugi",
+                PositionId = 4,
+                TeamId = 4
+            };
+
+            Employee p5 = new Employee()
+            {
+                Id = 7,
+                FirstName = "Pracownik",
+                LastName = "trzeci",
+                PositionId = 4,
+                TeamId = 4
+            };
+
+            List<Team> t = new List<Team>() { team1, team2, team3, team4 };
+            List<Position> p = new List<Position>() { position1, position2, position3, position4 };
+            List<Employee> e = new List<Employee>() { ceo, p1, p2, p3, p4, p5, p6, p7 };
 
             var mockSetT = SetupMock(t);
             var mockSetP = SetupMock(p);

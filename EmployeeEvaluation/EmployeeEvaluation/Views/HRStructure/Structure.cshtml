@@ -6,22 +6,11 @@
 
 <h2>Structure</h2>
 
-<canvas id="myCanvas" width="600" height="200"></canvas>
-
+<canvas id="myCanvas" width="800" height="100"></canvas>
+@section Scripts {
+    @Scripts.Render("~/Scripts/myStructure.js")
+}
 <script>
-
-    var structure = @Html.Raw(Json.Encode(Model));
-    alert(structure.Boss.FirstName);
-
-      var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext('2d');
-
-      context.beginPath();
-      context.moveTo(0, 0);
-      context.lineTo(100, 100);
-      context.stroke();
-
+    myStructure(@Html.Raw(Json.Encode(Model)));
 </script>
-
-
 

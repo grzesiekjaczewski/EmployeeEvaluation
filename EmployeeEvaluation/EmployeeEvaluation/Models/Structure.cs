@@ -9,14 +9,15 @@ namespace EmployeeEvaluation.Models
     public class Structure
     {
         public Boss Boss { get; set; }
+        public int TeamCount { get; set; }
+        public int PersonCount { get; set; }
     }
 
-    public class Boss : Persson
+    public class Boss : Person
     {
-        public List<Persson> Employees { get; set; }
     }
 
-    public class Persson
+    public class Person
     {
         public int Id { get; set; }
         [Display(Name = "Imię")]
@@ -25,9 +26,16 @@ namespace EmployeeEvaluation.Models
         public string LastName { get; set; }
         [Display(Name = "Stanowisko")]
         public string Position { get; set; }
-        [Display(Name = "Zsspół")]
-        public string Team { get; set; }
-        public List<Persson> Employees { get; set; }
+        [Display(Name = "Zespół")]
+        public string MyTeam { get; set; }
+        public List<MyTeam> Teams { get; set; }
+    }
+
+    public class MyTeam
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<Person> Persons { get; set; }
     }
 
 }

@@ -20,6 +20,9 @@ namespace EmployeeEvaluation.Logic
                 into Joinp from jp in Joinp.DefaultIfEmpty()
                 join t in db.T_Teams.DefaultIfEmpty() on e.TeamId equals t.Id
                 into Joint from jt in Joint.DefaultIfEmpty()
+                join m in db.T_Employees.DefaultIfEmpty() on jt.ManagerId equals m.Id
+                into Joinm from mg in Joinm.DefaultIfEmpty()
+
                 select new EmployeeExtended
                 {
                     Id = e.Id,
@@ -29,7 +32,8 @@ namespace EmployeeEvaluation.Logic
                     PositionId = e.PositionId,
                     FirstName = e.FirstName,
                     LastName = e.LastName,
-                    UserId = e.UserId
+                    UserId = e.UserId,
+                    Manager = mg.FirstName + " " + mg.LastName
                 }).ToList();
 
 
@@ -47,7 +51,8 @@ namespace EmployeeEvaluation.Logic
                      FirstName = e.FirstName,
                      LastName = e.LastName,
                      UserId = e.UserId,
-                     EMail = u.Email
+                     EMail = u.Email,
+                     Manager = e.Manager
                  }).ToList();
 
             return employeeList2 as T;

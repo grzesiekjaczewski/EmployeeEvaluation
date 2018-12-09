@@ -24,7 +24,10 @@
         <th>
             @Html.DisplayNameFor(model => model.TeamName)
         </th>
-       
+        <th>
+            @Html.DisplayNameFor(model => model.Manager)
+        </th>
+
         <th></th>
     </tr>
 
@@ -46,7 +49,10 @@
             @Html.DisplayFor(modelItem => item.TeamName)
         </td>
         <td>
-            @Html.ActionLink("Edytuj", "Edit", new { id=item.Id }) |
+            @Html.DisplayFor(modelItem => item.Manager)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }) |
             <a href="#" onclick="actionDelete('@item.Id','@item.FirstName' + ' ' + '@item.LastName','pracownik','/HREmployees/Delete/')">Usuń</a>
         </td>
     </tr>

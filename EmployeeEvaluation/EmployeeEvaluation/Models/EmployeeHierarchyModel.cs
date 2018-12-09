@@ -37,6 +37,8 @@ namespace EmployeeEvaluation.Models
         [Display(Name = "E-Mail")]
         public string EMail { get; set; }
         public bool IsManager { get; set; }
+        [Display(Name = "Menadżer")]
+        public string Manager { get; set; }
         [Display(Name = "Status")]
         public int Status { get; set; }
     }
