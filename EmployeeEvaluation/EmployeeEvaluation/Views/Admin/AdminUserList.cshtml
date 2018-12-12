@@ -27,7 +27,14 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserName)
+                @if (item.IsAdmin)
+                {
+                    <b>@Html.DisplayFor(modelItem => item.UserName)</b>
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.UserName)
+                }
             </td>
             <td>
                 @Html.CheckBoxFor(modelItem => item.IsAdmin, new {@disabled = "disabled" })
