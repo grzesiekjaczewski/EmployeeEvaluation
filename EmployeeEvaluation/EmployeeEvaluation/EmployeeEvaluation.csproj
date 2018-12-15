@@ -229,6 +229,8 @@
     <Compile Include="Logic\PrepareView\PrepareSectionView.cs" />
     <Compile Include="Logic\PrepareView\PrepareStructureView.cs" />
     <Compile Include="Logic\PrepareView\PrepareSurveyBrowseView.cs" />
+    <Compile Include="Logic\Remove\IRemoveItem.cs" />
+    <Compile Include="Logic\Remove\RemoveEmployee.cs" />
     <Compile Include="Logic\SaveData\CopySurvey.cs" />
     <Compile Include="Logic\SaveData\ISaveModel.cs" />
     <Compile Include="Logic\LoadViewBag\IViewBagExtendedLoader.cs" />

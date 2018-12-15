@@ -49,16 +49,17 @@
                 @Html.CheckBoxFor(modelItem => item.IsEmployee, new { @disabled = "disabled" })
             </td>
             <td>
-                @Html.ActionLink("Edytuj", "AdminUserRolesList", new { id = item.Id }) |
-                <a href="#" id='deleteId_@item.Id' onclick="actionDelete('@item.Id','@item.UserName','użytkownika','/Admin/Delete/')">Usuń</a>
+                @Html.ActionLink("Edytuj", "AdminUserRolesList", new { id = item.Id }) 
+                @*|
+                <a href="#" id='deleteId_@item.Id' onclick="actionDelete('@item.Id','@item.UserName','użytkownika','/Admin/Delete/')">Usuń</a>*@
             </td>
         </tr>
     }
 </table>
 
-<div id="dialog-confirm" title="Usuwanie użytkownika?" ">
+@*<div id="dialog-confirm" title="Usuwanie użytkownika?" ">
     <p id="confirmchapter"><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy na pewno usunąć użytkownika?</p>
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/Scripts/myDeleteDialog.js")
