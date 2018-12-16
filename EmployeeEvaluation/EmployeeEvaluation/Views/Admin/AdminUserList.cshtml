@@ -8,10 +8,10 @@
 
 @using (Html.BeginForm())
 {
-    <p>
-        Szukaj: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
-        <input type="submit" value="Znajdź" />
-    </p>
+<div class="form-group">
+    @Html.TextBox("Search_Data", ViewBag.FilterValue as string, new { @class = "form-control" })
+    <a href="#" onclick="actionFind('','/HRPositions/Delete/')">Znajdź</a>
+</div>
 }
 
 <table class="table">

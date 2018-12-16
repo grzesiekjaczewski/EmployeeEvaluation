@@ -10,13 +10,18 @@ namespace EmployeeEvaluation.Models
     {
         public int Id { get; set; }
         public string UserId { get; set; }
+        [Required]
         [Display(Name = "Imię")]
         public string FirstName { get; set; }
+        [Required]
         [Display(Name = "Nazwisko")]
         public string LastName { get; set; }
+        [Required]
+        [EmailAddress]
         [Display(Name = "E-Mail")]
         public string EMail { get; set; }
         public string ErrorMessage { get; set; }
+        public bool CanSave { get; set; }
 
     }
 

@@ -26,5 +26,16 @@ namespace EmployeeEvaluation.Controllers
 
             return View();
         }
+
+        public ActionResult Registered()
+        {
+            return View();
+        }
+
+        public ActionResult PersonalDataChanged()
+        {
+            return View();
+        }
+
     }
 }

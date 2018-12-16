@@ -200,7 +200,6 @@
     <Compile Include="Controllers\HRTeamsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MGEmployeesController.cs" />
-    <Compile Include="Controllers\MyProfileController.cs" />
     <Compile Include="Controllers\HRRatingsController.cs" />
     <Compile Include="Controllers\EmpEvaluationsController.cs" />
     <Compile Include="Controllers\SurveyTemplatesController.cs" />
@@ -516,7 +515,6 @@
     <Content Include="Views\HRPositions\Create.cshtml" />
     <Content Include="Views\HRPositions\Edit.cshtml" />
     <Content Include="Views\HRPositions\Index.cshtml" />
-    <Content Include="Views\MyProfile\Index.cshtml" />
     <Content Include="Views\SurveyTemplates\Create.cshtml" />
     <Content Include="Views\SurveyTemplates\Delete.cshtml" />
     <Content Include="Views\SurveyTemplates\Edit.cshtml" />
@@ -540,6 +538,8 @@
     <Content Include="Views\EmpEvaluations\AcceptedSurvey.cshtml" />
     <Content Include="Views\HRStructure\Structure.cshtml" />
     <Content Include="Views\Manage\ChangePersonalData.cshtml" />
+    <Content Include="Views\Home\Registered.cshtml" />
+    <Content Include="Views\Home\PersonalDataChanged.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

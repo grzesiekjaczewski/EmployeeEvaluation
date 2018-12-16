@@ -220,17 +220,21 @@ namespace EmployeeEvaluation.Controllers
         public ActionResult ChangePersonalData()
         {
             var userId = User.Identity.GetUserId();
+            PersonalData personalData = new PersonalData();
+            personalData.ErrorMessage = "Konto nie posiada przypisanych danych pracownika.";
+            personalData.CanSave = false;
             Employee employee = _db.T_Employees.Where(e => e.UserId == userId).FirstOrDefault();
-            if (employee == null) return View();
+            if (employee == null) return View(personalData);
 
-            PersonalData personalData = new PersonalData()
+            personalData = new PersonalData()
             {
                 Id = employee.Id,
                 UserId = userId,
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
                 EMail = UserManager.FindById(userId.ToString()).Email,
-                ErrorMessage = ""
+                ErrorMessage = "",
+                CanSave = true
             };
 
             return View(personalData);
@@ -245,6 +249,7 @@ namespace EmployeeEvaluation.Controllers
             if (tmpEmailUesers.Count() > 0)
             {
                 personalData.ErrorMessage = "Podany email już jest już zajęty";
+                personalData.CanSave = true;
                 return View(personalData);
             }
 
@@ -273,10 +278,12 @@ namespace EmployeeEvaluation.Controllers
 
                 _db.Entry(employee).State = EntityState.Modified;
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("PersonalDataChanged", "Home");
             }
 
             personalData.ErrorMessage = "Coś poszło nie tak.";
+            personalData.CanSave = false;
             return View(personalData);
         }
 
