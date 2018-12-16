@@ -41,27 +41,20 @@
                     }
                     <span class="icon-bar"></span>
                 </button>
-                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Strona główna", "Index", "Home")</li>
                     @if (Request.IsAuthenticated && User.IsInRole("Pracownik"))
                     {
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Moja ocena<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Moje ankiety", "Index", "EmpEvaluations")</li>
-                                <li>@Html.ActionLink("Mój profil", "Index", "MyProfile")</li>
-                            </ul>
-                        </li>
+                        <li>@Html.ActionLink("Moje ankiety", "Index", "EmpEvaluations")</li>
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("Manager"))
                     {
                         <li>@Html.ActionLink("Pracownicy", "Index", "MGEmployees")</li>
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("HR Manager"))
-                    { 
+                    {
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Organizacja<b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -83,7 +76,7 @@
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
-                       <li>@Html.ActionLink("Użytkownicy", "AdminUserList", "Admin")</li>
+                        <li>@Html.ActionLink("Użytkownicy", "AdminUserList", "Admin")</li>
                     }
                     <li>@Html.ActionLink("O pracy", "Contact", "Home")</li>
                 </ul>

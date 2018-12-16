@@ -163,7 +163,13 @@ namespace EmployeeEvaluation.Controllers
                 var tmpUesers = UserManager.Users.Where(u => u.UserName.Replace(" ","") == userName.Replace(" ", ""));
                 if (tmpUesers.Count() > 0) {
                     CreateUserEmployee createUserEmployee = new CreateUserEmployee();
-                    userName = createUserEmployee.ExtractFirstName(userName) + new String(' ', tmpUesers.Count() + 1) + createUserEmployee.ExtractLastName(userName);
+                    int cnt = 0;
+                    foreach (var u in tmpUesers)
+                    {
+                        int uc = u.UserName.Count(c => c == ' ');
+                        if (uc > cnt) cnt = uc;
+                    }
+                    userName = createUserEmployee.ExtractFirstName(userName) + new String(' ', cnt + 1) + createUserEmployee.ExtractLastName(userName);
                 }
 
                 var user = new ApplicationUser { UserName = userName, Email = model.Email };

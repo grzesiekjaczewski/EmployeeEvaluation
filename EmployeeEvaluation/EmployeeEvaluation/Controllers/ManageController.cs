@@ -7,6 +7,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EmployeeEvaluation.Models;
+using System.Data.Entity;
+using EmployeeEvaluation.Logic;
+using EmployeeEvaluation.Logic.SaveData;
 
 namespace EmployeeEvaluation.Controllers
 {
@@ -15,6 +18,7 @@ namespace EmployeeEvaluation.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _db = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -211,6 +215,69 @@ namespace EmployeeEvaluation.Controllers
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
+        }
+
+        public ActionResult ChangePersonalData()
+        {
+            var userId = User.Identity.GetUserId();
+            Employee employee = _db.T_Employees.Where(e => e.UserId == userId).FirstOrDefault();
+            if (employee == null) return View();
+
+            PersonalData personalData = new PersonalData()
+            {
+                Id = employee.Id,
+                UserId = userId,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                EMail = UserManager.FindById(userId.ToString()).Email,
+                ErrorMessage = ""
+            };
+
+            return View(personalData);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePersonalData([Bind(Include = "Id,UserId,FirstName,LastName,EMail")] PersonalData personalData)
+        {
+            var user = UserManager.FindById(personalData.UserId);
+            var tmpEmailUesers = UserManager.Users.Where(u => u.Email == personalData.EMail && u.Id != personalData.UserId);
+            if (tmpEmailUesers.Count() > 0)
+            {
+                personalData.ErrorMessage = "Podany email już jest już zajęty";
+                return View(personalData);
+            }
+
+            var userName = personalData.FirstName + " " + personalData.LastName;
+            var tmpUesers = UserManager.Users.Where(u => u.UserName.Replace(" ", "") == userName.Replace(" ", "") && u.Id != personalData.UserId);
+            var tmpUesers2 = UserManager.Users.Where(u => u.UserName.Replace(" ", "") == userName.Replace(" ", "") && u.Id == personalData.UserId);
+            if (tmpUesers.Count() > 0 && tmpUesers2.Count() == 0)
+            {
+                int cnt = 0;
+                foreach (var u in tmpUesers)
+                {
+                    int uc = u.UserName.Count(c => c == ' ');
+                    if (uc > cnt) cnt = uc;
+                }
+                userName = personalData.FirstName + new String(' ', cnt + 1) + personalData.LastName;
+            }
+            user.UserName = userName;
+            user.Email = personalData.EMail;
+            var result = UserManager.Update(user);
+
+            if (ModelState.IsValid)
+            {
+                Employee employee = _db.T_Employees.Where(e => e.UserId == personalData.UserId).FirstOrDefault();
+                employee.FirstName = personalData.FirstName;
+                employee.LastName = personalData.LastName;
+
+                _db.Entry(employee).State = EntityState.Modified;
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            personalData.ErrorMessage = "Coś poszło nie tak.";
+            return View(personalData);
         }
 
         //

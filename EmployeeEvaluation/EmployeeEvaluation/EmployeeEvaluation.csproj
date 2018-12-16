@@ -539,6 +539,7 @@
     <Content Include="Views\MGEmployees\AcceptedSurvey.cshtml" />
     <Content Include="Views\EmpEvaluations\AcceptedSurvey.cshtml" />
     <Content Include="Views\HRStructure\Structure.cshtml" />
+    <Content Include="Views\Manage\ChangePersonalData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

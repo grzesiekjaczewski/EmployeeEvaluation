@@ -42,7 +42,7 @@ namespace EmployeeEvaluation.Logic
             {
                 return userName.Substring(0, userName.IndexOf(" "));
             }
-            return "";
+            return userName;
         }
     }
 }

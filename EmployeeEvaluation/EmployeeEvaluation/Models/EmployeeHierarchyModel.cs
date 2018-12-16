@@ -6,6 +6,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeEvaluation.Models
 {
+    public class PersonalData
+    {
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        [Display(Name = "Imię")]
+        public string FirstName { get; set; }
+        [Display(Name = "Nazwisko")]
+        public string LastName { get; set; }
+        [Display(Name = "E-Mail")]
+        public string EMail { get; set; }
+        public string ErrorMessage { get; set; }
+
+    }
+
     public class Employee
     {
         public int Id { get; set; }
