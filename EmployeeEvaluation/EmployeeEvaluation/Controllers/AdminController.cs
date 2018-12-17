@@ -60,20 +60,38 @@ namespace EmployeeEvaluation.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public ActionResult AdminUserList()
+        public ActionResult AdminUserList(string id)
         {
             var userList = new List<UsersAndRights>();
-            var userListOrg = UserManager.Users.OrderBy(m => m.UserName).ToList();
-            foreach(var userListOrgItem in userListOrg)
+            if (id == null || id == "")
             {
-                UsersAndRights usersAndRights = new UsersAndRights();
-                usersAndRights.Id = userListOrgItem.Id;
-                usersAndRights.UserName = userListOrgItem.UserName;
-                usersAndRights.IsAdmin = UserManager.IsInRole(userListOrgItem.Id, "Admin");
-                usersAndRights.IsHRManager = UserManager.IsInRole(userListOrgItem.Id, "HR Manager");
-                usersAndRights.IsManager = UserManager.IsInRole(userListOrgItem.Id, "Manager");
-                usersAndRights.IsEmployee = UserManager.IsInRole(userListOrgItem.Id, "Pracownik");
-                userList.Add(usersAndRights);
+                var userListOrg = UserManager.Users.OrderBy(m => m.UserName).ToList();
+                foreach (var userListOrgItem in userListOrg)
+                {
+                    UsersAndRights usersAndRights = new UsersAndRights();
+                    usersAndRights.Id = userListOrgItem.Id;
+                    usersAndRights.UserName = userListOrgItem.UserName;
+                    usersAndRights.IsAdmin = UserManager.IsInRole(userListOrgItem.Id, "Admin");
+                    usersAndRights.IsHRManager = UserManager.IsInRole(userListOrgItem.Id, "HR Manager");
+                    usersAndRights.IsManager = UserManager.IsInRole(userListOrgItem.Id, "Manager");
+                    usersAndRights.IsEmployee = UserManager.IsInRole(userListOrgItem.Id, "Pracownik");
+                    userList.Add(usersAndRights);
+                }
+            }
+            else
+            {
+                var userListOrg = UserManager.Users.Where(m => m.UserName.ToLower().IndexOf(id.ToLower()) > -1).OrderBy(m => m.UserName).ToList();
+                foreach (var userListOrgItem in userListOrg)
+                {
+                    UsersAndRights usersAndRights = new UsersAndRights();
+                    usersAndRights.Id = userListOrgItem.Id;
+                    usersAndRights.UserName = userListOrgItem.UserName;
+                    usersAndRights.IsAdmin = UserManager.IsInRole(userListOrgItem.Id, "Admin");
+                    usersAndRights.IsHRManager = UserManager.IsInRole(userListOrgItem.Id, "HR Manager");
+                    usersAndRights.IsManager = UserManager.IsInRole(userListOrgItem.Id, "Manager");
+                    usersAndRights.IsEmployee = UserManager.IsInRole(userListOrgItem.Id, "Pracownik");
+                    userList.Add(usersAndRights);
+                }
             }
 
             return View(userList);

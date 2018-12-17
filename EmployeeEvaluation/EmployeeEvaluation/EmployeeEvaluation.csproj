@@ -461,6 +461,7 @@
     <Content Include="Scripts\myDeleteDialog.js" />
     <Content Include="Scripts\myEditDialog.js" />
     <Content Include="Scripts\myEditQuestionDialog.js" />
+    <Content Include="Scripts\myFilter.js" />
     <Content Include="Scripts\myHideShow.js" />
     <Content Include="Scripts\myPublishSurvey.js" />
     <Content Include="Scripts\mySurveyView.js" />
