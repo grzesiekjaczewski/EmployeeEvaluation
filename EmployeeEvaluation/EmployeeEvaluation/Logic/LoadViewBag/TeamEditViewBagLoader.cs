@@ -7,17 +7,23 @@ using System.Web.Mvc;
 
 namespace EmployeeEvaluation.Logic
 {
-    public class TeamEditViewBagLoader : IViewBagLoader
+    public class TeamEditViewBagLoader<T> : IViewBagExtendedLoader<T>
     {
+        public T Parameters { get; set; }
+
         public void Load(Controller controller, ApplicationDbContext db)
         {
-            controller.ViewBag.Managers = db.T_Employees
-                .OrderBy(n => n.FirstName + " " + n.LastName)
-                .Select(p => new SelectListItem
-                {
-                    Value = p.Id.ToString(),
-                    Text = p.FirstName + " " + p.LastName
-                });
+            List<string> managers = Parameters as List<string>;
+            var mgrs =
+           (from e in db.T_Employees
+            join m in managers on e.UserId equals m
+            select new SelectListItem
+            {
+                Value = e.Id.ToString(),
+                Text = e.FirstName + " " + e.LastName
+            }).ToList();
+
+            controller.ViewBag.Managers = mgrs;
         }
     }
 }

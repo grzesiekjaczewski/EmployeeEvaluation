@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using EmployeeEvaluation.Models;
 using EmployeeEvaluation.Logic;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace EmployeeEvaluation.Controllers
 {
@@ -15,13 +17,50 @@ namespace EmployeeEvaluation.Controllers
     [Authorize(Roles = "HR Manager")]
     public class HRTeamsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        private ApplicationDbContext _db = new ApplicationDbContext();
+
+        public HRTeamsController()
+        {
+        }
+
+        public HRTeamsController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
 
         // GET: HRTeams
         public ActionResult Index()
         {
             IPrepareView<List<TeamExtended>> prepareView = new PrepareTeamView<List<TeamExtended>>();
-            return View(prepareView.GetView(db));
+            return View(prepareView.GetView(_db));
         }
 
         // GET: HRTeams/Details/5
@@ -29,7 +68,7 @@ namespace EmployeeEvaluation.Controllers
         {
             IPrepareExtendedView<TeamStructure, int?> modelExtendedLoader = new PrepareTeamDeatilsView<TeamStructure, int?>();
             modelExtendedLoader.Parameters = id;
-            return View(modelExtendedLoader.GetView(db));
+            return View(modelExtendedLoader.GetView(_db));
         }
 
         // GET: HRTeams/Create
@@ -47,8 +86,8 @@ namespace EmployeeEvaluation.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.T_Teams.Add(team);
-                db.SaveChanges();
+                _db.T_Teams.Add(team);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -62,14 +101,25 @@ namespace EmployeeEvaluation.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Team team = db.T_Teams.Find(id);
+            Team team = _db.T_Teams.Find(id);
             if (team == null)
             {
                 return HttpNotFound();
             }
 
-            IViewBagLoader viewBagLoader = new TeamEditViewBagLoader();
-            viewBagLoader.Load(this, db);
+            List<string> managers = new List<string>();
+            var mgrs = UserManager.Users.ToList();
+            foreach (ApplicationUser au in mgrs)
+            {
+                if (UserManager.IsInRole(au.Id, "Manager"))
+                {
+                    managers.Add(au.Id);
+                }
+            }
+
+            IViewBagExtendedLoader<List<string>> viewBagLoader = new TeamEditViewBagLoader<List<string>>();
+            viewBagLoader.Parameters = managers;
+            viewBagLoader.Load(this, _db);
 
             return View(team);
         }
@@ -83,8 +133,8 @@ namespace EmployeeEvaluation.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(team).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(team).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(team);
@@ -93,11 +143,11 @@ namespace EmployeeEvaluation.Controllers
         // GET: HRTeams/Delete/5
         public ActionResult Delete(int? id)
         {
-            Team team = db.T_Teams.Find(id);
-            if (db.T_Employees.Where(e => e.TeamId == id).ToList().Count() == 0)
+            Team team = _db.T_Teams.Find(id);
+            if (_db.T_Employees.Where(e => e.TeamId == id).ToList().Count() == 0)
             {
-                db.T_Teams.Remove(team);
-                db.SaveChanges();
+                _db.T_Teams.Remove(team);
+                _db.SaveChanges();
             }
             return RedirectToAction("Index");
         }
@@ -107,7 +157,7 @@ namespace EmployeeEvaluation.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }
