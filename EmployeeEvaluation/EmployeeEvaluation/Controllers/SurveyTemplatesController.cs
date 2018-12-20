@@ -115,30 +115,13 @@ namespace EmployeeEvaluation.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: SurveyTemplates/Delete/5
-        public ActionResult Delete(int? id)
+        [Authorize(Roles = "HR Manager")]
+        public ActionResult DeleteSurvey(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SurveyTemplate surveyTemplate = db.T_SurveyTemplate.Find(id);
-            if (surveyTemplate == null)
-            {
-                return HttpNotFound();
-            }
-            return View(surveyTemplate);
-        }
-
-        // POST: SurveyTemplates/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            SurveyTemplate surveyTemplate = db.T_SurveyTemplate.Find(id);
-            db.T_SurveyTemplate.Remove(surveyTemplate);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+                SurveyTemplate surveyTemplate = db.T_SurveyTemplate.Find(id);
+                db.T_SurveyTemplate.Remove(surveyTemplate);
+                db.SaveChanges();
+                return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "HR Manager")]

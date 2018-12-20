@@ -7,9 +7,6 @@
 
 <h2>Oceny pracy</h2>
 
-<p>
-    @Html.ActionLink("Dodaj nową ocenę", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -30,8 +27,7 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edytuj", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Usuń", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.Id })
         </td>
     </tr>
 }

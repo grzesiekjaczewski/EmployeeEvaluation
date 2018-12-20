@@ -517,11 +517,8 @@
     <Content Include="Views\HRPositions\Edit.cshtml" />
     <Content Include="Views\HRPositions\Index.cshtml" />
     <Content Include="Views\SurveyTemplates\Create.cshtml" />
-    <Content Include="Views\SurveyTemplates\Delete.cshtml" />
     <Content Include="Views\SurveyTemplates\Edit.cshtml" />
     <Content Include="Views\SurveyTemplates\Index.cshtml" />
-    <Content Include="Views\HRRatings\Create.cshtml" />
-    <Content Include="Views\HRRatings\Delete.cshtml" />
     <Content Include="Views\HRRatings\Edit.cshtml" />
     <Content Include="Views\HRRatings\Index.cshtml" />
     <Content Include="Views\EmpEvaluations\Details.cshtml" />

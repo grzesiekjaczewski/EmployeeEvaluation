@@ -59,7 +59,8 @@
                 <a href="#" onclick="actionCopySurvey('@item.Id','actionSurveyName1','actionDisplayText1_@item.Id','/SurveyTemplates/CopySurvey')">Kopiuj</a><label>&nbsp;&nbsp;</label>
                 @if (item.PublishDate.Year < 1901)
                 {
-                    <label>&nbsp;&nbsp;</label>@Html.ActionLink(" Usuń", "Delete", new { id = item.Id })
+                    <label>&nbsp;&nbsp;</label><a href="#" onclick="actionDelete('@item.Id','ankietę','','/SurveyTemplates/DeleteSurvey/')">Usuń</a>
+                    @*<label>&nbsp;&nbsp;</label>@Html.ActionLink(" Usuń", "Delete", new { id = item.Id })*@
                 }
             </td>
         </tr>
@@ -109,8 +110,12 @@
         <img src='@Url.Content("~/Content/images/ajaxloader.gif")' />
     </div>
 </div>
+<div id="dialog-confirm" title="Usuwanie">
+    <p id="confirmchapter"><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy na pewno usunąć sekcję?</p>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/Scripts/myPublishSurvey.js")
     @Scripts.Render("~/Scripts/myCopySurvey.js")
+    @Scripts.Render("~/Scripts/myDeleteDialog.js")
 }
