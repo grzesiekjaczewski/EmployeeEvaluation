@@ -3,10 +3,6 @@
     ViewBag.Title = "Uprawnienia użytkownika";
 }
 <p class="under-menu"><br /></p>
-@*@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
-{
-    <p class="under-menu"><br /></p>
-}*@
 <h2>@ViewBag.Title</h2>
 @using (Html.BeginForm())
 {

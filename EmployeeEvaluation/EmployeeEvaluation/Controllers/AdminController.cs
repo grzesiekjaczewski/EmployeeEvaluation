@@ -126,33 +126,53 @@ namespace EmployeeEvaluation.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        public ActionResult Message()
+        {
+            ViewBag.Message = "Nie można usunąć jedynego adminstratora!";
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AdminUserRolesList(FormCollection forms)
         {
             var userId = Request["UserId"];
             var roles = _db.Roles.OrderBy(x => x.Name).ToList();
+            bool message = false;
+
+            int admins = 0;
+            foreach (var user in _db.Users)
+            {
+                if (UserManager.IsInRole(user.Id, "Admin"))
+                {
+                    admins++;
+                }
+            };
+
             foreach (var role in roles)
             {
                 var roleVal = Request[role.Name];
                 if (roleVal == null)
                 {
-                    UserManager.RemoveFromRole(userId, role.Name);
+                    if (role.Name != "Admin" || admins > 1)
+                    {
+                        UserManager.RemoveFromRole(userId, role.Name);
+                    }
+                    else
+                    {
+                        message = true;
+                    }
                 }
                 else
                 {
                     UserManager.AddToRole(userId, role.Name);
                 }
             }
-            return RedirectToAction("AdminUserList");
-        }
-
-        [Authorize(Roles = "Admin")]
-        public ActionResult Delete(Guid? id)
-        {
-            ApplicationUser user = UserManager.FindById(id.ToString());
-            UserManager.Delete(user);
-
+            if (message)
+            {
+                return RedirectToAction("Message");
+            }
             return RedirectToAction("AdminUserList");
         }
 

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<H2 style="color: red; font-weight: bold;">@ViewBag.Message</H2>
+
+<div class="col-md-offset-2 col-md-2">
+    @Html.ActionLink("Powrót do listy", "AdminUserList")
+</div>
+
