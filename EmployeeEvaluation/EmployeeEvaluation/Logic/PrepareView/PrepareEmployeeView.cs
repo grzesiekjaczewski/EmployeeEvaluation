@@ -33,7 +33,8 @@ namespace EmployeeEvaluation.Logic
                     FirstName = e.FirstName,
                     LastName = e.LastName,
                     UserId = e.UserId,
-                    Manager = mg.FirstName + " " + mg.LastName
+                    Manager = mg.FirstName + " " + mg.LastName,
+                    HireDate = e.HireDate
                 }).ToList();
 
 
@@ -52,7 +53,8 @@ namespace EmployeeEvaluation.Logic
                      LastName = e.LastName,
                      UserId = e.UserId,
                      EMail = u.Email,
-                     Manager = e.Manager
+                     Manager = e.Manager,
+                     HireDate = e.HireDate
                  }).ToList();
 
             return employeeList2 as T;

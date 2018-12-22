@@ -36,6 +36,10 @@ namespace EmployeeEvaluation.Models
         public string FirstName { get; set; }
         [Display(Name = "Nazwisko")]
         public string LastName { get; set; }
+        [Display(Name = "Data zatrudnienia")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime HireDate { get; set; }
+
     }
 
     public class EmployeeExtended
@@ -58,6 +62,9 @@ namespace EmployeeEvaluation.Models
         public bool IsManager { get; set; }
         [Display(Name = "Menadżer")]
         public string Manager { get; set; }
+        [Display(Name = "Data zatrudnienia")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime HireDate { get; set; }
         [Display(Name = "Status")]
         public int Status { get; set; }
     }

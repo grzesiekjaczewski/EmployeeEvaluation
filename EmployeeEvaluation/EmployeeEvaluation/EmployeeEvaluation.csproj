@@ -398,6 +398,18 @@
     <Compile Include="Migrations\201811241955260_HRSurveyComment.Designer.cs">
       <DependentUpon>201811241955260_HRSurveyComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812221720193_Hire Date.cs" />
+    <Compile Include="Migrations\201812221720193_Hire Date.Designer.cs">
+      <DependentUpon>201812221720193_Hire Date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812221743008_Hire Date 1.cs" />
+    <Compile Include="Migrations\201812221743008_Hire Date 1.Designer.cs">
+      <DependentUpon>201812221743008_Hire Date 1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812221758232_Hire Date 3.cs" />
+    <Compile Include="Migrations\201812221758232_Hire Date 3.Designer.cs">
+      <DependentUpon>201812221758232_Hire Date 3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
     <Compile Include="Models\EvaluationModel.cs" />
@@ -661,6 +673,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811241955260_HRSurveyComment.resx">
       <DependentUpon>201811241955260_HRSurveyComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812221720193_Hire Date.resx">
+      <DependentUpon>201812221720193_Hire Date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812221743008_Hire Date 1.resx">
+      <DependentUpon>201812221743008_Hire Date 1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812221758232_Hire Date 3.resx">
+      <DependentUpon>201812221758232_Hire Date 3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
