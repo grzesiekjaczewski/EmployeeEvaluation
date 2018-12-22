@@ -67,6 +67,9 @@ namespace EmployeeEvaluation.Models
         public DateTime HireDate { get; set; }
         [Display(Name = "Status")]
         public int Status { get; set; }
+        [Display(Name = "Status")]
+        public string StatusName { get; set; }
+
     }
 
     public class ManagerStructure
