@@ -130,7 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EmployeeEvaluation\EmployeeEvaluation.csproj">
-      <Project>{6652CB53-B479-4411-BF45-429A9A4B67E5}</Project>
+      <Project>{6652cb53-b479-4411-bf45-429a9a4b67e5}</Project>
       <Name>EmployeeEvaluation</Name>
     </ProjectReference>
   </ItemGroup>

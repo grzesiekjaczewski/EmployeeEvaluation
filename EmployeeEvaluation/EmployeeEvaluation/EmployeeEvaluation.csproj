@@ -410,6 +410,10 @@
     <Compile Include="Migrations\201812221758232_Hire Date 3.Designer.cs">
       <DependentUpon>201812221758232_Hire Date 3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812222309370_Hire Date 4.cs" />
+    <Compile Include="Migrations\201812222309370_Hire Date 4.Designer.cs">
+      <DependentUpon>201812222309370_Hire Date 4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmployeeHierarchyModel.cs" />
     <Compile Include="Models\EvaluationModel.cs" />
@@ -682,6 +686,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812221758232_Hire Date 3.resx">
       <DependentUpon>201812221758232_Hire Date 3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812222309370_Hire Date 4.resx">
+      <DependentUpon>201812222309370_Hire Date 4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

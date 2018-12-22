@@ -14,7 +14,7 @@ namespace EmployeeEvaluation.Tests.Logic
     {
 
         private ApplicationDbContext db = new ApplicationDbContext();
-        string userId = "4ccecfe3-3cc1-4a66-b660-f46a010041a2";
+        //string userId = "4ccecfe3-3cc1-4a66-b660-f46a010041a2";
 
         [TestMethod]
         public void CanLoadStructure()
@@ -34,72 +34,33 @@ namespace EmployeeEvaluation.Tests.Logic
         }
 
         [TestMethod]
-        public void CanLoadMGEmployee()
+        public void CanLoadTeamView()
         {
-            arrangeMGEmployee();
+            arrangeStructure();
 
-            IPrepareExtendedView<List<EmployeeExtended>, string> prepareStartSurveyView = new PrepareManagerEmployeeView<List<EmployeeExtended>, string>();
-            prepareStartSurveyView.Parameters = userId;
-            List<EmployeeExtended> employees = prepareStartSurveyView.GetView(db);
+            IPrepareView<List<TeamExtended>> prepareView = new PrepareTeamView<List<TeamExtended>>();
+            List<TeamExtended> teams = prepareView.GetView(db);
 
-            Assert.AreEqual(employees[0].FirstName, "Krzysztof");
+            Assert.AreEqual(teams[0].Name, "Dyrekcja generalna");
+            Assert.AreEqual(teams[1].Name, "Team 1");
+            Assert.AreEqual(teams.Count, 4);
         }
 
-        private void arrangeMGEmployee()
+
+        [TestMethod]
+        public void CanLoadPositionView()
         {
-            Position position = new Position()
-            {
-                Id = 2,
-                Name = "Tester",
-                Employees = new List<Employee>()
-            };
+            arrangeStructure();
 
-            Position manPos = new Position()
-            {
-                Id = 3,
-                Name = "Kierownik",
-                Employees = new List<Employee>()
-            };
+            IPrepareView<List<PositionExtended>> prepareView = new PreparePositionView<List<PositionExtended>>();
+            List<PositionExtended> positions = prepareView.GetView(db);
 
-            Team team = new Team()
-            {
-                Id = 2,
-                Name = "Dział testów",
-                ManagerId = 3,
-                Employees = new List<Employee>()
-            };
-
-            Employee manager = new Employee()
-            {
-                Id = 3,
-                FirstName = "Kaska",
-                LastName = "Jaczewska",
-                UserId = userId,
-                PositionId = 3
-            };
-
-            Employee emp = new Employee()
-            {
-                Id = 2,
-                FirstName = "Krzysztof",
-                LastName = "Jarzyna",
-                PositionId = 2,
-                TeamId = 2
-            };
-
-            List<Team> t = new List<Team>() { team };
-            List<Position> p = new List<Position>() { position, manPos };
-            List<Employee> e = new List<Employee>() { emp , manager };
-
-            var mockSetT = SetupMock(t);
-            var mockSetP = SetupMock(p);
-            var mockSetE = SetupMock(e);
-
-            db.T_Teams = mockSetT.Object;
-            db.T_Positions = mockSetP.Object;
-            db.T_Employees = mockSetE.Object;
-
+            Assert.AreEqual(positions[0].Name, "Brygadzista");
+            Assert.AreEqual(positions[1].Name, "CEO");
+            Assert.AreEqual(positions.Count, 4);
         }
+
+
 
         private void arrangeStructure()
         {

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeEvaluation.Models
@@ -69,7 +67,6 @@ namespace EmployeeEvaluation.Models
         public int Status { get; set; }
         [Display(Name = "Status")]
         public string StatusName { get; set; }
-
     }
 
     public class ManagerStructure
