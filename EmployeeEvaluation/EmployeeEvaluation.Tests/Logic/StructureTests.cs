@@ -14,7 +14,17 @@ namespace EmployeeEvaluation.Tests.Logic
     {
 
         private ApplicationDbContext db = new ApplicationDbContext();
-        //string userId = "4ccecfe3-3cc1-4a66-b660-f46a010041a2";
+        string userId = "4ccecfe3-3cc1-4a66-b660-f46a010041a2";
+
+        [TestMethod]
+        public void CanLoadMGEmployee()
+        {
+            arrangeMGEmployee();
+            IPrepareExtendedView<List<EmployeeExtended>, string> prepareStartSurveyView = new PrepareManagerEmployeeView<List<EmployeeExtended>, string>();
+            prepareStartSurveyView.Parameters = userId;
+            List<EmployeeExtended> employees = prepareStartSurveyView.GetView(db);
+            Assert.AreEqual(employees[0].FirstName, "Krzysztof");
+        }
 
         [TestMethod]
         public void CanLoadStructure()
@@ -212,7 +222,70 @@ namespace EmployeeEvaluation.Tests.Logic
             db.T_Employees = mockSetE.Object;
         }
 
-        private Mock<DbSet<T>> SetupMock<T>(IList<T> entities) where T : class
+        private void arrangeMGEmployee()
+        {
+            Position position = new Position()
+            {
+                Id = 2,
+                Name = "Tester",
+                Employees = new List<Employee>()
+            };
+
+            Position manPos = new Position()
+            {
+                Id = 3,
+                Name = "Kierownik",
+                Employees = new List<Employee>()
+            };
+
+            Team team = new Team()
+            {
+                Id = 2,
+                Name = "Dział testów",
+                ManagerId = 3,
+                Employees = new List<Employee>()
+            };
+
+            Employee manager = new Employee()
+            {
+                Id = 3,
+                FirstName = "Kaska",
+                LastName = "Jaczewska",
+                UserId = userId,
+                PositionId = 3
+            };
+
+            Employee emp = new Employee()
+            {
+                Id = 2,
+                FirstName = "Krzysztof",
+                LastName = "Jarzyna",
+                PositionId = 2,
+                TeamId = 2
+            };
+
+            Survey serv = new Survey()
+            {
+
+            };
+
+            List<Team> t = new List<Team>() { team };
+            List<Position> p = new List<Position>() { position, manPos };
+            List<Employee> e = new List<Employee>() { emp, manager };
+            List<Survey> s = new List<Survey>() { serv };
+
+            var mockSetT = SetupMock(t);
+            var mockSetP = SetupMock(p);
+            var mockSetE = SetupMock(e);
+            var mockSetS = SetupMock(s);
+
+            db.T_Teams = mockSetT.Object;
+            db.T_Positions = mockSetP.Object;
+            db.T_Employees = mockSetE.Object;
+            db.T_Survey = mockSetS.Object;
+        }
+
+            private Mock<DbSet<T>> SetupMock<T>(IList<T> entities) where T : class
         {
             var mockSet = new Mock<DbSet<T>>();
             mockSet.As<IQueryable<T>>().Setup(m => m.Provider).Returns(entities.AsQueryable().Provider);
