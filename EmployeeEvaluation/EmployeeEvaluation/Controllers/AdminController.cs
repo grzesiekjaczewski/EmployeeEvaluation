@@ -159,7 +159,7 @@ namespace EmployeeEvaluation.Controllers
                     {
                         UserManager.RemoveFromRole(userId, role.Name);
                     }
-                    else
+                    if (role.Name == "Admin" && admins <= 1 && UserManager.IsInRole(userId, "Admin"))
                     {
                         message = true;
                     }
