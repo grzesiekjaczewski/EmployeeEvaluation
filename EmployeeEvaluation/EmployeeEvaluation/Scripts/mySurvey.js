@@ -225,8 +225,8 @@ function actionNextSection(surveyId, controller) {
         cache: false,
         success: function (data) {
             complite(data);
-            $('#nextSectionQuestionBtn').show();
             $('#prevSectionBtn').show();
+            $('#nextSectionQuestionBtn').show();
         },
         error: function (xhr) {
             alert('coś poszło nie tak');
@@ -365,8 +365,8 @@ function actionSectionHeader(surveyId, controller) {
         cache: false,
         success: function (data) {
             complite(data);
-            $('#nextSectionQuestionBtn').show();
             $('#prevSectionBtn').show();
+            $('#nextSectionQuestionBtn').show();
         },
         error: function (xhr) {
             alert('coś poszło nie tak');
