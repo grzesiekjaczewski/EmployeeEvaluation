@@ -215,8 +215,6 @@ function actionNextSection(surveyId, controller) {
     
     $('#startSectionBtn').hide();
     $('#firstNextSectionBtn').hide();
-    $('#nextSectionQuestionBtn').show();
-    $('#prevSectionBtn').show();
     initialise(surveyId);
     $.ajax({
         type: "post",
@@ -227,6 +225,8 @@ function actionNextSection(surveyId, controller) {
         cache: false,
         success: function (data) {
             complite(data);
+            $('#nextSectionQuestionBtn').show();
+            $('#prevSectionBtn').show();
         },
         error: function (xhr) {
             alert('coś poszło nie tak');
@@ -355,8 +355,6 @@ function actionSectionHeader(surveyId, controller) {
 
     $('#startSectionBtn').hide();
     $('#firstNextSectionBtn').hide();
-    $('#nextSectionQuestionBtn').show();
-    $('#prevSectionBtn').show();
     initialise(surveyId);
     $.ajax({
         type: "post",
@@ -367,6 +365,8 @@ function actionSectionHeader(surveyId, controller) {
         cache: false,
         success: function (data) {
             complite(data);
+            $('#nextSectionQuestionBtn').show();
+            $('#prevSectionBtn').show();
         },
         error: function (xhr) {
             alert('coś poszło nie tak');
