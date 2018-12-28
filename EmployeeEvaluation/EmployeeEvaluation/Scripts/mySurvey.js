@@ -374,7 +374,7 @@ function actionSectionHeader(surveyId, controller) {
     });
 }
 
-function actionCompleteSurvey(surveyId, controller) {
+function actionCompleteSurvey(surveyId, controller, destination) {
     initialise(surveyId);
     $.ajax({
         type: "post",
@@ -384,7 +384,7 @@ function actionCompleteSurvey(surveyId, controller) {
         datatype: "JSON",
         cache: false,
         success: function (data) {
-            document.location.href = "/EmpEvaluations/Index";
+            document.location.href = destination;
         },
         error: function (xhr) {
             alert('coś poszło nie tak');
