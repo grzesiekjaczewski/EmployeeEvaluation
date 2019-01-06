@@ -5,6 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    int employeeSum = 0;
+    int managerSum = 0;
+    int cnt = 0;
+    decimal employeeAvg = 0;
+    decimal managerAvg = 0;
+    int employeeTotalSum = 0;
+    int managerTotalSum = 0;
+    int cntTotal = 0;
+    decimal employeeTotalAvg = 0;
+    decimal managerTotalAvg = 0;
+
+}
+
 <h2>Ankieta oceny okresowej pracownika</h2>
 
 @using (Html.BeginForm())
@@ -36,6 +50,13 @@
             <table class="customTable main">
                 @foreach (var surveyPart in Model.Survey.SurveyParts)
                 {
+                    {
+                        employeeSum = 0;
+                        managerSum = 0;
+                        employeeAvg = 0;
+                        managerAvg = 0;
+                        cnt = 0;
+                    }
                     <tr>
                         <td width="40%">
                             @Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
@@ -66,23 +87,23 @@
                                     <tr>
                                         <td width="40%">
                                             @Html.DisplayFor(modelItem => Model.SurveyTemplate
-                                                                            .SurveyPartTemplates
-                                                                            .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
-                                                                            .ToList()[0]
-                                                                            .SurveyQuestionTemplates
-                                                                            .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
-                                                                            .ToList()[0]
-                                                                            .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                              .SurveyPartTemplates
+                                              .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                              .ToList()[0]
+                                              .SurveyQuestionTemplates
+                                              .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                              .ToList()[0]
+                                              .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                         </td>
                                         <td colspan="@questionType">
                                             @Html.DisplayFor(modelItem => Model.SurveyTemplate
-                                                                            .SurveyPartTemplates
-                                                                            .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
-                                                                            .ToList()[0]
-                                                                            .SurveyQuestionTemplates
-                                                                            .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
-                                                                            .ToList()[0]
-                                                                            .Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                              .SurveyPartTemplates
+                                              .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                              .ToList()[0]
+                                              .SurveyQuestionTemplates
+                                              .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                              .ToList()[0]
+                                              .Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                         </td>
                                         @if (questionType == 1)
                                         {
@@ -92,6 +113,12 @@
                                             <td width="10%">
                                                 <div>@surveyQuestion.ManagerScore</div>
                                             </td>
+                                            employeeSum += @surveyQuestion.EmployeeScore;
+                                            managerSum += @surveyQuestion.ManagerScore;
+                                            cnt += 1;
+                                            employeeTotalSum += @surveyQuestion.EmployeeScore;
+                                            managerTotalSum += @surveyQuestion.ManagerScore;
+                                            cntTotal += 1;
                                         }
                                     </tr>
                                     <tr>
@@ -117,10 +144,64 @@
                                         }
                                     </tr>
                                 }
+                                @if (cnt > 0)
+                                {
+                                    employeeAvg = decimal.Round((decimal)employeeSum / (decimal)cnt, 2);
+                                    managerAvg = decimal.Round((decimal)managerSum / (decimal)cnt, 2);
+                                }
+                                <tr>
+                                    <td colspan="2" bgcolor="lightgrey">
+                                        <p><b>Podsumowanie sekcji</b></p>
+                                    </td>
+                                    <td bgcolor="lightgrey">
+                                        <p>@employeeSum</p>
+                                    </td>
+                                    <td bgcolor="lightgrey">
+                                        <p>@managerSum</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" bgcolor="lightgrey">
+                                        <p><b>Średnia sekcji</b></p>
+                                    </td>
+                                    <td bgcolor="lightgrey">
+                                        <p>@employeeAvg</p>
+                                    </td>
+                                    <td bgcolor="lightgrey">
+                                        <p>@managerAvg</p>
+                                    </td>
+                                </tr>
                             </table>
                         </td>
                     </tr>
                 }
+                @if (cntTotal > 0)
+                {
+                    employeeTotalAvg = decimal.Round((decimal)employeeTotalSum / (decimal)cntTotal, 2);
+                    managerTotalAvg = decimal.Round((decimal)managerTotalSum / (decimal)cntTotal, 2);
+                }
+                <tr>
+                    <td colspan="2" bgcolor="lightgrey">
+                        <p><b>Podsumowanie ankiety</b></p>
+                    </td>
+                    <td bgcolor="lightgrey">
+                        <p>@employeeTotalSum</p>
+                    </td>
+                    <td bgcolor="lightgrey">
+                        <p>@managerTotalSum</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="lightgrey">
+                        <p><b>Średnia ankiety</b></p>
+                    </td>
+                    <td bgcolor="lightgrey">
+                        <p>@employeeTotalAvg</p>
+                    </td>
+                    <td bgcolor="lightgrey">
+                        <p>@managerTotalAvg</p>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <p>Komentarz HR menadżera</p>
@@ -135,9 +216,13 @@
     </div>
 }
 
-<div class="form-group">
-    @Html.ActionLink("Powrót do listy", "Index")
-</div>
+    <div class="form-group">
+        @Html.ActionLink("Drukuj", "ViewSurvey", new { id = @Model.Survey.Id })
+    </div>
+
+    <div class="form-group">
+        @Html.ActionLink("Powrót do listy", "Index")
+    </div>
 
 
 
