@@ -99,34 +99,71 @@ namespace EmployeeEvaluation.Logic.PDF
             {
                 PdfPTable tbl = new PdfPTable(new float[] { 0.4f, 0.4f, 0.1f, 0.1f });
 
-                tbl.AddCell(new Phrase(browseSurvey.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].Name, normal));
-                tbl.AddCell(new Phrase(browseSurvey.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].SummaryTitle, normal));
-                tbl.AddCell(new Phrase("Samoocena pracownika", normal));
-                tbl.AddCell(new Phrase("Ocena menadżera", normal));
+                tbl.AddCell(new Phrase(browseSurvey.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].Name, bold));
+                tbl.AddCell(new Phrase(browseSurvey.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].SummaryTitle, bold));
+                tbl.AddCell(new Phrase("Samoocena pracownika", bold));
+                tbl.AddCell(new Phrase("Ocena menadżera", bold));
 
                 foreach (var surveyQuestion in surveyPart.SurveyQuestions)
                 {
-                    tbl.AddCell(new Phrase(browseSurvey.SurveyTemplate
-                                              .SurveyPartTemplates
-                                              .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
-                                              .ToList()[0]
-                                              .SurveyQuestionTemplates
-                                              .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
-                                              .ToList()[0]
-                                              .Name, normal));
-                    tbl.AddCell(new Phrase(browseSurvey.SurveyTemplate
-                                              .SurveyPartTemplates
-                                              .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
-                                              .ToList()[0]
-                                              .SurveyQuestionTemplates
-                                              .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
-                                              .ToList()[0]
-                                              .Definition, normal));
-                    tbl.AddCell(new Phrase(surveyQuestion.EmployeeScore.ToString(), normal));
-                    tbl.AddCell(new Phrase(surveyQuestion.ManagerScore.ToString(), normal));
+                    int questionType = browseSurvey.SurveyTemplate
+                                    .SurveyPartTemplates
+                                    .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                    .ToList()[0]
+                                    .SurveyQuestionTemplates
+                                    .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                    .ToList()[0]
+                                    .QuestionType;
 
+                    tbl.AddCell(new Phrase(browseSurvey.SurveyTemplate
+                                                .SurveyPartTemplates
+                                                .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                                .ToList()[0]
+                                                .SurveyQuestionTemplates
+                                                .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                                .ToList()[0]
+                                                .Name, normal));
+                    if (questionType == 1)
+                    {
+
+                        tbl.AddCell(new Phrase(browseSurvey.SurveyTemplate
+                                                  .SurveyPartTemplates
+                                                  .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                                  .ToList()[0]
+                                                  .SurveyQuestionTemplates
+                                                  .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                                  .ToList()[0]
+                                                  .Definition, normal));
+                        tbl.AddCell(new Phrase(surveyQuestion.EmployeeScore.ToString(), normal));
+                        tbl.AddCell(new Phrase(surveyQuestion.ManagerScore.ToString(), normal));
+                    }
+                    else
+                    {
+                        var cell = new PdfPCell(new Phrase(browseSurvey.SurveyTemplate
+                                                  .SurveyPartTemplates
+                                                  .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                                  .ToList()[0]
+                                                  .SurveyQuestionTemplates
+                                                  .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                                  .ToList()[0]
+                                                  .Definition, normal));
+                        cell.Colspan = 3;
+                        tbl.AddCell(cell);
+
+                        tbl.AddCell(new Phrase("Komentarz pracownika", normal));
+                        cell = new PdfPCell(new Phrase(surveyQuestion.EmployeeComment, normal));
+                        cell.Colspan = 3;
+                        tbl.AddCell(cell);
+                                                
+                        tbl.AddCell(new Phrase("Komentarz menadżera", normal));
+                        cell = new PdfPCell(new Phrase(surveyQuestion.ManagerComment, normal));
+                        cell.Colspan = 3;
+                        tbl.AddCell(cell);
+
+                    }
                 }
                 doc.Add(tbl);
+
                 doc.Add(Chunk.NEWLINE);
             }
         }

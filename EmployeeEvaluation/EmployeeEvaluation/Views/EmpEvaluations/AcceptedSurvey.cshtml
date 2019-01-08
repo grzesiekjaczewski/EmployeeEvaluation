@@ -63,37 +63,50 @@
                                     .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
                                     .ToList()[0]
                                     .QuestionType;
-                                    <tr>
-                                        <td width="40%">
+                                <tr>
+                                    <td width="40%">
+                                        @Html.DisplayFor(modelItem => Model.SurveyTemplate
+                                                                        .SurveyPartTemplates
+                                                                        .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                                                        .ToList()[0]
+                                                                        .SurveyQuestionTemplates
+                                                                        .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                                                        .ToList()[0]
+                                                                        .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                    </td>
+                                    @if (questionType == 1)
+                                    {
+                                        <td>
                                             @Html.DisplayFor(modelItem => Model.SurveyTemplate
-                                                                            .SurveyPartTemplates
-                                                                            .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
-                                                                            .ToList()[0]
-                                                                            .SurveyQuestionTemplates
-                                                                            .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
-                                                                            .ToList()[0]
-                                                                            .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                              .SurveyPartTemplates
+                                              .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                              .ToList()[0]
+                                              .SurveyQuestionTemplates
+                                              .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                              .ToList()[0]
+                                              .Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                         </td>
-                                        <td colspan="@questionType">
+                                        <td width="10%">
+                                            <div>@surveyQuestion.EmployeeScore</div>
+                                        </td>
+                                        <td width="10%">
+                                            <div>@surveyQuestion.ManagerScore</div>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td colspan="3">
                                             @Html.DisplayFor(modelItem => Model.SurveyTemplate
-                                                                            .SurveyPartTemplates
-                                                                            .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
-                                                                            .ToList()[0]
-                                                                            .SurveyQuestionTemplates
-                                                                            .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
-                                                                            .ToList()[0]
-                                                                            .Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                              .SurveyPartTemplates
+                                              .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                              .ToList()[0]
+                                              .SurveyQuestionTemplates
+                                              .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                              .ToList()[0]
+                                              .Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                         </td>
-                                        @if (questionType == 1)
-                                        {
-                                            <td width="10%">
-                                                <div>@surveyQuestion.EmployeeScore</div>
-                                            </td>
-                                            <td width="10%">
-                                                <div>@surveyQuestion.ManagerScore</div>
-                                            </td>
-                                        }
-                                    </tr>
+                                    }
+                                </tr>
                                     <tr>
                                         @if (questionType == 2)
                                         {

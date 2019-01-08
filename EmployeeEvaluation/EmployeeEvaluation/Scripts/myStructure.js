@@ -2,7 +2,7 @@
 var context;
 var levelX;
 var levelY;
-var manager;
+var managers = ['','','','','','','','','','','','','','',''];
 var parentY = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 function myStructure(structure) {
@@ -24,7 +24,7 @@ function myPerson(person) {
     );
     parentY[levelX] = levelY;
     levelX++;
-    manager = person.FirstName + " " + person.LastName;
+    managers[levelX] = person.FirstName + " " + person.LastName;
     person.Teams.forEach(myTeams);
     levelX--;
 }
@@ -38,7 +38,7 @@ function myTeams(team) {
     context.fillText(team.Name, x + 10, y + 40);
 
     context.font = "18px Arial bold italic";
-    context.fillText(manager, x + 10, y + 63);
+    context.fillText(managers[levelX], x + 10, y + 63);
     context.fillStyle = "black";
     levelY++;
 
@@ -49,16 +49,7 @@ function myTeams(team) {
     context.lineTo(x - 10, y + 50);
     context.stroke();
 
-    //var prevX = levelX;
-    //var prevY = levelY;
-
     team.Persons.forEach(myPerson);
-
-    //context.strokeStyle = "#FF0000";
-    //context.beginPath();
-    //context.moveTo(prevX * 250 - 50, prevY * 80 + 10);
-    //context.lineTo(levelX * 250 - 50, (levelY) * 80 + 10);
-    //context.stroke();
 }
 
 
