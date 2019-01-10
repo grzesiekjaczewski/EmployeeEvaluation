@@ -7,7 +7,6 @@ using iTextSharp.text;
 using System.IO;
 using EmployeeEvaluation.Models;
 using iTextSharp.text.pdf.draw;
-//using System.Drawing;
 
 namespace EmployeeEvaluation.Logic.PDF
 {
@@ -168,7 +167,7 @@ namespace EmployeeEvaluation.Logic.PDF
             }
         }
 
-            public byte[] CreatePdf(BrowseSurvey browseSurvey, Employee employee, Team team, Position position)
+        public byte[] CreatePdf(BrowseSurvey browseSurvey, Employee employee, Team team, Position position)
         {
             Rectangle pagesize = new Rectangle(20, 20, PageSize.A4.Width, PageSize.A4.Height);
             Document doc = new Document(pagesize, 10, 10, 50, 10);
