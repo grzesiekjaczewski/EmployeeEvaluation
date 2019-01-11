@@ -78,7 +78,10 @@
                     {
                         <li>@Html.ActionLink("Użytkownicy", "AdminUserList", "Admin")</li>
                     }
-                    <li>@Html.ActionLink("O pracy", "Contact", "Home")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("O pracy", "Contact", "Home")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -92,7 +92,16 @@ namespace EmployeeEvaluation.Logic.PDF
 
         private void surveyBody(Document doc, BrowseSurvey browseSurvey)
         {
-            
+            int employeeSum = 0;
+            int managerSum = 0;
+            int cnt = 0;
+            decimal employeeAvg = 0;
+            decimal managerAvg = 0;
+            int employeeTotalSum = 0;
+            int managerTotalSum = 0;
+            int cntTotal = 0;
+            decimal employeeTotalAvg = 0;
+            decimal managerTotalAvg = 0;
 
             foreach (var surveyPart in browseSurvey.Survey.SurveyParts)
             {
@@ -103,8 +112,15 @@ namespace EmployeeEvaluation.Logic.PDF
                 tbl.AddCell(new Phrase("Samoocena pracownika", bold));
                 tbl.AddCell(new Phrase("Ocena menadżera", bold));
 
+                employeeSum = 0;
+                managerSum = 0;
+                employeeAvg = 0;
+                managerAvg = 0;
+                cnt = 0;
+
                 foreach (var surveyQuestion in surveyPart.SurveyQuestions)
                 {
+
                     int questionType = browseSurvey.SurveyTemplate
                                     .SurveyPartTemplates
                                     .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
@@ -135,6 +151,13 @@ namespace EmployeeEvaluation.Logic.PDF
                                                   .Definition, normal));
                         tbl.AddCell(new Phrase(surveyQuestion.EmployeeScore.ToString(), normal));
                         tbl.AddCell(new Phrase(surveyQuestion.ManagerScore.ToString(), normal));
+
+                        employeeSum += surveyQuestion.EmployeeScore;
+                        managerSum += surveyQuestion.ManagerScore;
+                        cnt += 1;
+                        employeeTotalSum += surveyQuestion.EmployeeScore;
+                        managerTotalSum += surveyQuestion.ManagerScore;
+                        cntTotal += 1;
                     }
                     else
                     {
@@ -158,13 +181,51 @@ namespace EmployeeEvaluation.Logic.PDF
                         cell = new PdfPCell(new Phrase(surveyQuestion.ManagerComment, normal));
                         cell.Colspan = 3;
                         tbl.AddCell(cell);
-
                     }
                 }
+
+                if (cnt > 0)
+                {
+                    employeeAvg = decimal.Round((decimal)employeeSum / (decimal)cnt, 2);
+                    managerAvg = decimal.Round((decimal)managerSum / (decimal)cnt, 2);
+                }
+
+                var cell1 = new PdfPCell(new Phrase("Podsumowanie sekcji", normal));
+                cell1.Colspan = 2;
+                tbl.AddCell(cell1);
+
+                tbl.AddCell(new Phrase(employeeSum.ToString(), normal));
+                tbl.AddCell(new Phrase(managerSum.ToString(), normal));
+
+                cell1 = new PdfPCell(new Phrase("Średnia sekcji", normal));
+                cell1.Colspan = 2;
+                tbl.AddCell(cell1);
+
+                tbl.AddCell(new Phrase(employeeAvg.ToString(), normal));
+                tbl.AddCell(new Phrase(managerAvg.ToString(), normal));
+
                 doc.Add(tbl);
 
                 doc.Add(Chunk.NEWLINE);
             }
+
+            if(cntTotal > 0)
+            {
+                employeeTotalAvg = decimal.Round((decimal)employeeTotalSum / (decimal)cntTotal, 2);
+                managerTotalAvg = decimal.Round((decimal)managerTotalSum / (decimal)cntTotal, 2);
+            }
+
+            PdfPTable tblf = new PdfPTable(new float[] { 0.8f, 0.1f, 0.1f });
+
+            tblf.AddCell(new Phrase("Podsumowanie ankiety", normal));
+            tblf.AddCell(new Phrase(employeeTotalSum.ToString(), normal));
+            tblf.AddCell(new Phrase(managerTotalSum.ToString(), normal));
+
+            tblf.AddCell(new Phrase("Średnia ankiety", normal));
+            tblf.AddCell(new Phrase(employeeTotalAvg.ToString(), normal));
+            tblf.AddCell(new Phrase(managerTotalAvg.ToString(), normal));
+
+            doc.Add(tblf);
         }
 
         public byte[] CreatePdf(BrowseSurvey browseSurvey, Employee employee, Team team, Position position)
