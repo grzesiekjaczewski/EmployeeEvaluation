@@ -20,6 +20,7 @@ namespace EmployeeEvaluation.Controllers
             return View();
         }
 
+        [Authorize(Roles = "HR Manager,Admin,Manager,Pracownik")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

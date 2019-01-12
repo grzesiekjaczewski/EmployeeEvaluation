@@ -33,5 +33,15 @@ namespace EmployeeEvaluation.Tests.IntegrationTests
             Assert.IsNotNull(structure);
         }
 
+        [TestMethod]
+        public void CanPrepareEmployeeView()
+        {
+            IPrepareView<List<EmployeeExtended>> prepareView = new PrepareEmployeeView<List<EmployeeExtended>>();
+            List<EmployeeExtended> view = prepareView.GetView(db);
+
+            Assert.IsNotNull(view);
+        }
+
+
     }
 }

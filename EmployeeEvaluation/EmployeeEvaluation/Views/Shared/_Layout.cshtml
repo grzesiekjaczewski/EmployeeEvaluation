@@ -78,7 +78,7 @@
                     {
                         <li>@Html.ActionLink("Użytkownicy", "AdminUserList", "Admin")</li>
                     }
-                    @if (Request.IsAuthenticated)
+                    @if (Request.IsAuthenticated && (User.IsInRole("HR Manager") || User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Pracownik")))
                     {
                         <li>@Html.ActionLink("O pracy", "Contact", "Home")</li>
                     }
