@@ -214,6 +214,7 @@
     <Compile Include="Logic\CheckData\ICheckData.cs" />
     <Compile Include="Logic\Common\CreateUserEmployee.cs" />
     <Compile Include="Logic\LoadViewBag\EmployeeEditViewBagLoader.cs" />
+    <Compile Include="Logic\PDF\Footer.cs" />
     <Compile Include="Logic\PDF\PdfUtil.cs" />
     <Compile Include="Logic\PrepareView\IPrepareExtendedView.cs" />
     <Compile Include="Logic\PrepareView\IPrepareView.cs" />

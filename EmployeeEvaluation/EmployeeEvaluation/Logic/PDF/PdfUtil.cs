@@ -12,6 +12,7 @@ namespace EmployeeEvaluation.Logic.PDF
 {
     public class PdfUtil
     {
+        Font small;
         Font normal;
         Font bold;
         Font big;
@@ -25,7 +26,7 @@ namespace EmployeeEvaluation.Logic.PDF
             bold = new Font(calibri, 8f, Font.BOLD, BaseColor.BLACK);
             big = new Font(calibri, 12f, Font.NORMAL, BaseColor.BLACK);
             bigBold = new Font(calibri, 12f, Font.BOLD, BaseColor.BLACK);
-
+            small = new Font(calibri, 6f, Font.NORMAL, BaseColor.BLACK);
         }
 
         private void header(Document doc, Employee employee, string team, string position)
@@ -36,7 +37,6 @@ namespace EmployeeEvaluation.Logic.PDF
             tbl2.DefaultCell.Border = Rectangle.NO_BORDER;
 
             doc.Add(addParagraphHeader("ARKUSZ OCENY OKRESOWEJ PRACOWNIKA", bigBold));
-            //doc.Add(Chunk.NEWLINE);
 
             Chunk linebreak = new Chunk(new LineSeparator(0.5f, 100f, GrayColor.GRAY, Element.ALIGN_CENTER, -1));
             doc.Add(linebreak);
@@ -62,8 +62,6 @@ namespace EmployeeEvaluation.Logic.PDF
             tbl2.AddCell(new Phrase("3 - ocena zgodna z oczekiwaniami, pracownik spełnia oczekiwania na poziomie zadowalającym", normal));
             tbl2.AddCell(new Phrase("2 - ocena poniżej oczekiwań, pracownik spełnia niektóre oczekiwania", normal));
             tbl2.AddCell(new Phrase("1 - ocena zdecydowanie poniżej oczekiwań, pracownik nie spełnia oczekiwań", normal));
-            //tbl2.AddCell(new Phrase("Skala oceny:", bold));
-            //tbl2.AddCell(new Phrase("5 - ocena zdecydowanie powyżej oczekiwań, pracownik wyraźnie wyróżnia się spośród innych, przewyższa oczekiwania\n4 - ocena powyżej oczekiwań, pracownik osiąga dobre rezultaty pracy, całkowicie spełnia oczekiwania\n3 - ocena zgodna z oczekiwaniami, pracownik spełnia oczekiwania na poziomie zadowalającym\n2 - ocena poniżej oczekiwań, pracownik spełnia niektóre oczekiwania\n1 - ocena zdecydowanie poniżej oczekiwań, pracownik nie spełnia oczekiwań", normal));
             doc.Add(tbl2);
 
             doc.Add(linebreak2);
@@ -228,6 +226,94 @@ namespace EmployeeEvaluation.Logic.PDF
             doc.Add(tblf);
         }
 
+        private void surveyFooter(Document doc, BrowseSurvey browseSurvey)
+        {
+            Chunk linebreak = new Chunk(new LineSeparator(0.5f, 100f, GrayColor.GRAY, Element.ALIGN_CENTER, -1));
+            doc.Add(linebreak);
+
+            //doc.Add(Chunk.NEWLINE);
+            doc.Add(addParagragh("Przyznaję okresową ocenę pracownika:", normal, 58));
+            doc.Add(addParagragh(browseSurvey.Survey.HRSummary, normal, 58));
+
+            PdfPTable tbl1 = new PdfPTable(new float[] { 0.33f, 0.33f, 0.34f });
+            tbl1.DefaultCell.Border = Rectangle.NO_BORDER;
+            PdfPTable tbl2 = new PdfPTable(new float[] { 0.33f, 0.33f, 0.34f });
+            tbl2.DefaultCell.Border = Rectangle.NO_BORDER;
+
+            doc.Add(Chunk.NEWLINE);
+
+            var cell = new PdfPCell(new Phrase("........................", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl1.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase(".....................", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl1.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("...................................", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl1.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("(miejscowość)", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl1.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("(data)", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl1.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("(podpis oceniającego)", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl1.AddCell(cell);
+
+            doc.Add(tbl1);
+            
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(linebreak);
+
+            doc.Add(addParagragh("Zapoznałem(-am) się z oceną", normal, 58));
+
+            doc.Add(Chunk.NEWLINE);
+
+            cell = new PdfPCell(new Phrase("........................", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl2.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase(".....................", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl2.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("...................................", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl2.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("(miejscowość)", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl2.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("(data)", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl2.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase("(podpis ocenianego)", normal));
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.Border = Rectangle.NO_BORDER;
+            tbl2.AddCell(cell);
+
+            doc.Add(tbl2);
+        }
+
         public byte[] CreatePdf(BrowseSurvey browseSurvey, Employee employee, Team team, Position position)
         {
             Rectangle pagesize = new Rectangle(20, 20, PageSize.A4.Width, PageSize.A4.Height);
@@ -235,12 +321,12 @@ namespace EmployeeEvaluation.Logic.PDF
             MemoryStream ms = new MemoryStream();
             PdfWriter pw = PdfWriter.GetInstance(doc, ms);
             doc.Open();
+            pw.PageEvent = new Footer();
 
             header(doc, employee, team.Name, position.Name);
-
             surveyHeader(doc, browseSurvey);
-
             surveyBody(doc, browseSurvey);
+            surveyFooter(doc, browseSurvey);
 
             doc.Close();
             byte[] byteArray = ms.ToArray();
