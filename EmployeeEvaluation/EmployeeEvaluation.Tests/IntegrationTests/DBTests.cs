@@ -35,5 +35,13 @@ namespace EmployeeEvaluation.Tests.IntegrationTests
             Assert.IsTrue(employees.Count() > 0);
         }
 
+        [TestMethod]
+        public void CanListSurvey()
+        {
+            var survey = db.T_Survey.ToList();
+            Assert.IsTrue(survey.Count() > 0);
+        }
+
+
     }
 }

@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using EmployeeEvaluation.Models;
 using EmployeeEvaluation.Logic;
-using Newtonsoft.Json.Linq;
 using EmployeeEvaluation.Logic.CheckData;
 
 namespace EmployeeEvaluation.Controllers
@@ -23,10 +18,7 @@ namespace EmployeeEvaluation.Controllers
         // GET: SurveyTemplates
         public ActionResult Index()
         {
-            //List<SurveyTemplate> surveyTemplate = (from s in db.T_SurveyTemplate select s).ToList();
-            //return View(surveyTemplate);
             return View(db.T_SurveyTemplate.ToList());
-            
         }
 
         // GET: SurveyTemplates/Details/5

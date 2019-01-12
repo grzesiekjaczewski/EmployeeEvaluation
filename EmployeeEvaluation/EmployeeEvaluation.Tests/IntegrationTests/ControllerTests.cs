@@ -65,7 +65,48 @@ namespace EmployeeEvaluation.Tests.IntegrationTests
 
             // Assert
             Assert.IsNotNull(result);
-
         }
+
+        [TestMethod]
+        public void CanListSurveyTemplatesIndex()
+        {
+            // Arrange
+            SurveyTemplatesController controller = new SurveyTemplatesController();
+
+            // Act
+            var result = controller.Index() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void CanListHRTeamsIndex()
+        {
+            // Arrange
+            HRTeamsController controller = new HRTeamsController();
+
+            // Act
+            var result = controller.Index() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void CanGetHRStructure()
+        {
+            // Arrange
+            HRStructureController controller = new HRStructureController();
+
+            // Act
+            var result = controller.Structure() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+
+        
     }
 }

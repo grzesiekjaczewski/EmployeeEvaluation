@@ -99,8 +99,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IntegrationTests\HREmployeesControllerTest.cs" />
+    <Compile Include="IntegrationTests\ControllerTests.cs" />
     <Compile Include="IntegrationTests\DBTests.cs" />
+    <Compile Include="IntegrationTests\PreparingDisplayDataTests.cs" />
     <Compile Include="UnitTests\LogicTests.cs" />
     <Compile Include="UnitTests\StructureTests.cs" />
     <Compile Include="TestDbContext.cs" />
