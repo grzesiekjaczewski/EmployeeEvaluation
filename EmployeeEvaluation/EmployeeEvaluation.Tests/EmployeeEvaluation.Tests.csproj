@@ -99,11 +99,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\HREmployeesControllerTest.cs" />
-    <Compile Include="Logic\StructureTests.cs" />
-    <Compile Include="Logic\TestDbContext.cs" />
+    <Compile Include="IntegrationTests\HREmployeesControllerTest.cs" />
+    <Compile Include="IntegrationTests\DBTests.cs" />
+    <Compile Include="UnitTests\LogicTests.cs" />
+    <Compile Include="UnitTests\StructureTests.cs" />
+    <Compile Include="TestDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

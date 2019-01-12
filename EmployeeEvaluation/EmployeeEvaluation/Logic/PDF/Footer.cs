@@ -59,7 +59,5 @@ namespace EmployeeEvaluation.Logic.PDF
             template.ShowText("" + (writer.PageNumber));
             template.EndText();
         }
-
-
     }
 }

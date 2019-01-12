@@ -7,7 +7,7 @@ using EmployeeEvaluation.Models;
 using System.Data.Entity;
 using Moq;
 
-namespace EmployeeEvaluation.Tests.Logic
+namespace EmployeeEvaluation.Tests.UnitTests
 {
     [TestClass]
     public class StructureTests
