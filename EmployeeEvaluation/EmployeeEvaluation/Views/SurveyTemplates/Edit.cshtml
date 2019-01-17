@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edycja ankiety</h2>
+<h3>Edycja ankiety</h3>
 
 @using (Html.BeginForm())
 {
@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Zapisz" class="btn btn-default" />
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
             </div>
         </div>
     </div>
@@ -110,9 +110,9 @@
 </div>
 
 <div class="form-group">
-    <div class="col-md-2">
-        @Html.ActionLink("Powrót do listy", "Index")
-    </div>
+    <div class="col-md-3">
+            @Html.ActionLink("Powrót do listy", "Index")
+</div>
 </div>
 
 <div id="dialog-add" title="Nowa sekcja">
