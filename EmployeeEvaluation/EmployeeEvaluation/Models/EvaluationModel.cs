@@ -133,6 +133,7 @@ namespace EmployeeEvaluation.Models
         public bool EmployeeCompleted { get; set; }
         public bool ManagerCompleted { get; set; }
         public int StatusId { get; set; }
+        public string EmployeeName { get; set; }
     }
 
     public class Survey

@@ -21,6 +21,7 @@ namespace EmployeeEvaluation.Logic
             List<SurveyDisplay> surveyList =
                (from s in db.T_Survey
                 join ss in db.T_SurveySatus on s.SurveyStatusId equals ss.Id
+                join e in db.T_Employees on s.EmployeeId equals e.Id
                 where s.EmployeeId == employeeId
                 orderby s.SurveyDadline descending
 
@@ -32,7 +33,8 @@ namespace EmployeeEvaluation.Logic
                     SurveyDadline = s.SurveyDadline,
                     EmployeeCompleted = s.EmployeeCompleted,
                     ManagerCompleted = s.ManagerCompleted,
-                    StatusId = s.SurveyStatusId
+                    StatusId = s.SurveyStatusId,
+                    EmployeeName = e.FirstName + " " + e.LastName
                 }).ToList();
 
             return surveyList as T1;

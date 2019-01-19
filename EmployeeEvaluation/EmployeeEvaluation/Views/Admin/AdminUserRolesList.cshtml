@@ -3,7 +3,7 @@
     ViewBag.Title = "Uprawnienia użytkownika";
 }
 <p class="under-menu"><br /></p>
-<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Title</h3>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -60,7 +60,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            <input type="submit" value="Zapisz" class="btn btn-default" />
+            <input type="submit" value="Zapisz" class="btn btn-primary" />
         </div>
         <div class="col-md-offset-2 col-md-2">
             &nbsp
