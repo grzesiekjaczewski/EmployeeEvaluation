@@ -42,7 +42,7 @@ namespace EmployeeEvaluation.Logic.PrepareView
                                 db.T_Survey.Where(s => s.EmployeeId == e.Id && s.SurveyStatusId == 1).ToList().Count() > 0
                                 ? "Oczekująca"
                                 : db.T_Survey.Where(s => s.EmployeeId == e.Id && s.SurveyStatusId == 2).ToList().Count() > 0
-                                ? "Wypelniona"
+                                ? "Wypełniona"
                                 : db.T_Survey.Where(s => s.EmployeeId == e.Id && s.SurveyStatusId == 3).ToList().Count() > 0
                                 ? "Oceniona"
                                 : db.T_Survey.Where(s => s.EmployeeId == e.Id && s.SurveyStatusId == 4).ToList().Count() > 0

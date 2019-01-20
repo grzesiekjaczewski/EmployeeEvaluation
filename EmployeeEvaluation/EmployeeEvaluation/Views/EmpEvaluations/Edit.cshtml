@@ -1,11 +1,11 @@
 ﻿@model EmployeeEvaluation.Models.Survey
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Wypełnianie ankiety";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Ankieta oceny okresowej pracownika</h2>
+<h3>Ankieta oceny okresowej pracownika</h3>
 
 @using (Html.BeginForm())
 {
@@ -22,14 +22,14 @@
     <div class="form-group" id="userInfo">
 
         <div class="col-md-10">
-            <h3>Pracownik: @ViewBag.UserInfo</h3>
+            <h4>Pracownik: @ViewBag.UserInfo</h4>
         </div>
         <div id="HeadPart">
             <div class="col-md-10">
-                <h4>Ankieta: @Model.Name</h4>
+                <h5>Ankieta: @Model.Name</h5>
             </div>
             <div id ="Deadline" class="col-md-10">
-                <h4>Termin wypełnienia: @Model.SurveyDadline.ToShortDateString()</h4>
+                <h5>Termin wypełnienia: @Model.SurveyDadline.ToShortDateString()</h5>
             </div>
         </div>
     </div>
@@ -42,14 +42,14 @@
 
         <div class="form-group">
             <div id="prevSectionDiv" class="col-md-1">
-                <a href="#" style="display: none" id="prevSectionBtn" onclick="actionPrevSection('@Model.Id','/EmpEvaluations/PrevSection')" class="btn btn-default"> Poprzednia sekcja</a>
+                <a href="#" style="display: none" id="prevSectionBtn" onclick="actionPrevSection('@Model.Id','/EmpEvaluations/PrevSection')" class="btn btn-primary"> Poprzednia sekcja</a>
             </div>
             <div id="startSectionDiv" class="col-md-8">
-                <a href="#" id="startSectionBtn" onclick="actionStartSurvey('@Model.Id','/EmpEvaluations/StartSurvey')" class="btn btn-default"> Rozpocznij ankietę </a>
-                <a href="#" style="display: none" id="firstNextSectionBtn" onclick="actionFirstQuestion('@Model.Id','/EmpEvaluations/FirstQuestion')" class="btn btn-default"> Przejdź do pytań </a>
+                <a href="#" id="startSectionBtn" onclick="actionStartSurvey('@Model.Id','/EmpEvaluations/StartSurvey')" class="btn btn-primary"> Rozpocznij ankietę </a>
+                <a href="#" style="display: none" id="firstNextSectionBtn" onclick="actionFirstQuestion('@Model.Id','/EmpEvaluations/FirstQuestion')" class="btn btn-primary"> Przejdź do pytań </a>
             </div>
             <div id="nextSectionDiv" class="col-md-1">
-                <a href="#" style="display: none" id="nextSectionQuestionBtn" onclick="actionSectionFirstQuestion('@Model.Id','/EmpEvaluations/NextSectionQuestion')" class="btn btn-default"> Pytania z kolejnej sekcji </a>
+                <a href="#" style="display: none" id="nextSectionQuestionBtn" onclick="actionSectionFirstQuestion('@Model.Id','/EmpEvaluations/NextSectionQuestion')" class="btn btn-primary"> Pytania z kolejnej sekcji </a>
             </div>
         </div>
 
@@ -80,15 +80,15 @@
 
         <div class="form-group">
             <div id="prevQuestionDiv" class="col-md-1">
-                <a href="#" style="display: none" id="prevQuestionBtn" onclick="actionPrevQuestion('@Model.Id','/EmpEvaluations/PrevQuestion')" class="btn btn-default"> Poprzednie pytanie </a>
-                <a href="#" style="display: none" id="sectionHeaderBtn" onclick="actionSectionHeader('@Model.Id','/EmpEvaluations/SectionHeader')" class="btn btn-default"> Nagłówek sekcji </a>
+                <a href="#" style="display: none" id="prevQuestionBtn" onclick="actionPrevQuestion('@Model.Id','/EmpEvaluations/PrevQuestion')" class="btn btn-primary"> Poprzednie pytanie </a>
+                <a href="#" style="display: none" id="sectionHeaderBtn" onclick="actionSectionHeader('@Model.Id','/EmpEvaluations/SectionHeader')" class="btn btn-primary"> Nagłówek sekcji </a>
             </div>
             <div class="col-md-8">
             </div>
             <div id="nextQuestionDiv" class="col-md-1">
-                <a href="#" style="display: none" id="nextQuestionBtn" onclick="actionNextQuestion('@Model.Id','/EmpEvaluations/NextQuestion')" class="btn btn-default"> Następne pytanie </a>
-                <a href="#" style="display: none" id="nextSectionBtn" onclick="actionNextSection('@Model.Id','/EmpEvaluations/NextSection')" class="btn btn-default"> Następna sekcja </a>
-                <a href="#" style="display: none" id="completeSurveyBtn" onclick="actionCompleteSurvey('@Model.Id','/EmpEvaluations/CompleteSurveyn','/EmpEvaluations/Index')" class="btn btn-default"> Zatwierdź ankietę </a>
+                <a href="#" style="display: none" id="nextQuestionBtn" onclick="actionNextQuestion('@Model.Id','/EmpEvaluations/NextQuestion')" class="btn btn-primary"> Następne pytanie </a>
+                <a href="#" style="display: none" id="nextSectionBtn" onclick="actionNextSection('@Model.Id','/EmpEvaluations/NextSection')" class="btn btn-primary"> Następna sekcja </a>
+                <a href="#" style="display: none" id="completeSurveyBtn" onclick="actionCompleteSurvey('@Model.Id','/EmpEvaluations/CompleteSurveyn','/EmpEvaluations/Index')" class="btn btn-primary"> Zatwierdź ankietę </a>
             </div>
         </div>
     </div>

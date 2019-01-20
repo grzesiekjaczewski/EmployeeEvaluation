@@ -1,11 +1,11 @@
 ﻿@model EmployeeEvaluation.Models.BrowseSurvey
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Przeglądanie";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Ankieta oceny okresowej pracownika</h2>
+<h3>Ankieta oceny okresowej pracownika</h3>
 
 @using (Html.BeginForm())
 {
@@ -16,28 +16,27 @@
 
         <div class="form-group" id="userInfo">
             <div class="col-md-10">
-                <h3>Pracownik: @ViewBag.UserInfo</h3>
+                <h4>Pracownik: <b>@ViewBag.UserInfo</b></h4>
             </div>
             <div id="HeadPart">
                 <div class="col-md-10">
-                    <h4>Ankieta: @Model.Survey.Name</h4>
+                    <h5>Ankieta: @Model.Survey.Name</h5>
                 </div>
                 <div class="col-md-10">
-                    <h4>Data wypełnienia: @Model.Survey.CompliteEmployeeDate.ToShortDateString()</h4>
+                    <h5>Data wypełnienia: @Model.Survey.CompliteEmployeeDate.ToShortDateString()</h5>
                 </div>
                 <div class="col-md-10">
-                    <h4>Termin wypełnienia: @Model.Survey.SurveyDadline.ToShortDateString()</h4>
+                    <h5>Termin wypełnienia: @Model.Survey.SurveyDadline.ToShortDateString()</h5>
                 </div>
             </div>
         </div>
-        <br />
         <div class="form-group">
             <table class="customTable main">
                 @foreach (var surveyPart in Model.Survey.SurveyParts)
                 {
                     <tr>
                         <td width="45%">
-                            @Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                            <b>@Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })</b>
                         </td>
                         <td width="55%">
                             @Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].SummaryTitle, new { htmlAttributes = new { @class = "control-label col-md-2" } })
