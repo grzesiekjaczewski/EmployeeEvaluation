@@ -45,14 +45,9 @@
         @foreach (var item in Model.SurveyPartTemplates)
         {
             <tr>
-                <td width="35%">
+                <td width="70%">
                     <div id="actionDisplaySurveyPartText1_@item.Id">
                         @Html.DisplayFor(modelItem => item.Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                    </div>
-                </td>
-                <td width="35%">
-                    <div id="actionDisplaySurveyPartText2_@item.Id">
-                        @Html.DisplayFor(modelItem => item.SummaryTitle, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                     </div>
                 </td>
                 <td>
@@ -67,14 +62,9 @@
                         @foreach (var subItem in item.SurveyQuestionTemplates)
                         {
                             <tr>
-                                <td width="35%">
+                                <td width="70%">
                                     <div id="actionDisplaySurveyQuestionText3_@subItem.Id">
                                         @Html.DisplayFor(modelItem => subItem.Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                                    </div>
-                                </td>
-                                <td width="35%">
-                                    <div id="actionDisplaySurveyQuestionText4_@subItem.Id">
-                                        @Html.DisplayFor(modelItem => subItem.Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                     </div>
                                 </td>
                                 <td width="15%">
@@ -104,16 +94,15 @@
 <br />
 
 <div class="form-group">
-    <div class="col-md-2">
+    <div>
         <a href="#" onclick="actionAdd('@Model.Id','actionNewSurveyPartText1','actionNewSurveyPartText2','/SurveyTemplates/AddPart')">Dodaj sekcję ankiety</a>
+    </div>
+    <br />
+    <div>
+        @Html.ActionLink("Powrót do listy", "Index")
     </div>
 </div>
 
-<div class="form-group">
-    <div class="col-md-3">
-            @Html.ActionLink("Powrót do listy", "Index")
-</div>
-</div>
 
 <div id="dialog-add" title="Nowa sekcja">
     <div class="form-group">
@@ -124,14 +113,7 @@
             <input id="actionNewSurveyPartText1" type="text" class="form-control">
         </div>
     </div>
-    <div class="form-group">
-        <div class="control-label col-md-6">
-            Opis Sekcji
-        </div>
-        <div class="col-md-10">
-            <input id="actionNewSurveyPartText2" type="text" class="form-control">
-        </div>
-    </div>
+    <input type="hidden" id="actionNewSurveyPartText2" class="form-control">
 </div>
 
 <div id="dialog-edit" title="Edycja sekcji">
@@ -162,14 +144,7 @@
             <textarea id="actionNewSurveyPartText5" cols="40" rows="3" class="form-control"></textarea>
         </div>
     </div>
-    <div class="form-group">
-        <div class="control-label col-md-6">
-            Kryteria oceny
-        </div>
-        <div class="col-md-10">
-            <textarea id="actionNewSurveyPartText6" cols="40" rows="3" class="form-control"></textarea>
-        </div>
-    </div>
+    <input type="hidden" id="actionNewSurveyPartText6" cols="40" rows="3">
     <div class="form-group">
         <div class="control-label col-md-6">
             Rodzaj pytania
@@ -192,14 +167,7 @@
             <textarea id="actionNewSurveyPartText8" cols="40" rows="3" class="form-control"></textarea>
         </div>
     </div>
-    <div class="form-group">
-        <div class="control-label col-md-6">
-            Kryteria oceny
-        </div>
-        <div class="col-md-10">
-            <textarea id="actionNewSurveyPartText9" cols="40" rows="3" class="form-control"></textarea>
-        </div>
-    </div>
+    <input type="hidden" id="actionNewSurveyPartText9" cols="40" rows="3" class="form-control">
     <div class="form-group">
         <div class="control-label col-md-6">
             Rodzaj pytania

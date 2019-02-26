@@ -42,14 +42,9 @@
         @foreach (var item in Model.SurveyPartTemplates)
         {
             <tr>
-                <td width="35%">
+                <td width="70%">
                     <div id="actionDisplaySurveyPartText1_@item.Id">
                         @Html.DisplayFor(modelItem => item.Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                    </div>
-                </td>
-                <td width="35%">
-                    <div id="actionDisplaySurveyPartText2_@item.Id">
-                        @Html.DisplayFor(modelItem => item.SummaryTitle, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                     </div>
                 </td>
             </tr>
@@ -59,14 +54,9 @@
                         @foreach (var subItem in item.SurveyQuestionTemplates)
                         {
                             <tr>
-                                <td width="35%">
+                                <td width="70%">
                                     <div id="actionDisplaySurveyQuestionText3_@subItem.Id">
                                         @Html.DisplayFor(modelItem => subItem.Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                                    </div>
-                                </td>
-                                <td width="35%">
-                                    <div id="actionDisplaySurveyQuestionText4_@subItem.Id">
-                                        @Html.DisplayFor(modelItem => subItem.Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                     </div>
                                 </td>
                                 <td width="15%">

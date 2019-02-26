@@ -103,10 +103,9 @@ namespace EmployeeEvaluation.Logic.PDF
 
             foreach (var surveyPart in browseSurvey.Survey.SurveyParts)
             {
-                PdfPTable tbl = new PdfPTable(new float[] { 0.4f, 0.4f, 0.1f, 0.1f });
+                PdfPTable tbl = new PdfPTable(new float[] { 0.8f, 0.1f, 0.1f });
 
                 tbl.AddCell(new Phrase(browseSurvey.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].Name, bold));
-                tbl.AddCell(new Phrase(browseSurvey.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].SummaryTitle, bold));
                 tbl.AddCell(new Phrase("Samoocena pracownika", bold));
                 tbl.AddCell(new Phrase("Ocena menadżera", bold));
 
@@ -138,15 +137,6 @@ namespace EmployeeEvaluation.Logic.PDF
                                                 .Name, normal));
                     if (questionType == 1)
                     {
-
-                        tbl.AddCell(new Phrase(browseSurvey.SurveyTemplate
-                                                  .SurveyPartTemplates
-                                                  .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
-                                                  .ToList()[0]
-                                                  .SurveyQuestionTemplates
-                                                  .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
-                                                  .ToList()[0]
-                                                  .Definition, normal));
                         tbl.AddCell(new Phrase(surveyQuestion.EmployeeScore.ToString(), normal));
                         tbl.AddCell(new Phrase(surveyQuestion.ManagerScore.ToString(), normal));
 
@@ -170,13 +160,11 @@ namespace EmployeeEvaluation.Logic.PDF
                         cell.Colspan = 3;
                         tbl.AddCell(cell);
 
-                        tbl.AddCell(new Phrase("Komentarz pracownika", normal));
-                        cell = new PdfPCell(new Phrase(surveyQuestion.EmployeeComment, normal));
+                        cell = new PdfPCell(new Phrase("Komentarz pracownika: " + surveyQuestion.EmployeeComment, normal));
                         cell.Colspan = 3;
                         tbl.AddCell(cell);
-                                                
-                        tbl.AddCell(new Phrase("Komentarz menadżera", normal));
-                        cell = new PdfPCell(new Phrase(surveyQuestion.ManagerComment, normal));
+
+                        cell = new PdfPCell(new Phrase("Komentarz menadżera: " + surveyQuestion.ManagerComment, normal));
                         cell.Colspan = 3;
                         tbl.AddCell(cell);
                     }
@@ -188,15 +176,13 @@ namespace EmployeeEvaluation.Logic.PDF
                     managerAvg = decimal.Round((decimal)managerSum / (decimal)cnt, 2);
                 }
 
-                var cell1 = new PdfPCell(new Phrase("Podsumowanie sekcji", normal));
-                cell1.Colspan = 2;
+                var cell1 = new PdfPCell(new Phrase("Podsumowanie sekcji", bold));
                 tbl.AddCell(cell1);
 
                 tbl.AddCell(new Phrase(employeeSum.ToString(), normal));
                 tbl.AddCell(new Phrase(managerSum.ToString(), normal));
 
-                cell1 = new PdfPCell(new Phrase("Średnia sekcji", normal));
-                cell1.Colspan = 2;
+                cell1 = new PdfPCell(new Phrase("Średnia sekcji", bold));
                 tbl.AddCell(cell1);
 
                 tbl.AddCell(new Phrase(employeeAvg.ToString(), normal));
@@ -215,11 +201,11 @@ namespace EmployeeEvaluation.Logic.PDF
 
             PdfPTable tblf = new PdfPTable(new float[] { 0.8f, 0.1f, 0.1f });
 
-            tblf.AddCell(new Phrase("Podsumowanie ankiety", normal));
+            tblf.AddCell(new Phrase("Podsumowanie ankiety", bold));
             tblf.AddCell(new Phrase(employeeTotalSum.ToString(), normal));
             tblf.AddCell(new Phrase(managerTotalSum.ToString(), normal));
 
-            tblf.AddCell(new Phrase("Średnia ankiety", normal));
+            tblf.AddCell(new Phrase("Średnia ankiety", bold));
             tblf.AddCell(new Phrase(employeeTotalAvg.ToString(), normal));
             tblf.AddCell(new Phrase(managerTotalAvg.ToString(), normal));
 
@@ -231,7 +217,6 @@ namespace EmployeeEvaluation.Logic.PDF
             Chunk linebreak = new Chunk(new LineSeparator(0.5f, 100f, GrayColor.GRAY, Element.ALIGN_CENTER, -1));
             doc.Add(linebreak);
 
-            //doc.Add(Chunk.NEWLINE);
             doc.Add(addParagragh("Przyznaję okresową ocenę pracownika:", normal, 58));
             doc.Add(addParagragh(browseSurvey.Survey.HRSummary, normal, 58));
 
@@ -316,8 +301,7 @@ namespace EmployeeEvaluation.Logic.PDF
 
         public byte[] CreatePdf(BrowseSurvey browseSurvey, Employee employee, Team team, Position position)
         {
-            Rectangle pagesize = new Rectangle(20, 20, PageSize.A4.Width, PageSize.A4.Height);
-            Document doc = new Document(pagesize, 10, 10, 50, 10);
+            Document doc = new Document(PageSize.A4, 36, 36, 36, 55);
             MemoryStream ms = new MemoryStream();
             PdfWriter pw = PdfWriter.GetInstance(doc, ms);
             doc.Open();
@@ -359,7 +343,6 @@ namespace EmployeeEvaluation.Logic.PDF
         {
             Paragraph p = new Paragraph(headingText, font);
             p.SpacingBefore = 10f;
-            //p.FirstLineIndent = 10f;
             p.SpacingAfter = 1f;
             p.Alignment = Element.ALIGN_CENTER;
             return p;

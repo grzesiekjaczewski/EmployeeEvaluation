@@ -4,7 +4,6 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Ankieta oceny okresowej pracownika</h2>
 
 @using (Html.BeginForm())
@@ -37,11 +36,8 @@
                 @foreach (var surveyPart in Model.Survey.SurveyParts)
                 {
                     <tr>
-                        <td width="40%">
+                        <td width="80%">
                             @Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                        </td>
-                        <td width="40%">
-                            @Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].SummaryTitle, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                         </td>
                         <td width="10%">
                             Samoocena pracownika
@@ -51,7 +47,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4" width="100%">
+                        <td colspan="3" width="100%">
                             <table class="customTable sub">
                                 @foreach (var surveyQuestion in surveyPart.SurveyQuestions)
                                 {
@@ -64,27 +60,17 @@
                                     .ToList()[0]
                                     .QuestionType;
                                 <tr>
-                                    <td width="40%">
-                                        @Html.DisplayFor(modelItem => Model.SurveyTemplate
-                                                                        .SurveyPartTemplates
-                                                                        .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
-                                                                        .ToList()[0]
-                                                                        .SurveyQuestionTemplates
-                                                                        .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
-                                                                        .ToList()[0]
-                                                                        .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                                    </td>
                                     @if (questionType == 1)
                                     {
-                                        <td>
+                                        <td width="80%">
                                             @Html.DisplayFor(modelItem => Model.SurveyTemplate
-                                              .SurveyPartTemplates
-                                              .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
-                                              .ToList()[0]
-                                              .SurveyQuestionTemplates
-                                              .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
-                                              .ToList()[0]
-                                              .Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                                .SurveyPartTemplates
+                                                .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                                .ToList()[0]
+                                                .SurveyQuestionTemplates
+                                                .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                                .ToList()[0]
+                                                .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                         </td>
                                         <td width="10%">
                                             <div>@surveyQuestion.EmployeeScore</div>
@@ -97,13 +83,13 @@
                                     {
                                         <td colspan="3">
                                             @Html.DisplayFor(modelItem => Model.SurveyTemplate
-                                              .SurveyPartTemplates
-                                              .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
-                                              .ToList()[0]
-                                              .SurveyQuestionTemplates
-                                              .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
-                                              .ToList()[0]
-                                              .Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                                .SurveyPartTemplates
+                                                .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
+                                                .ToList()[0]
+                                                .SurveyQuestionTemplates
+                                                .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
+                                                .ToList()[0]
+                                                .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                         </td>
                                     }
                                 </tr>
@@ -135,27 +121,26 @@
                     </tr>
                 }
                 <tr>
-                    <td>
-                        <p>Komentarz HR menadżera</p>
-                    </td>
                     <td colspan="3">
-                        <textarea name="hrManagerComment" cols="240" rows="4" class="form-control"></textarea>
+                        Komentarz HR menadżera: <textarea name="hrManagerComment" rows="3" cols="40" class="form-control"></textarea>
                     </td>
                 </tr>
             </table>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div>
                 <input type="submit" value="Akceptuj" class="btn btn-primary" />
+            </div>
+            <br>
+            <div>
+                @Html.ActionLink("Powrót do listy", "Index")
             </div>
         </div>
     </div>
 }
 
-<div class="form-group">
-    @Html.ActionLink("Powrót do listy", "Index")
-</div>
+
 
 
 

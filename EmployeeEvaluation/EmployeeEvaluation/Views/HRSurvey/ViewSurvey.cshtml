@@ -57,11 +57,8 @@
                         cnt = 0;
                     }
                     <tr>
-                        <td width="40%">
+                        <td width="80%">
                             @Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                        </td>
-                        <td width="40%">
-                            @Html.DisplayFor(modelItem => Model.SurveyTemplate.SurveyPartTemplates.Where(t => t.Id == surveyPart.SurveyPartTemplateId).ToList()[0].SummaryTitle, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                         </td>
                         <td width="10%">
                             Samoocena pracownika
@@ -71,7 +68,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4" width="100%">
+                        <td colspan="3" width="100%">
                             <table class="customTable sub">
                                 @foreach (var surveyQuestion in surveyPart.SurveyQuestions)
                                 {
@@ -84,19 +81,9 @@
                                     .ToList()[0]
                                     .QuestionType;
                                 <tr>
-                                    <td width="40%">
-                                        @Html.DisplayFor(modelItem => Model.SurveyTemplate
-                                          .SurveyPartTemplates
-                                          .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
-                                          .ToList()[0]
-                                          .SurveyQuestionTemplates
-                                          .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
-                                          .ToList()[0]
-                                          .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
-                                    </td>
                                     @if (questionType == 1)
                                     {
-                                        <td>
+                                        <td width="80%">
                                             @Html.DisplayFor(modelItem => Model.SurveyTemplate
                                               .SurveyPartTemplates
                                               .Where(t => t.Id == surveyPart.SurveyPartTemplateId)
@@ -104,8 +91,9 @@
                                               .SurveyQuestionTemplates
                                               .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
                                               .ToList()[0]
-                                              .Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                              .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                         </td>
+
                                         <td width="10%">
                                             <div>@surveyQuestion.EmployeeScore</div>
                                         </td>
@@ -129,29 +117,23 @@
                                               .SurveyQuestionTemplates
                                               .Where(q => q.Id == surveyQuestion.SurveyQuestionTemplateId)
                                               .ToList()[0]
-                                              .Definition, new { htmlAttributes = new { @class = "control-label col-md-2" } })
+                                              .Name, new { htmlAttributes = new { @class = "control-label col-md-2" } })
                                         </td>
                                     }
                                 </tr>
                                     <tr>
                                         @if (questionType == 2)
                                         {
-                                            <td>
-                                                <p>Komentarz pracownika</p>
-                                            </td>
                                             <td colspan="3">
-                                                <p>@surveyQuestion.EmployeeComment</p>
+                                                <p>Komentarz pracownika: @surveyQuestion.EmployeeComment</p>
                                             </td>
                                         }
                                     </tr>
                                     <tr>
                                         @if (questionType == 2)
                                         {
-                                            <td>
-                                                <p>Komentarz menadżera</p>
-                                            </td>
                                             <td colspan="3">
-                                                <p>@surveyQuestion.ManagerComment</p>
+                                                <p>Komentarz menadżera: @surveyQuestion.ManagerComment</p>
                                             </td>
                                         }
                                     </tr>
@@ -162,7 +144,7 @@
                                     managerAvg = decimal.Round((decimal)managerSum / (decimal)cnt, 2);
                                 }
                                 <tr>
-                                    <td colspan="2" bgcolor="lightgrey">
+                                    <td bgcolor="lightgrey">
                                         <p><b>Podsumowanie sekcji</b></p>
                                     </td>
                                     <td bgcolor="lightgrey">
@@ -173,7 +155,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" bgcolor="lightgrey">
+                                    <td bgcolor="lightgrey">
                                         <p><b>Średnia sekcji</b></p>
                                     </td>
                                     <td bgcolor="lightgrey">
@@ -193,7 +175,7 @@
                     managerTotalAvg = decimal.Round((decimal)managerTotalSum / (decimal)cntTotal, 2);
                 }
                 <tr>
-                    <td colspan="2" bgcolor="lightgrey">
+                    <td bgcolor="lightgrey">
                         <p><b>Podsumowanie ankiety</b></p>
                     </td>
                     <td bgcolor="lightgrey">
@@ -204,7 +186,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" bgcolor="lightgrey">
+                    <td bgcolor="lightgrey">
                         <p><b>Średnia ankiety</b></p>
                     </td>
                     <td bgcolor="lightgrey">
@@ -215,11 +197,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Komentarz HR menadżera</p>
-                    </td>
                     <td colspan="3">
-                        @Model.Survey.HRSummary
+                        Komentarz HR menadżera: @Model.Survey.HRSummary
                     </td>
                 </tr>
             </table>
